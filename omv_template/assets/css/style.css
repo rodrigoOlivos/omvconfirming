@@ -1,0 +1,120 @@
+/*================================================================================
+	Item Name: Stack - Responsive Admin Theme
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.border-less{
+    border:0px !important;
+    margin: 2px !important;
+
+}
+.left-panel-buttons{
+  width: 150px !important;
+
+}
+.right-panel-buttons{
+    width: 100px !important;
+
+}
+.content-body-size{
+    zoom:90%
+}
+.tabs-colors-green{
+    color:  #4cd4e6 !important;
+    border-bottom-color: #4cd4e6 !important;
+}
+
+ .nav.nav-tabs .nav-item .nav-link.active
+{
+     color:             #ffffff !important;
+     border-top:        0       !important;
+     border-left:       0       !important;
+     border-right:      0       !important;
+     background-color:  #4cd4e6 !important;
+}
+
+.nav.nav-tabs .nav-item .nav-link:hover
+{
+    background-color:  #81e3ea !important;
+    color:             #ffffff !important;
+}
+
+.calipso{
+    background-color:#81e3ea !important;
+    color:             #ffffff !important;
+}
+
+.btn-success {
+    border-color : #10C888 !important;
+    background-color : #59dfb8 !important;
+    color : #FFFFFF;
+}
+.btn-success:hover {
+    border-color : #13CE92 !important;
+    background-color : #6ef9ce !important;
+    color : #FFFFFF !important;
+}
+.btn-success:focus, .btn-success:active {
+    border-color : #10C888 !important;
+    background-color : #6ef9ce !important;
+    color : #FFFFFF !important;
+}
+
+.btn-outline-light {
+    color: #BABFC7;
+    background-color: transparent;
+    background-image: none;
+    border-color: #BABFC7; }
+.btn-outline-light:hover {
+    color: #333333;
+    background-color: #fdfbfc;
+    border-color: #BABFC7; }
+.btn-outline-light:focus, .btn-outline-light.focus {
+    box-shadow: 0 0 0 0.2rem rgba(186, 191, 199, 0.5); }
+.btn-outline-light.disabled, .btn-outline-light:disabled {
+    color: #BABFC7;
+    background-color: transparent; }
+.btn-outline-light:not(:disabled):not(.disabled):active, .btn-outline-light:not(:disabled):not(.disabled).active,
+.show > .btn-outline-light.dropdown-toggle {
+    color: #333333;
+    background-color: #fdfbfc;
+    border-color: #BABFC7; }
+.btn-outline-light:not(:disabled):not(.disabled):active:focus, .btn-outline-light:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-light.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(186, 191, 199, 0.5); }
+
+.texto-verde{
+    color:  #4cd4e6 !important;
+}
+
+.texto-gris{
+    color:  #BABFC7 !important;
+
+}
+.horizontal-menu .navbar-light ul#main-menu-navigation > li.active > a {
+    border-bottom: 2px solid #333333 !important;
+    background: #FFFFFF ;
+}
+.horizontal-menu .navbar-light ul#main-menu-navigation > li > a:hover {
+    border-bottom: 2px solid #4cd4e6 !important;
+   color:#4cd4e6 !important;
+}
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #59dfb8;
+    border-color: #333333;
+}
+.disabledLink {
+    pointer-events:none; //This makes it not clickable
+    opacity:0.6;         //This grays it out to look disabled
+}
