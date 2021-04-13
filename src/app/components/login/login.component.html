@@ -47,7 +47,7 @@
               <div class="card-content">
                 <div class="card-body">
                   <form class="form-horizontal form-simple" style="zoom:80%"
-                        (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate>
+                        (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate  >
 
                     <fieldset class="form-group position-relative has-icon-left">
                       <label for="rutempresa" class="h6 ">RUT Empresa (*)</label>
@@ -73,7 +73,7 @@
                     <fieldset class="form-group position-relative has-icon-left">
                       <label for="clave" class="h6" >Clave (*)</label>
                       <input type="password" class="form-control form-control" id="clave" placeholder=""
-                             name="clave" formControlName="clave">
+                             name="clave" formControlName="clave" style="margin-bottom: 0;">
                       <div *ngIf="submitted && f.clave.errors" class="alert alert-danger">
                         <div *ngIf="f.clave.errors.required">Clave es requerida</div>
                         <div *ngIf="f.clave.errors.minlength">Clave mínimo 3 caracteres</div>

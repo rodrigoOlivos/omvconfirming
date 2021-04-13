@@ -8,7 +8,7 @@ import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  reactiveForm:FormGroup;
+  reactiveForm: FormGroup;
   submitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     if (this.reactiveForm.invalid) {
       return;
     }
-    // console.log(this.form.value)
+    console.log(this.reactiveForm.value);
   }
 
   ngOnInit(): void {
