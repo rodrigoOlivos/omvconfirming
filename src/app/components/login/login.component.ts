@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators, FormBuilder} from "@angular/forms";
+import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
       rutempresa: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       rutpersona: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       clave: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-    })
+    });
   }
 
   // form = new FormGroup({
