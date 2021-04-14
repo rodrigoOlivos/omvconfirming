@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   reactiveForm: FormGroup;
   submitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router:Router) {
     this.reactiveForm = this.formBuilder.group({
       rutempresa: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       rutpersona: new FormControl(null, [Validators.required, Validators.minLength(3)]),
@@ -31,7 +32,10 @@ export class LoginComponent implements OnInit {
     if (this.reactiveForm.invalid) {
       return;
     }
-    console.log(this.reactiveForm.value);
+
+    if (this.reactiveForm.value.rutempresa === '123' && this.reactiveForm.value.rutpersona === '123' && this.reactiveForm.value.clave === '123') {
+      this.router.navigate(['/inicio']);
+    }
   }
 
   ngOnInit(): void {
