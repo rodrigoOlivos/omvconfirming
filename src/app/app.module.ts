@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponentOld } from './pages/login/login.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login2/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -16,15 +16,15 @@ import { IndicadoresComponent } from './pages/indicadores/indicadores.component'
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { BoardAdminComponent } from './pages/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './pages/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './pages/board-user/board-user.component';
 
-import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { DemoComponent } from './demo/demo.component';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { DemoComponent } from './pages/demo/demo.component';
 
 @NgModule({
   declarations: [

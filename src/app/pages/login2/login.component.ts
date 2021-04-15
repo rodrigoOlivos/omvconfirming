@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { AuthService } from '../../services/auth.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
-        console.log('login OK');
+        console.log('login2 OK');
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         this.errorMessage = err.error.message;
-        console.log('login NO OK');
+        console.log('login2 NO OK');
         this.isLoginFailed = true;
       }
     );
