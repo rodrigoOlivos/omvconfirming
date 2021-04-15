@@ -30,6 +30,8 @@ import {TasasComponent} from './pages/administracion/tasas/tasas.component';
 import {HeaderLayoutComponent} from './components/header-layout/header-layout.component';
 import {FooterLayoutComponent} from './components/footer-layout/footer-layout.component';
 import {TitleLayoutComponent} from './components/title-layout/title-layout.component';
+import {PanelComponent} from './pages/administracion/panel/panel.component';
+import {AltaComponent} from './pages/administracion/alta/alta.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import {TitleLayoutComponent} from './components/title-layout/title-layout.compo
     TitleLayoutComponent,
     FooterLayoutComponent,
     HeaderLayoutComponent,
+    PanelComponent,
+    AltaComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,6 @@ import {TitleLayoutComponent} from './components/title-layout/title-layout.compo
     NavbarComponent,
     FooterLayoutComponent,
     TasasComponent,
-
   ],
   providers: [CookieService, authInterceptorProviders],
   bootstrap: [AppComponent]

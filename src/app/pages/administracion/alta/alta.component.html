@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<app-title-layout></app-title-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+<app-navbar></app-navbar>
+<!-- Horizontal navigation-->
+<div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-light navbar-without-dd-arrow navbar-shadow menu-border"
+     role="navigation" data-menu="menu-wrapper">
+  <!-- Horizontal menu content-->
+  <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
+    <!-- include ../../../includes/mixins-->
+    <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+      <li class="dropdown nav-item" data-menu="dropdown">
+        <a class=" nav-link" href="omv-login.html" >
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="dropdown nav-item open active" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Administración</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item" href="omv-administracion-tasas.html" data-toggle="dropdown">Tasas
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item" href="omv-administracion-panel.html" data-toggle="dropdown">Panel de Control
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-administracion-resultado.html" data-toggle="dropdown">Resultado Neto
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item" href="omv-administracion-alta.html" data-toggle="dropdown">Alta Proveedores
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="omv-operaciones.html" data-toggle="dropdown"><span  style="margin-right: 10px;">Operaciones</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item" href="omv-nomina.html" data-toggle="dropdown">Nóminas
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-recaudacion.html" data-toggle="dropdown">Recaudación y cobranza
+          </a>
+          </li>
 
+        </ul>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link texto-gris" href="omv-custodia.html" data-toggle="dropdown"><span style="margin-right: 10px;">Custodia</span></a>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link texto-gris" href="omv-consulta.html" data-toggle="dropdown"><span style="margin-right: 10px;">Consulta</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-ofertas.html" data-toggle="dropdown">Ofertas Rechazadas del Día
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-curse.html" data-toggle="dropdown">Ofertas Pendientes del Curse por Cuarta Copia
+            <</a>
+          </li>
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-proveedor.html" data-toggle="dropdown">Ofertas por Proveedor
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="omv-indicadores.html" data-toggle="dropdown"><span  style="margin-right: 10px;">Indicadores</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item texto-gris" href="omv-tipocambio.html" data-toggle="dropdown">Tipo de Cambio
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="omv-usuarios.html" data-toggle="dropdown"><span  style="margin-right: 10px;">Usuarios</span></a>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="omv-ayuda.html" data-toggle="dropdown"><span  style="margin-right: 10px;">Ayuda</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item texto-gris" href="dashboard-ecommerce.html" data-toggle="dropdown">Acerca de</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+  <!-- /horizontal menu content-->
+</div>
+<!-- Horizontal navigation-->
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <h3 class="h5 mb-0">ALTA DE PROVEEDORES</h3>
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="texto-verde">ADMINISTRACIÓN</a>
+              </li>
+              <li class="breadcrumb-item"><a href="#" class="texto-verde">ALTA DE PROVEEDORES</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-content collapse show">
+
+                <div class="tab-content px-1 pt-1">
+                  <div  class="tab-pane active in" id="active" aria-labelledby="active-tab">
+
+                    <div class="form-group row">
+                      <div class="col-md-2  form-control border-less" style="" >
+                        <label  for="default-select" class="h6 " >Rut Proveedor</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="col-md-1">
+                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                          Buscar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-2  form-control border-less" style="" >
+                        <label  for="default-select" class="h6 " >Razón Social</label>
+                      </div>
+                      <div class="col-md-4">
+                        <select class="form-control" id="default-select">
+                          <option value="AK">Seleccione..</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-4  border-less" style="" >
+                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                        <label  class="h6" >20/20/1990</label>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+
+                      <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
+                        <thead>
+                        <tr>
+                          <th>$ / Días</th>
+                          <th>Nombre Item</th>
+                          <th>Producto</th>
+                          <th>Producto</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>Tiger</td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                        </tr>
+                        <tr>
+                          <td>Garrett</td>
+                          <td>Winters</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton</td>
+                          <td>Cox</td>
+                          <td>Junior Technical Author</td>
+                          <td>San Francisco</td>
+                        </tr>
+                        <tr>
+                          <td>Cedric</td>
+                          <td>Kelly</td>
+                          <td>Senior Javascript Developer</td>
+                          <td>Edinburgh</td>
+                        </tr>
+                        <tr>
+                          <td>Airi</td>
+                          <td>Satou</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="form-group row"  >
+
+                      <div class="form-actions right col-md-12" align="right" >
+
+                        <button type="submit" class="btn  btn-success" >
+                          Guardar Cambios
+                        </button>
+
+                      </div>
+                    </div>
+                    <br>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer-layout></app-footer-layout>
+</body>
+</html>

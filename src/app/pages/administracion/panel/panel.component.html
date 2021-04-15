@@ -1,1 +1,491 @@
-<p>panel works!</p>
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<app-title-layout></app-title-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+<app-navbar></app-navbar>
+<!-- Horizontal navigation-->
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <h3 class="h5 mb-0">PANEL DE CONTROL</h3>
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="texto-verde">ADMINISTRACIÓN</a>
+              </li>
+              <li class="breadcrumb-item"><a href="#" class="texto-verde">PANEL DE CONTROL</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-content collapse show">
+                <ul class="nav nav-tabs nav-justified" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active tabs-colors-green" id="active-tab" data-toggle="tab" href="#active" aria-controls="active"
+                       aria-expanded="true">Tasas</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link tabs-colors-green" id="tmc-tab" data-toggle="tab" href="#tmc" aria-controls="tmc" aria-expanded="false"> Convenio Cliente</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link tabs-colors-green" id="matriz-tab" data-toggle="tab" href="#" aria-controls="" aria-expanded="false" >Negocio</a>
+                  </li>
+                </ul>
+                <div class="tab-content ">
+                  <div role="tabpanel" class="tab-pane active in " id="active" aria-labelledby="active-tab">
+                    <div id="accordionWrap2" role="tablist" aria-multiselectable="true">
+                      <div class="card collapse-icon accordion-icon-rotate left">
+                        <div id="heading21" class="card form-control-sm calipso" style="margin-bottom: 1px;">
+                          <a data-toggle="collapse" data-parent="#accordionWrap2" href="#accordion21" aria-expanded="true"
+                             aria-controls="accordion21" class=" lead calipso h6" style="margin-top: 5px;"> &nbsp;&nbsp;Matriz Costo de Fondos</a>
+                        </div>
+                        <div id="accordion21" role="tabpanel" aria-labelledby="heading21" class="collapse show">
+                          <div class="card-content">
+                            <div class="card-body">
+                              <div class="px-1 pt-1">
+                                <div class="form-group row">
+                                  <div class="col-md-1  form-control border-less" style="" >
+                                    <label  for="default-select" class="h6 " >Moneda</label>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <select class="form-control" id="default-select">
+                                      <option value="AK">Peso Chileno</option>
+                                      <option value="HI">US Dolar</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-md-4  border-less" style="" >
+                                    <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >20/20/1990</label>
+                                  </div>
+
+                                  <div class="col-md-4 border-less" style="" >
+                                    <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >966558601</label>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+
+                                  <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasasPanel">
+                                    <thead>
+                                    <tr>
+                                      <th>$ / Días</th>
+                                      <th>Item</th>
+                                      <th>Producto</th>
+                                      <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                      <td>Tiger</td>
+                                      <td>Nixon</td>
+                                      <td>System Architect</td>
+                                      <td>Edinburgh</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Garrett</td>
+                                      <td>Winters</td>
+                                      <td>Accountant</td>
+                                      <td>Tokyo</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Ashton</td>
+                                      <td>Cox</td>
+                                      <td>Junior Technical Author</td>
+                                      <td>San Francisco</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Cedric</td>
+                                      <td>Kelly</td>
+                                      <td>Senior Javascript Developer</td>
+                                      <td>Edinburgh</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Airi</td>
+                                      <td>Satou</td>
+                                      <td>Accountant</td>
+                                      <td>Tokyo</td>
+                                    <tr>
+                                      <td>Brielle</td>
+                                      <td>Williamson</td>
+                                      <td>Integration Specialist</td>
+                                      <td>New York</td>
+
+                                    </tr>
+                                    <tr>
+                                      <td>Brielle</td>
+                                      <td>Williamson</td>
+                                      <td>Integration Specialist</td>
+                                      <td>New York</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Brielle</td>
+                                      <td>Williamson</td>
+                                      <td>Integration Specialist</td>
+                                      <td>New York</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Brielle</td>
+                                      <td>Williamson</td>
+                                      <td>Integration Specialist</td>
+                                      <td>New York</td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="heading22" class="card form-control-sm calipso" style="margin-bottom: 1px;">
+                          <a data-toggle="collapse" data-parent="#accordionWrap2" href="#accordion22" aria-expanded="false"
+                             aria-controls="accordion22" class=" lead calipso h6" style="margin-top: 5px;">&nbsp;&nbsp;Matriz de Spread Cliente</a>
+                        </div>
+                        <div id="accordion22" role="tabpanel" aria-labelledby="heading22" class="collapse"
+                             aria-expanded="false">
+                          <div class="card-content">
+                            <div class="card-body">
+                              <div class="px-1 pt-1">
+                                <div class="form-group row">
+                                  <div class="col-md-1  form-control border-less" style="" >
+                                    <label  for="clientes" class="h6 " >Cliente</label>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <select class="form-control" id="clientes">
+                                      <option value="AK">Comunicacion y Telefonia Rural S.A.</option>
+                                      <option value="HI">Comunicacion NetGlobalis S.A.</option>
+                                      <option value="HI">Constructora Andes y Compania LTDA</option>
+                                      <option value="HI">Constructora Malpo SPA.</option>
+                                      <option value="HI">Inversiones Factor Tecnologico S.A.</option>
+                                      <option value="HI">Psinet Chile S.A.</option>
+                                      <option value="HI">Siete</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-md-1  form-control border-less" style="" >
+                                    <label  for="default-select" class="h6 " >Convenio</label>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <select class="form-control" id="convenio" disabled>
+                                      <option value="AK">Seleccione Convenio...</option>
+
+                                    </select>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                  <div class="col-md-4  border-less" style="" >
+                                    <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >20/20/1990</label>
+                                  </div>
+
+                                  <div class="col-md-4 border-less" style="" >
+                                    <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >966558601</label>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+
+                                  <table class="px-1 pt-1 col-md-12 table display nowrap table-striped table-bordered tablaTasasPanel">
+
+                                    <tbody>
+                                    <tr>
+                                      <td></td>
+                                    <tr>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                    <tr>
+                                      <td></td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                  <div class="form-actions col-md-6">
+                                    <button type="button" class="btn left-panel-buttons btn-outline-light">
+                                      Editar
+                                    </button>
+                                    <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                                      Guardar
+                                    </button>
+                                    <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                                      Cancelar
+                                    </button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div> <!--Fin Body-->
+                        </div>
+                        <div id="heading23" class="card form-control-sm calipso" style="margin-bottom: 1px;">
+                          <a data-toggle="collapse" data-parent="#accordionWrap2" href="#accordion23" aria-expanded="false"
+                             aria-controls="accordion23" class=" lead calipso h6" style="margin-top: 5px;">&nbsp;&nbsp;Spread Proveedor</a>
+                        </div>
+                        <div id="accordion23" role="tabpanel" aria-labelledby="heading23" class="collapse"
+                             aria-expanded="false">
+                          <div class="card-content">
+                            <div class="card-body">
+                              <div class="px-1 pt-1">
+                                <div class="form-group row">
+                                  <div class="col-md-1  form-control border-less" style="" >
+                                    <label  for="clientes" class="h6 " >Cliente</label>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <select class="form-control" id="clientes">
+                                      <option value="AK">Comunicacion y Telefonia Rural S.A.</option>
+                                      <option value="HI">Comunicacion NetGlobalis S.A.</option>
+                                      <option value="HI">Constructora Andes y Compania LTDA</option>
+                                      <option value="HI">Constructora Malpo SPA.</option>
+                                      <option value="HI">Inversiones Factor Tecnologico S.A.</option>
+                                      <option value="HI">Psinet Chile S.A.</option>
+                                      <option value="HI">Siete</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <div class="col-md-1  form-control border-less" style="" >
+                                    <label  for="default-select" class="h6 " >Convenio</label>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <select class="form-control" id="convenio" disabled>
+                                      <option value="AK">Seleccione Convenio...</option>
+
+                                    </select>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="form-group row">
+                                  <div class="col-md-4  border-less" style="" >
+                                    <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >20/20/1990</label>
+                                  </div>
+
+                                  <div class="col-md-4 border-less" style="" >
+                                    <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                                    <label  class="h6" >966558601</label>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+
+                                  <table class="px-1 pt-1 col-md-12 table display nowrap table-striped table-bordered tablaTasasPanel">
+
+                                    <tbody>
+                                    <tr>
+                                      <th>Rut</th> <th>Razón Social</th> <th>Spread</th>
+                                    <tr>
+                                      <td></td> <td></td> <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td> <td></td> <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td> <td></td> <td></td>
+                                    </tr>
+                                    <tr>
+                                      <td></td> <td></td> <td></td>
+                                    <tr>
+                                      <td></td> <td></td> <td></td>
+                                    </tr>
+                                    </tbody>
+                                  </table>
+                                  <div class="form-actions col-md-6">
+                                    <button type="button" class="btn left-panel-buttons btn-outline-light">
+                                      Agregar
+                                    </button>
+                                    <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                                      Editar
+                                    </button>
+                                    <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                                      Eliminar
+                                    </button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div><!-- fin body-->
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
+                    <div class="card-body">
+                      <div class="px-1 pt-1">
+                        <div class="form-group row">
+                          <div class="col-md-2 form-control border-less" style="" >
+                            <label  for="clientes" class="h6 " >Cliente</label>
+                          </div>
+                          <div class="col-md-4">
+                            <select class="form-control" id="clientes">
+                              <option value="AK">Comunicacion y Telefonia Rural S.A.</option>
+                              <option value="HI">Comunicacion NetGlobalis S.A.</option>
+                              <option value="HI">Constructora Andes y Compania LTDA</option>
+                              <option value="HI">Constructora Malpo SPA.</option>
+                              <option value="HI">Inversiones Factor Tecnologico S.A.</option>
+                              <option value="HI">Psinet Chile S.A.</option>
+                              <option value="HI">Siete</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="default-select" class="h6 " >Convenio</label>
+                          </div>
+                          <div class="col-md-4">
+                            <select class="form-control" id="conveniog" disabled>
+                              <option value="AK">Seleccione Convenio...</option>
+
+                            </select>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                          <div class="col-md-2 form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Convenio</label>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Razon Social</label>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" >
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Nombre Fantasia</label>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control" >
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Estado</label>
+                          </div>
+                          <div class="col-md-4">
+                            <select class="form-control" id="estado" disabled>
+                              <option value="AK">Seleccione estado...</option>
+
+                            </select>
+                          </div>
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Fecha Inicio</label>
+                          </div>
+                          <div class="col-md-3">
+                            <input type="text" class="form-control" >
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Renovacion</label>
+                          </div>
+                          <div class="col-md-4">
+                            <select class="form-control" id="renovacion" disabled>
+                              <option value="AK">Seleccione renovacion...</option>
+                            </select>
+                          </div>
+                          <div class="col-md-2  form-control border-less" style="" >
+                            <label  for="rut" class="h6 " >Fecha Termino</label>
+                          </div>
+                          <div class="col-md-3">
+                            <input type="text" class="form-control" id="rut">
+                          </div>
+                        </div>
+                        <hr>
+
+                        <div class="form-group row">
+                          <ul class="nav nav-tabs nav-justified" id="pills-tab2" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active tabs-colors-green" id="active2-tab" data-toggle="tab" href="#active2" aria-controls="active2"
+                                 aria-expanded="true">Línea</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link tabs-colors-green" id="tmc-tab2" data-toggle="tab" href="#tmc" aria-controls="tmc" aria-expanded="false"> Ofertas y Curse</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link tabs-colors-green"  data-toggle="tab" href="#" aria-controls="" aria-expanded="false" >Fecha de Pago</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link tabs-colors-green"  data-toggle="tab" href="#" aria-controls="" aria-expanded="false" >Comisiones y Gastos</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content col-md-12">
+                            <div role="tabpanel" class="tab-pane active in " id="active2" aria-labelledby="active2-tab">
+                              <br>
+                              <div class="card-content">
+                                <div class="form-group">
+                                  <div class="form-group row">
+                                    <div class="col-md-2  form-control border-less" style="" >
+                                      <label  class="h6 " >Autorizada</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <input type="text" class="form-control"/>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <div class="col-md-2  form-control border-less" style="" >
+                                      <label   class="h6 " >Utilizada</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <input type="text" class="form-control"/>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <div class="col-md-2  form-control border-less" style="" >
+                                      <label   class="h6 " >Disponible</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <input type="text" class="form-control"/>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer-layout></app-footer-layout>
+<!-- END PAGE LEVEL JS-->
+</body>
+</html>

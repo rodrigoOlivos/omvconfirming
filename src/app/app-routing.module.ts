@@ -13,6 +13,8 @@ import { BoardAdminComponent } from './pages/board-admin/board-admin.component';
 import {DemoComponent} from './pages/demo/demo.component';
 import {AuthGuard} from './auth.guard';
 import {TasasComponent} from './pages/administracion/tasas/tasas.component';
+import {PanelComponent} from './pages/administracion/panel/panel.component';
+import {AltaComponent} from './pages/administracion/alta/alta.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
@@ -21,6 +23,9 @@ const routes: Routes = [
   { path: 'login-old', component: LoginOldComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: TasasComponent },
+  { path: 'tasas', component: TasasComponent },
+  { path: 'panel', component: PanelComponent },
+  { path: 'alta', component: AltaComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard]  },
