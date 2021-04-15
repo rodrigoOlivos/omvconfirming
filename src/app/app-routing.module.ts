@@ -13,7 +13,7 @@ import { BoardAdminComponent } from './pages/board-admin/board-admin.component';
 import {DemoComponent} from './pages/demo/demo.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  // { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'demo/signin', component: DemoComponent },
   { path: 'login-old', component: LoginComponentOld },
