@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponentOld } from './pages/login/login.component';
+import { LoginOldComponent } from './pages/login/login.component';
 import { LoginComponent } from './pages/login2/login.component';
 import { AdministracionComponent } from './pages/administracion/administracion.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,7 +16,7 @@ const routes: Routes = [
   // { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'demo/signin', component: DemoComponent },
-  { path: 'login-old', component: LoginComponentOld },
+  { path: 'login-old', component: LoginOldComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: AdministracionComponent },
   { path: 'register', component: RegisterComponent },

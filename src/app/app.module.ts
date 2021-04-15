@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponentOld } from './pages/login/login.component';
+import { LoginOldComponent } from './pages/login/login.component';
 import { LoginComponent } from './pages/login2/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
@@ -37,7 +37,7 @@ import { DemoComponent } from './pages/demo/demo.component';
     IndicadoresComponent,
     UsuariosComponent,
     DashboardComponent,
-    LoginComponentOld,
+    LoginOldComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
