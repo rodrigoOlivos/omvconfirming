@@ -14,6 +14,8 @@ export class TitleLayoutComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  rutempresa?: string;
+  rutpersona?: string;
 
   constructor(private tokenStorageService: TokenStorageService,
               private cookieService: CookieService) {
@@ -30,6 +32,8 @@ export class TitleLayoutComponent implements OnInit {
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
+      this.rutempresa = user.rutempresa;
+      this.rutpersona = user.rutpersona;
     }
   }
 

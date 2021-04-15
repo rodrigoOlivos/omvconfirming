@@ -23,17 +23,19 @@
                     <!--                  <form class="form-horizontal form-simple" style="zoom:80%" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate  >-->
 
                     <fieldset class="form-group position-relative has-icon-left">
-                      <label for="username" class="h6 ">RUT Empresa (*)</label>
-                      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="form.username" required #username="ngModel"/>
-                      <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">
+                      <label for="rutempresa" class="h6 ">RUT Empresa (*)</label>
+                      <input type="text" class="form-control" id="rutempresa" name="rutempresa" [(ngModel)]="form.rutempresa" required #rutempresa="ngModel"/>
+                      <div class="alert alert-danger" role="alert" *ngIf="rutempresa.errors && f.submitted">
                         RUT Empresa es requerido
                       </div>
                     </fieldset>
 
                     <fieldset class="form-group position-relative has-icon-left">
-                      <label for="rutpersona" class="h6" style="size:0.5px" >RUT Persona (*)</label>
-                      <input type="text" class="form-control form-control" id="rutpersona" placeholder=""
-                             name="rutpersona" formControlName="rutpersona">
+                      <label for="rutpersona" class="h6" style="size:0.5px">RUT Persona (*)</label>
+                      <input type="text" class="form-control" id="rutpersona" name="rutpersona" [(ngModel)]="form.rutpersona" required #rutpersona="ngModel">
+                      <div class="alert alert-danger" role="alert" *ngIf="rutpersona.errors && f.submitted">
+                        RUT Persona es requerido
+                      </div>
 <!--                      <div *ngIf="submitted && f.rutpersona.errors" class="alert alert-danger">-->
 <!--                        <div *ngIf="f.rutpersona.errors.required">Rut Persona es requerido</div>-->
 <!--                        <div *ngIf="f.rutpersona.errors.minlength">Rut Persona mínimo 3 caracteres</div>-->
@@ -42,10 +44,10 @@
 
                     <fieldset class="form-group position-relative has-icon-left">
                       <label for="password" class="h6">Clave (*)</label>
-                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel"/>
+                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required #password="ngModel" style="margin-bottom: 0;"/>
                       <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
                         <div *ngIf="password.errors.required">Clave es requerida</div>
-                        <div *ngIf="password.errors.minlength">Clave mínimo 6 caracteres</div>
+<!--                        <div *ngIf="password.errors.minlength">Clave mínimo 6 caracteres</div>-->
                       </div>
                     </fieldset>
 

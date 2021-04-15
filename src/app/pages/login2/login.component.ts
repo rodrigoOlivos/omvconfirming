@@ -11,7 +11,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form: any = {
-    username: null,
+    rutempresa: null,
+    rutpersona: null,
     password: null
   };
   isLoggedIn = false;
@@ -26,15 +27,22 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    console.log('this.tokenStorage.getToken()');
+    console.log(this.tokenStorage.getToken());
+    if (this.tokenStorage.getToken()) { // token 201
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+    }
+    console.log('this.isLoggedIn');
+    console.log(this.isLoggedIn);
+    if (this.isLoggedIn) {
+      this.router.navigate(['inicio']);
     }
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
-    this.authService.login(username, password).subscribe(
+    const { rutempresa, rutpersona, password } = this.form;
+    this.authService.login(rutempresa, rutpersona, password).subscribe(
       data => {
         // this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveToken(data.id);
