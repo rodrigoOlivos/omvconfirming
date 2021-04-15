@@ -25,6 +25,7 @@ import { BoardUserComponent } from './pages/board-user/board-user.component';
 
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { DemoComponent } from './pages/demo/demo.component';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { DemoComponent } from './pages/demo/demo.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [CookieService, authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
