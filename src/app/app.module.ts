@@ -26,6 +26,10 @@ import { BoardUserComponent } from './pages/board-user/board-user.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { DemoComponent } from './pages/demo/demo.component';
 import {CookieService} from 'ngx-cookie-service';
+import {TasasComponent} from './pages/administracion/tasas/tasas.component';
+import {HeaderLayoutComponent} from './components/header-layout/header-layout.component';
+import {FooterLayoutComponent} from './components/footer-layout/footer-layout.component';
+import {TitleLayoutComponent} from './components/title-layout/title-layout.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import {CookieService} from 'ngx-cookie-service';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    DemoComponent
+    DemoComponent,
+    TasasComponent,
+    TitleLayoutComponent,
+    FooterLayoutComponent,
+    HeaderLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +62,14 @@ import {CookieService} from 'ngx-cookie-service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+  ],
+  exports: [
+    HeaderLayoutComponent,
+    TitleLayoutComponent,
+    NavbarComponent,
+    FooterLayoutComponent,
+    TasasComponent,
+
   ],
   providers: [CookieService, authInterceptorProviders],
   bootstrap: [AppComponent]

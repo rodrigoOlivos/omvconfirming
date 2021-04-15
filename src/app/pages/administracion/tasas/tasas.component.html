@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+
+<app-title-layout></app-title-layout>
+<app-navbar></app-navbar>
+
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <h3 class="h5 mb-0">TASAS</h3>
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="texto-verde">ADMINISTRACIÓN</a>
+              </li>
+              <li class="breadcrumb-item"><a href="#" class="texto-verde">TASAS</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-content collapse show">
+                <ul class="nav nav-tabs nav-justified" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link active tabs-colors-green" id="active-tab" data-toggle="tab" href="#active" aria-controls="active"
+                       aria-expanded="true">Costo Fondo</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link tabs-colors-green" id="tmc-tab" data-toggle="tab" href="#tmc" aria-controls="tmc" aria-expanded="false"> TMC</a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a class="nav-link tabs-colors-green" id="matriz-tab" data-toggle="tab" href="#matriz" aria-controls="matriz" aria-expanded="false" >Matriz</a>
+                  </li>
+                </ul>
+                <div class="tab-content px-1 pt-1">
+                  <div role="tabpanel" class="tab-pane active in" id="active" aria-labelledby="active-tab">
+
+                    <div class="form-group row">
+                      <div class="col-md-1  form-control border-less" style="" >
+                        <label  for="default-select" class="h6 " >Moneda</label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control" id="default-select">
+                          <option value="AK">Peso Chileno</option>
+                          <option value="HI">US Dolar</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-4  border-less" style="" >
+                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                        <label  class="h6" >20/20/1990</label>
+                      </div>
+
+                      <div class="col-md-4 border-less" style="" >
+                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                        <label  class="h6" >966558601</label>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+
+                      <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
+                        <thead>
+                        <tr>
+                          <th>$ / Días</th>
+                          <th>Item</th>
+                          <th>Producto</th>
+                          <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>Tiger</td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                        </tr>
+                        <tr>
+                          <td>Garrett</td>
+                          <td>Winters</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton</td>
+                          <td>Cox</td>
+                          <td>Junior Technical Author</td>
+                          <td>San Francisco</td>
+                        </tr>
+                        <tr>
+                          <td>Cedric</td>
+                          <td>Kelly</td>
+                          <td>Senior Javascript Developer</td>
+                          <td>Edinburgh</td>
+                        </tr>
+                        <tr>
+                          <td>Airi</td>
+                          <td>Satou</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>Williamson</td>
+                          <td>Integration Specialist</td>
+                          <td>New York</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="form-group row"  >
+                      <div class="form-actions col-md-6">
+                        <button type="button" class="btn left-panel-buttons btn-outline-light">
+                          Generar Oferta
+                        </button>
+                        <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                          Validar TMC
+                        </button>
+                      </div>
+                      <div class="form-actions right col-md-6" align="right" >
+                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                          Editar
+                        </button>
+                        <button type="submit" class="btn right-panel-buttons btn-success" >
+                          Guardar
+                        </button>
+                        <button type="submit" class="btn right-panel-buttons btn-outline-light" >
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                      <br>
+                      <label  class="h6 col-md-12" >Resultado Validacion TMC</label>
+                    </div>
+                    <div class="form-group row">
+                      <table class="col-md-12 table display nowrap table-striped table-bordered resultadosTmc">
+                        <thead>
+                        <tr>
+                          <th>Convenio</th>
+                          <th>Detalle</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>Tiger</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Garrett</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Cedric</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Airi</td>
+                          <td>0</td>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>0</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
+                    <div class="form-group row">
+                      <div class="col-md-1  form-control border-less" style="" >
+                        <label  for="moneda_tmc" class="h6 " >Moneda</label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control" id="moneda_tmc">
+                          <option value="AK">Peso Chileno</option>
+                          <option value="HI">US Dolar</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-4  border-less" style="" >
+                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                        <label  class="h6" >20/20/1990</label>
+                      </div>
+
+                      <div class="col-md-4 border-less" style="" >
+                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                        <label  class="h6" >966558601</label>
+                      </div>
+
+                    </div>
+                    <div class="form-group row">
+
+                      <table class="col-md-12 table display  table-striped table-bordered tmcData">
+                        <thead >
+                        <tr >
+                          <th >$ / Días</th>
+                          <th >>0,<=180</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>Tiger</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Garrett</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Cedric</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Airi</td>
+                          <td>0</td>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>Brielle</td>
+                          <td>0</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="form-group row"  >
+                      <div class="form-actions right col-md-12" align="right" >
+                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                          Editar
+                        </button>
+                        <button type="submit" class="btn right-panel-buttons btn-success" >
+                          Guardar
+                        </button>
+                        <button type="submit" class="btn right-panel-buttons btn-outline-light" >
+                          Cancelar
+                        </button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="matriz" role="tabpanel" aria-labelledby="matriz-tab" aria-expanded="false">
+                    <div class="form-group row">
+                      <div class="col-md-1  form-control border-less" style="" >
+                        <label  for="moneda_matriz" class="h6 " >Moneda</label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control" id="moneda_matriz">
+                          <option value="AK">Peso Chileno</option>
+                          <option value="HI">US Dolar</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-4  border-less" style="" >
+                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
+                        <label  class="h6" >20/20/1990</label>
+                      </div>
+
+                      <div class="col-md-4 border-less" style="" >
+                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
+                        <label  class="h6" >966558601</label>
+                      </div>
+
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-1  form-control border-less" style="" >
+                        <label  for="tipo_matriz" class="h6 " >Tipo de Matriz:</label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control" id="tipo_matriz">
+                          <option value="AK">Seleccionar</option>
+                          <option value="HI">Costo Fondo</option>
+                          <option value="HI">Comprador</option>
+                          <option value="HI">Proveedor</option>
+                          <option value="HI">TMC</option>
+                          <option value="HI">Comisiones</option>
+                          <option value="HI">Gastos</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                          Refrescar
+                        </button>
+                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                          Guardar
+                        </button>
+                      </div>
+
+                    </div>
+                    <div class=" row">
+                      <div class="col-md-12" >
+                        <hr>
+                      </div>
+                      <div class=" col-md-6" >
+                        <label  class="h6" >Rango de Plazos</label>
+                        <table class="col-md-6 table display  table-striped table-bordered matrizA" style="padding-right:0px !important; padding-left: 0px !important;">
+                          <thead >
+                          <tr >
+                            <th ></th>
+                            <th >Desde(>)</th>
+                            <th >Hasta(<=)</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+
+                          </tbody>
+                        </table>
+                        <div class="form-group row"  >
+                          <div class=" form-group right col-md-12" align="right" >
+                            <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                              Nuevo
+                            </button>
+                            <button type="submit" class="btn right-panel-buttons btn-outline-light" style="margin-right: 15px; !important;">
+                              Eliminar
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" >
+                        <label  class="h6 " >Rango de Montos en $</label>
+                        <table class="table display  table-striped table-bordered matrizB" style="padding-right:0px !important; padding-left: 0px !important;">
+                          <thead >
+                          <tr >
+                            <th ></th>
+                            <th >Desde(>)</th>
+                            <th >Hasta(<=)</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>0</td>
+                            <td>0</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                        <div class="form-group row"  >
+                          <div class="form-actions right col-md-12" align="right" >
+                            <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+                              Nuevo
+                            </button>
+                            <button type="submit" class="btn right-panel-buttons btn-outline-light" style="margin-right: 15px; !important;">
+                              Eliminar
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<app-footer-layout></app-footer-layout>
+</body>
+</html>
+

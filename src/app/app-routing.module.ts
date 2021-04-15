@@ -12,6 +12,7 @@ import { BoardModeratorComponent } from './pages/board-moderator/board-moderator
 import { BoardAdminComponent } from './pages/board-admin/board-admin.component';
 import {DemoComponent} from './pages/demo/demo.component';
 import {AuthGuard} from './auth.guard';
+import {TasasComponent} from './pages/administracion/tasas/tasas.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'demo/signin', component: DemoComponent },
   { path: 'login-old', component: LoginOldComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'inicio', component: AdministracionComponent },
+  { path: 'inicio', component: TasasComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard]  },
