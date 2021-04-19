@@ -32,6 +32,8 @@ import {FooterLayoutComponent} from './components/footer-layout/footer-layout.co
 import {TitleLayoutComponent} from './components/title-layout/title-layout.component';
 import {PanelComponent} from './pages/administracion/panel/panel.component';
 import {AltaComponent} from './pages/administracion/alta/alta.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -59,13 +61,16 @@ import {AltaComponent} from './pages/administracion/alta/alta.component';
     HeaderLayoutComponent,
     PanelComponent,
     AltaComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
+    NgbModule
   ],
   exports: [
     HeaderLayoutComponent,
