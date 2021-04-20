@@ -40,7 +40,7 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { TablaEditingExampleComponent } from './components/tabla-editing-example/tabla-editing-example.component';
+
 import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.component';
 
 @NgModule({
@@ -70,7 +70,7 @@ import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.com
     PanelComponent,
     AltaComponent,
     TablaComponent,
-    TablaEditingExampleComponent,
+
     TablaJqueryComponent,
   ],
   imports: [
