@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'login-old', component: LoginOldComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: TasasComponent, canActivate: [AuthGuard] },
-  { path: 'tasas', component: TasasComponent },
+  { path: 'tasas', component: TasasComponent, canActivate: [AuthGuard] },
   { path: 'panel', component: PanelComponent },
   { path: 'alta', component: AltaComponent },
   { path: 'register', component: RegisterComponent },
