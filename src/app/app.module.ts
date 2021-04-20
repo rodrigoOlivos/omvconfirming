@@ -46,8 +46,8 @@ import {OfertasPendientesComponent} from './pages/consulta/ofertas-pendientes/of
 import {OfertasRechazadasComponent} from './pages/consulta/ofertas-rechazadas/ofertas-rechazadas.component';
 import {OfertasPorProveedorComponent} from './pages/consulta/ofertas-por-proveedor/ofertas-por-proveedor.component';
 import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.component';
+import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.component';
 
-// import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.component';
 
 @NgModule({
   declarations: [
@@ -81,9 +81,8 @@ import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.c
     OfertasPendientesComponent,
     OfertasRechazadasComponent,
     OfertasPorProveedorComponent,
-    TipoCambioComponent
-
-    // TablaJqueryComponent,
+    TipoCambioComponent,
+    TablaJqueryComponent,
   ],
   imports: [
     BrowserModule,
