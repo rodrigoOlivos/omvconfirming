@@ -34,6 +34,14 @@ import {PanelComponent} from './pages/administracion/panel/panel.component';
 import {AltaComponent} from './pages/administracion/alta/alta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
+import { TablaComponent } from './components/tabla/tabla.component';
+
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TablaEditingExampleComponent } from './components/tabla-editing-example/tabla-editing-example.component';
+import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +69,9 @@ import { DataTablesModule } from 'angular-datatables';
     HeaderLayoutComponent,
     PanelComponent,
     AltaComponent,
-
+    TablaComponent,
+    TablaEditingExampleComponent,
+    TablaJqueryComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +80,10 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    NgbModule
+    NgbModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports: [
     HeaderLayoutComponent,
@@ -78,6 +91,9 @@ import { DataTablesModule } from 'angular-datatables';
     NavbarComponent,
     FooterLayoutComponent,
     TasasComponent,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [CookieService, authInterceptorProviders],
   bootstrap: [AppComponent]
