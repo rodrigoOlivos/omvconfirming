@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<app-title-layout></app-title-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+<app-navbar></app-navbar>
+<!-- Horizontal navigation-->
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <h3 class="h5 mb-0">USUARIOS</h3>
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="texto-verde">USUARIOS</a>
+              </li>
+              <li class="breadcrumb-item"><a href="#" class="texto-verde">ADMINISTRACIÓN</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-12">
+            <div class="card px-1 pt-1">
+              <div class="tab-content">
+                <div class="form-group row col-md-12">
+                  <div class="col-md-6">
+                    <label  class="h6" >Datos Usuarios</label>
+                  </div>
+
+                </div>
+                <div class="form-group row col-md-12">
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label   class="h6 " >Rut: </label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  class="h6 " > Unidad: </label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  class="h6 " >Nombre:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label   class="h6 " >Cargo:</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  class="h6 " >Apellido:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row col-md-12">
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label   class="h6 " >Password: </label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  class="h6 " > Re Password: </label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row col-md-12">
+                  <div class="card-header col-md-2 ">
+                    <label  class="h6 " > Permisos:</label>
+                    <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                  </div>
+                  <div class="card-content collapse show col-9">
+                    <div class="form-group">
+                      <select class="select2 form-control" multiple="multiple">
+                        <optgroup label="Permisos">
+                          <option value="AK">Permiso 1</option>
+                          <option value="HI">Permiso 2</option>
+                          <option value="HI">Permiso 3</option>
+                          <option value="HI">Permiso 4</option>
+                          <option value="HI">Permiso 5</option>
+                          <option value="HI" selected>Permiso 6</option>
+                          <option value="HI">Permiso 7</option>
+                          <option value="HI">Permiso 8</option>
+                          <option value="HI" selected>Permiso 9</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-actions col-md-12 px-1 pt-1">
+                    <button type="submit" class="btn left-panel-buttons btn-success">
+                      Guardar
+                    </button>
+                  </div>
+                </div>
+                <div class="card-content collapse show">
+
+                  <div class="tab-content px-1 pt-1">
+                    <div role="tabpanel" class="tab-pane active in" id="active" aria-labelledby="active-tab">
+                      <div class="form-group row">
+
+                        <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
+                          <thead>
+                          <tr>
+                            <th>RUT</th>
+                            <th>NOMBRE</th>
+                            <th>APELLIDOS</th>
+                            <th>FECHA INGRESO</th>
+                            <th>ACCIONES</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Rodrigo</td>
+                            <td>Olivos</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          </tr>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>David</td>
+                            <td>Perez</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          </tr>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Sebastian</td>
+                            <td>Gonzalez</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          </tr>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Maria</td>
+                            <td>Diaz</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Jose</td>
+                            <td>Castro</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+
+                          </tr>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Marta</td>
+                            <td>Marsol</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          </tr>
+                          <tr>
+                            <td>14634324-2</td>
+                            <td>Brielle</td>
+                            <td>Williamson</td>
+                            <td>12-09-2020</td>
+                            <td><button type="submit" class="btn btn-outline-light">Eliminar</button><button type="submit" class="btn btn-outline-light">Editar</button></td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                    <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer-layout></app-footer-layout>
+<!-- END PAGE LEVEL JS-->
+</body>
+</html>

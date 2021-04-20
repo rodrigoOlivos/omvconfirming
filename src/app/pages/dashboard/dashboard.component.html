@@ -1,1 +1,486 @@
-<p>dashboard works!</p>
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<app-title-layout></app-title-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+<app-navbar></app-navbar>
+<!-- Horizontal navigation-->
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-8">
+            <div class="card">
+              <!-- Line Stacked Area Chart -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title calipsotexto">Indices</h4>
+                    </div>
+                    <div class="card-content collapse show">
+                      <div class="row px-1 pt-1">
+                        <div class="col-12 ">
+                          <div class="chartjs">
+                            <canvas id="line-stacked-area" height="300"></canvas>
+                          </div>
+                          <ul class="list-inline text-center mt-1">
+                            <li class="mr-1">
+                              <h6><i class="fa fa-circle verdegrafico"></i>
+                                <span>Aceptadas</span>
+                              </h6>
+                            </li>
+                            <li class="mr-1">
+                              <h6><i class="fa fa-circle grisgrafico"></i>
+                                <span>Disponibles</span>
+                              </h6>
+                            </li>
+                            <li class="mr-1">
+                              <h6><i class="fa fa-circle grisclarografico"></i>
+                                <span>Ofertas</span>
+                              </h6>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <!-- Line Stacked Area Chart -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="tab-content px-1 pt-1">
+                      <div   id="active" aria-labelledby="active-tab">
+                        <div class="tab-content px-1 pt-1">
+                          <div class="form-group row">
+                            <label  class="h4 calipsotexto" >Operaciones del día</label>
+                          </div>
+                          <div class="form-group row">
+
+                            <div class="col-md-4  border-less" style="" >
+                              <label  class="h6" >Cantidad:&nbsp;&nbsp;</label>
+                              <label  class="h6 calipsotexto" >000000000000</label>
+                            </div>
+
+                            <div class="col-md-4 border-less" style="" >
+                              <label  class="h6 " >Monto MM$:&nbsp;&nbsp;</label>
+                              <label  class="h6 calipsotexto" >000.000.000</label>
+                            </div>
+                            <div class="col-md-3 border-less" style="" >
+                              <div class="row">
+                                <div class="col-4">
+                                  <label  class="h6" >Filtro&nbsp;&nbsp;</label>
+                                </div>
+                                <div class="col-8">
+                                  <input class="form-control-sm"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+
+                            <table class=" col-md-12 table display nowrap table-striped table-bordered dashboard">
+                              <thead>
+                              <tr>
+                                <th>Nro</th>
+                                <th>Pagador</th>
+                                <th>Proveedor</th>
+                                <th>Monto</th>
+                                <th>Status</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>pagada</td>
+                              </tr>
+                              <tr>
+                                <td>00-000000</td>
+                                <td>Item</td>
+                                <td>producto</td>
+                                <td>$ 00000000</td>
+                                <td>en evaluación</td>
+                              </tr>
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <!-- Line Stacked Area Chart -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="form-group row px-1 pt-1">
+
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-4 float-right ">MM$</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-4 calipsotexto"> Mayores Colocaciones</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <br>  <br><br>
+                        <div class="col-12 interlinerado" >
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Nombre Apellido</span>
+
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <hr>
+                      <div class="form-group row px-1 pt-1 interlinerado">
+                        <div class="col-12 ">
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-4 float-right ">MM$</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-4 calipsotexto"> Mayores Colocaciones</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <br>  <br><br>
+                        <div class="col-12 interlinerado" >
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Semana Actual</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado"  >
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Mes Actual</span>
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-12 interlinerado"  >
+                          <div class="media-body w-100">
+                            <h6 >
+                              <span class="font-medium-1 float-right ">000.000.000</span>
+                            </h6>
+                            <p class="list-group-item-text mb-0">
+                              <span  class="font-medium-1">Mes Próximo</span>
+
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <br>
+                      <div class="form-group row px-1 pt-1">
+                        <div class="row ">
+
+                          <div class="col-4">
+
+                          </div>
+                          <div class="col-4">
+                            <button  type="button" class="btn  btn-success ">
+                              ver informe mensual
+                            </button>
+                          </div>
+                          <div class="col-4">
+
+                          </div>
+
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><div class="col-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="media align-items-stretch">
+                    <div class="p-2 text-center col-7 ">
+                      <div class="row">
+                        <div class="col-4">
+                          <i class="ft-trending-up   calipsotexto" style="font-size: 2em;"></i>
+                        </div>
+                        <div class="col-5">
+                          <span class="font-medium-2" ><b>25%</b></span >
+                        </div>
+                        <span class="font-medium-1"  style ="padding-left: 15px"><b>Colocación</b></span >
+                      </div>
+                    </div>
+                    <div class="p-2   media-body col-5">
+                      <div class="row">
+                        <div class="col-12">
+                          <span class="font-small-4 float-md-right interlinerado " >MM$</span >
+                        </div>
+                        &nbsp;&nbsp;<span class="font-small-4 " >&nbsp;000.000.000&nbsp;&nbsp;&nbsp;</span >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-3">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media align-items-stretch">
+                      <div class="p-2 text-center col-7 ">
+                        <div class="row">
+                          <div class="col-4">
+                            <i class="ft-clock   calipsotexto" style="font-size: 2em;"></i>
+                          </div>
+                          <div class="col-5">
+                            <span class="font-medium-2" ><b>25%</b></span >
+                          </div>
+                          <span class="font-medium-1"  style ="padding-left: 15px"><b>Morosa</b></span >
+                        </div>
+                      </div>
+                      <div class="p-2   media-body col-5">
+                        <div class="row">
+                          <div class="col-12">
+                            <span class="font-small-4 float-md-right interlinerado " >MM$</span >
+                          </div>
+                          &nbsp;&nbsp;<span class="font-small-4 " >&nbsp;000.000.000&nbsp;&nbsp;&nbsp;</span >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="media align-items-stretch">
+                      <div class="p-2 text-center col-7 ">
+                        <div class="row">
+                          <div class="col-4">
+                            <i class="ft-alert-triangle   calipsotexto" style="font-size: 2em;"></i>
+                          </div>
+                          <div class="col-5">
+                            <span class="font-medium-2" ><b>25%</b></span >
+                          </div>
+                          <span class="font-medium-1"  style ="padding-left: 15px"><b>Vencida 30</b></span >
+                        </div>
+                      </div>
+                      <div class="p-2   media-body col-5">
+                        <div class="row">
+                          <div class="col-12">
+                            <span class="font-small-4 float-md-right interlinerado " >MM$</span >
+                          </div>
+                          &nbsp;&nbsp;<span class="font-small-4 " >&nbsp;000.000.000&nbsp;&nbsp;&nbsp;</span >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><div class="col-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="media align-items-stretch">
+                    <div class="p-2 text-center col-7 ">
+                      <div class="row">
+                        <div class="col-4">
+                          <i class="ft-alert-triangle  calipsotexto" style="font-size: 2em;"></i>
+                        </div>
+                        <div class="col-5">
+                          <span class="font-medium-2" ><b>25%</b></span >
+                        </div>
+                        <span class="font-medium-1"  style ="padding-left: 15px"><b>Vencida 30+</b></span >
+                      </div>
+                    </div>
+                    <div class="p-2   media-body col-5">
+                      <div class="row">
+                        <div class="col-12">
+                          <span class="font-small-4 float-md-right interlinerado " >MM$</span >
+                        </div>
+                        &nbsp;&nbsp;<span class="font-small-4 " >&nbsp;000.000.000&nbsp;&nbsp;&nbsp;</span >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer-layout></app-footer-layout>
+<!-- END PAGE LEVEL JS-->
+</body>
+</html>

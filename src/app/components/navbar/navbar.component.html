@@ -7,63 +7,64 @@
   <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
     <!-- include ../../../includes/mixins-->
     <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-      <li class="dropdown nav-item" data-menu="dropdown">
-        <a class=" nav-link" href=""><span>Dashboard</span></a>
+      <li class="dropdown nav-item open" data-menu="dropdown">
+        <a class=" nav-link" routerLink="/dashboard" routerLinkActive="active">
+          <span>Dashboard</span>
+        </a>
       </li>
-      <li class="dropdown nav-item open active" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Administración</span></a>
+      <li class="dropdown nav-item " data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Administración</span></a>
         <ul class="dropdown-menu">
-          <li data-menu="">
-            <a class="dropdown-item" href="" data-toggle="dropdown">Tasas</a>
+          <li data-menu=""><a class="dropdown-item" routerLink="/tasas" routerLinkActive="active" data-toggle="dropdown">Tasas
+          </a>
           </li>
-          <li data-menu="">
-            <a class="dropdown-item" href="" data-toggle="dropdown">Panel de Control</a>
+          <li data-menu=""><a class="dropdown-item" routerLink="/panel" routerLinkActive="active" data-toggle="dropdown">Panel de Control
+          </a>
           </li>
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Resultado Neto</a>
-          </li>
-          <li data-menu="">
-            <a class="dropdown-item" href="" data-toggle="dropdown">Alta Proveedores</a>
+          <li data-menu=""><a class="dropdown-item" routerLink="/alta" routerLinkActive="active" data-toggle="dropdown">Alta Proveedores
+          </a>
           </li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="" data-toggle="dropdown"><span  style="margin-right: 10px;">Operaciones</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Operaciones</span></a>
         <ul class="dropdown-menu">
-          <li data-menu="">
-            <a class="dropdown-item" href="" data-toggle="dropdown">Nóminas</a>
+          <li data-menu=""><a class="dropdown-item" routerLink="/nominas" routerLinkActive="active" data-toggle="dropdown">Nóminas
+          </a>
           </li>
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Recaudación y cobranza</a>
+          <li data-menu=""><a class="dropdown-item " routerLink="/recaudacion-cobranza" routerLinkActive="active" data-toggle="dropdown">Recaudación y cobranza
+          </a>
+          </li>
+
+        </ul>
+      </li>
+      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Consulta</span></a>
+        <ul class="dropdown-menu">
+          <li data-menu=""><a class="dropdown-item " routerLink="/ofertas-rechazadas" routerLinkActive="active" data-toggle="dropdown">Ofertas Rechazadas del Día
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item " routerLink="/ofertas-pendientes" routerLinkActive="active" data-toggle="dropdown">Ofertas Pendientes del Curse por Cuarta Copia
+          </a>
+          </li>
+          <li data-menu=""><a class="dropdown-item " routerLink="/ofertas-por-proveedor" routerLinkActive="active" data-toggle="dropdown">Ofertas por Proveedor
+          </a>
           </li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link texto-gris" href="" data-toggle="dropdown"><span style="margin-right: 10px;">Custodia</span></a>
-      </li>
-      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link texto-gris" href="" data-toggle="dropdown"><span style="margin-right: 10px;">Consulta</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Indicadores</span></a>
         <ul class="dropdown-menu">
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Ofertas Rechazadas del Día</a>
-          </li>
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Ofertas Pendientes del Curse por Cuarta Copia <</a>
-          </li>
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Ofertas por Proveedor</a>
+          <li data-menu=""><a class="dropdown-item " routerLink="/tipo-cambio" routerLinkActive="active" data-toggle="dropdown">Tipo de Cambio
+          </a>
           </li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="" data-toggle="dropdown"><span  style="margin-right: 10px;">Indicadores</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Usuarios</span></a>
         <ul class="dropdown-menu">
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Tipo de Cambio</a>
-          </li>
+          <li data-menu=""><a class="dropdown-item " routerLink="/admin-usuarios" routerLinkActive="active" data-toggle="dropdown">Administración de Usuarios</a></li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="" data-toggle="dropdown"><span  style="margin-right: 10px;">Usuarios</span></a>
-      </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link texto-gris" href="omv-ayuda.html" data-toggle="dropdown"><span  style="margin-right: 10px;">Ayuda</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Ayuda</span></a>
         <ul class="dropdown-menu">
-          <li data-menu="">
-            <a class="dropdown-item texto-gris" href="" data-toggle="dropdown">Acerca de</a>
+          <li data-menu=""><a class="dropdown-item" href="#" data-toggle="modal"
+                              data-target="#default" >Acerca de</a>
           </li>
         </ul>
       </li>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<app-header-layout></app-header-layout>
+<app-title-layout></app-title-layout>
+<body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="click"
+      data-menu="horizontal-menu" data-col="2-columns">
+<app-navbar></app-navbar>
+<!-- Horizontal navigation-->
+<div class="app-content container center-layout mt-2">
+  <div class="content-wrapper">
+    <div class="content-header row">
+      <div class="content-header-left col-md-6 col-12 mb-2">
+        <h3 class="h5 mb-0">OPERACIONES</h3>
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html" class="texto-verde">OPERACIONES</a>
+              </li>
+              <li class="breadcrumb-item"><a href="#" class="texto-verde">RECAUDACIÓN</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-body content-body-size" >
+      <!-- Base style table -->
+      <section id="base-style">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="tab-content px-1 pt-1">
+                <div class="form-group row col-md-12 ">
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Cliente:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" id="default-select1">
+                      <option value="AK">Seleccione..</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Rut:</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+
+
+
+                <div class="form-group row col-md-12">
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Convenio:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-control" id="default-select">
+                      <option value="AK">Seleccione..</option>
+                    </select>
+                  </div>
+                </div>
+                <hr>
+
+                <div class="form-group row col-md-12">
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Línea Autorizado: </label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Intereses Mora: </label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Línea Utilizado:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Deuda Exigible:</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2  form-control border-less" style="" >
+                    <label  for="default-select" class="h6 " >Línea Disponible:</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control">
+                  </div>
+
+                </div>
+                <div class="form-group row col-md-12 ">
+                  <div class="col-md-4">
+                    <label  for="default-select" class="h6 " >Spread Mora:</label><input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label  for="default-select" class="h6 " >Spread Prórroga:</label><input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label  for="default-select" class="h6 " >Tipo Prórroga:</label><input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="card-content collapse show">
+                <div class="tab-content px-1 pt-1">
+                  <div role="tabpanel" class="tab-pane active in" id="active" aria-labelledby="active-tab">
+
+                    <div class="form-group row  px-1 pt-1"  >
+                      <div class="form-actions col-md-8">
+                        <button type="button" class="btn left-panel-buttons btn-outline-light">
+                          Recaudación
+                        </button>
+                        <button type="submit" class="btn left-panel-buttons btn-outline-light">
+                          Prórroga
+                        </button>
+                      </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-md-8  "  >
+
+                        <label  class="h5 texto-verde  px-1 pt-1" >Recaudación&nbsp;&nbsp;</label>
+                        <button type="button" class="btn float-right btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i></button>
+                        <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
+                          <thead>
+                          <tr>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Monto</th>
+                            <th>Comis/Gtos</th>
+                            <th>Intereses</th>
+                            <th>DeudaActualizada</th>
+                            <th>TotalAcumulado</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-4 ">
+                        <label  class="h5 texto-verde  px-1 pt-1" >Proximos Cobros </label>
+                        <button type="button" class="btn float-right  btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i></button>
+                        <table class="  table display  table-striped table-bordered  tablaTasas ">
+                          <thead>
+                          <tr>
+                            <th>$ / Días</th>
+                            <th>Item</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td></td>
+
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-footer-layout></app-footer-layout>
+<!-- END PAGE LEVEL JS-->
+</body>
+</html>

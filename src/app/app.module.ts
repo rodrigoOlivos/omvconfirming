@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginOldComponent } from './pages/login/login.component';
-import { LoginComponent } from './pages/login2/login.component';
+import { LoginOldComponent } from './pages/profile/login/login.component';
+import { LoginComponent } from './pages/profile/login2/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -14,17 +14,14 @@ import { AdministracionComponent } from './pages/administracion/administracion.c
 import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { IndicadoresComponent } from './pages/indicadores/indicadores.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-import { RegisterComponent } from './pages/register/register.component';
-import { HomeComponent } from './pages/home/home.component';
+import { RegisterComponent } from './pages/profile/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { BoardAdminComponent } from './pages/board-admin/board-admin.component';
-import { BoardModeratorComponent } from './pages/board-moderator/board-moderator.component';
-import { BoardUserComponent } from './pages/board-user/board-user.component';
+import { BoardAdminComponent } from './pages/profile/board-admin/board-admin.component';
+import { BoardModeratorComponent } from './pages/profile/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './pages/profile/board-user/board-user.component';
 
 import { authInterceptorProviders } from './helpers/auth.interceptor';
-import { DemoComponent } from './pages/demo/demo.component';
 import {CookieService} from 'ngx-cookie-service';
 import {TasasComponent} from './pages/administracion/tasas/tasas.component';
 import {HeaderLayoutComponent} from './components/header-layout/header-layout.component';
@@ -40,8 +37,17 @@ import { TablaComponent } from './components/tabla/tabla.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AcercaDeComponent } from './pages/ayuda/acerca-de/acerca-de.component';
+import { NominasComponent } from './pages/operaciones/nominas/nominas.component';
+import { RecaudacionCobranzaComponent } from './pages/operaciones/recaudacion-cobranza/recaudacion-cobranza.component';
+import {AdminUsuariosComponent} from './pages/usuarios/admin-usuarios/admin-usuarios.component';
+import {OfertasPendientesComponent} from './pages/consulta/ofertas-pendientes/ofertas-pendientes.component';
+import {OfertasRechazadasComponent} from './pages/consulta/ofertas-rechazadas/ofertas-rechazadas.component';
+import {OfertasPorProveedorComponent} from './pages/consulta/ofertas-por-proveedor/ofertas-por-proveedor.component';
+import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.component';
 
-import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.component';
+// import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.component';
 
 @NgModule({
   declarations: [
@@ -53,16 +59,13 @@ import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.com
     ConsultaComponent,
     IndicadoresComponent,
     UsuariosComponent,
-    DashboardComponent,
     LoginOldComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    DemoComponent,
     TasasComponent,
     TitleLayoutComponent,
     FooterLayoutComponent,
@@ -70,8 +73,17 @@ import { TablaJqueryComponent } from './components/tabla-jquery/tabla-jquery.com
     PanelComponent,
     AltaComponent,
     TablaComponent,
+    DashboardComponent,
+    AcercaDeComponent,
+    NominasComponent,
+    RecaudacionCobranzaComponent,
+    AdminUsuariosComponent,
+    OfertasPendientesComponent,
+    OfertasRechazadasComponent,
+    OfertasPorProveedorComponent,
+    TipoCambioComponent
 
-    TablaJqueryComponent,
+    // TablaJqueryComponent,
   ],
   imports: [
     BrowserModule,
