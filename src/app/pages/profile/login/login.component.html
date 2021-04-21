@@ -19,40 +19,42 @@
 
               <div class="card-content">
                 <div class="card-body">
-                  <form class="form-horizontal form-simple" style="zoom:80%" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate  >
+                  <form class="form-horizontal form-simple" style="zoom:80%" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <!--                  <form class="form-horizontal form-simple" style="zoom:80%" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate  >-->
 
                     <fieldset class="form-group position-relative has-icon-left">
                       <label for="rutempresa" class="h6 ">RUT Empresa (*)</label>
-                      <input type="text" class="form-control form-control" id="rutempresa" placeholder=""
-                             name="rutempresa" formControlName="rutempresa">
-                      <!--                      <div *ngIf="f.rutempresa.touched && f.rutempresa.invalid" class="alert alert-danger">-->
-                      <div *ngIf="submitted && f.rutempresa.errors" class="alert alert-danger">
-                        <div *ngIf="f.rutempresa.errors.required">Rut Empresa es requerido</div>
-                        <div *ngIf="f.rutempresa.errors.minlength">Rut Empresa mínimo 3 caracteres</div>
+                      <input type="text" class="form-control" id="rutempresa" name="rutempresa" [(ngModel)]="form.rutempresa" required #rutempresa="ngModel"/>
+                      <div class="alert alert-danger" role="alert" *ngIf="rutempresa.errors && f.submitted">
+                        RUT Empresa es requerido
                       </div>
                     </fieldset>
 
                     <fieldset class="form-group position-relative has-icon-left">
-                      <label for="rutpersona" class="h6" style="size:0.5px" >RUT Persona (*)</label>
-                      <input type="text" class="form-control form-control" id="rutpersona" placeholder=""
-                             name="rutpersona" formControlName="rutpersona">
-                      <div *ngIf="submitted && f.rutpersona.errors" class="alert alert-danger">
-                        <div *ngIf="f.rutpersona.errors.required">Rut Persona es requerido</div>
-                        <div *ngIf="f.rutpersona.errors.minlength">Rut Persona mínimo 3 caracteres</div>
+                      <label for="rutpersona" class="h6" style="size:0.5px">RUT Persona (*)</label>
+                      <input type="text" class="form-control" id="rutpersona" name="rutpersona" [(ngModel)]="form.rutpersona" required #rutpersona="ngModel">
+                      <div class="alert alert-danger" role="alert" *ngIf="rutpersona.errors && f.submitted">
+                        RUT Persona es requerido
                       </div>
+<!--                      <div *ngIf="submitted && f.rutpersona.errors" class="alert alert-danger">-->
+<!--                        <div *ngIf="f.rutpersona.errors.required">Rut Persona es requerido</div>-->
+<!--                        <div *ngIf="f.rutpersona.errors.minlength">Rut Persona mínimo 3 caracteres</div>-->
+<!--                      </div>-->
                     </fieldset>
 
                     <fieldset class="form-group position-relative has-icon-left">
-                      <label for="clave" class="h6" >Clave (*)</label>
-                      <input type="password" class="form-control form-control" id="clave" placeholder=""
-                             name="clave" formControlName="clave" style="margin-bottom: 0;">
-                      <div *ngIf="submitted && f.clave.errors" class="alert alert-danger">
-                        <div *ngIf="f.clave.errors.required">Clave es requerida</div>
-                        <div *ngIf="f.clave.errors.minlength">Clave mínimo 3 caracteres</div>
+                      <label for="password" class="h6">Clave (*)</label>
+                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="form.password" required #password="ngModel" style="margin-bottom: 0;"/>
+                      <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                        <div *ngIf="password.errors.required">Clave es requerida</div>
+<!--                        <div *ngIf="password.errors.minlength">Clave mínimo 6 caracteres</div>-->
                       </div>
                     </fieldset>
 
                     <button type="submit" class="btn btn-success btn-block" style="color:white"> Entrar</button>
+                    <div class="alert alert-danger" role="alert" *ngIf="showErrorCredenciales">
+                      Error en las credenciales
+                    </div>
                   </form>
                 </div>
               </div>

@@ -13,6 +13,8 @@ export class TitleLayoutComponent implements OnInit {
   inicioBoard = false;
   showAdminBoard = false;
   showModeratorBoard = false;
+  showDashboard = false;
+  showAll = false;
   username?: string;
   rutempresa?: string;
   rutpersona?: string;
@@ -26,8 +28,17 @@ export class TitleLayoutComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      console.log('RRRRRRRRRRRRROLES-TITLE');
+      console.log(user);
       this.roles = user.roles;
+      console.log(user.roles);
 
+      if (user.rutempresa === '123') {
+        this.showDashboard = true;
+      }
+      if (user.rutempresa === '1234') {
+        this.showAll = true;
+      }
       this.showAdminBoard = false; // this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = false; // this.roles.includes('ROLE_MODERATOR');
 
