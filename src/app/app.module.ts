@@ -47,6 +47,14 @@ import {OfertasRechazadasComponent} from './pages/consulta/ofertas-rechazadas/of
 import {OfertasPorProveedorComponent} from './pages/consulta/ofertas-por-proveedor/ofertas-por-proveedor.component';
 import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.component';
 import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.component';
+import {DialogBoxComponent} from './components/dialog-box/dialog-box.component';
+import {TableEditComponent} from './components/tabla-editing-example/tabla-editing-example.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -83,8 +91,12 @@ import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.compo
     OfertasPorProveedorComponent,
     TipoCambioComponent,
     TablaJqueryComponent,
+    DialogBoxComponent,
+    TableEditComponent,
+    InlineEditComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -95,6 +107,10 @@ import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.compo
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatButtonModule,
+    NgxDatatableModule,
   ],
   exports: [
     HeaderLayoutComponent,
@@ -105,6 +121,9 @@ import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.compo
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    DialogBoxComponent,
+    TableEditComponent,
+    InlineEditComponent,
   ],
   providers: [CookieService, authInterceptorProviders],
   bootstrap: [AppComponent]
