@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './pages/profile/register/register.component';
-import { LoginOldComponent } from './pages/profile/login/login.component';
-import { LoginComponent } from './pages/profile/login2/login.component';
+import { LoginOldComponent } from './pages/profile/login-old/login.component';
+import { LoginComponent } from './pages/profile/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BoardUserComponent } from './pages/profile/board-user/board-user.component';
 import { BoardModeratorComponent } from './pages/profile/board-moderator/board-moderator.component';

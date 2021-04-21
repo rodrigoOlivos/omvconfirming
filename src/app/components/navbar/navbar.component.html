@@ -8,11 +8,11 @@
     <!-- include ../../../includes/mixins-->
     <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
       <li class="dropdown nav-item open" data-menu="dropdown">
-        <a class=" nav-link" routerLink="/dashboard" routerLinkActive="active">
+        <a class=" nav-link" routerLink="/dashboard" routerLinkActive="active" *ngIf="showDashboard">
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="dropdown nav-item " data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Administración</span></a>
+      <li class="dropdown nav-item " data-menu="dropdown" *ngIf="showAdministracion"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Administración</span></a>
         <ul class="dropdown-menu">
           <li data-menu=""><a class="dropdown-item" routerLink="/tasas" routerLinkActive="active" data-toggle="dropdown">Tasas
           </a>
@@ -25,7 +25,7 @@
           </li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Operaciones</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown" *ngIf="showOperaciones"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Operaciones</span></a>
         <ul class="dropdown-menu">
           <li data-menu=""><a class="dropdown-item" routerLink="/nominas" routerLinkActive="active" data-toggle="dropdown">Nóminas
           </a>
@@ -36,7 +36,7 @@
 
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown "><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Consulta</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown" *ngIf="showConsulta"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span style="margin-right: 10px;">Consulta</span></a>
         <ul class="dropdown-menu">
           <li data-menu=""><a class="dropdown-item " routerLink="/ofertas-rechazadas" routerLinkActive="active" data-toggle="dropdown">Ofertas Rechazadas del Día
           </a>
@@ -49,7 +49,7 @@
           </li>
         </ul>
       </li>
-      <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Indicadores</span></a>
+      <li class="dropdown nav-item" data-menu="dropdown" *ngIf="showIndicadores"><a class="dropdown-toggle nav-link " href="#" data-toggle="dropdown"><span  style="margin-right: 10px;">Indicadores</span></a>
         <ul class="dropdown-menu">
           <li data-menu=""><a class="dropdown-item " routerLink="/tipo-cambio" routerLinkActive="active" data-toggle="dropdown">Tipo de Cambio
           </a>
