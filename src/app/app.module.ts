@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { LoginOldComponent } from './pages/profile/login-old/login.component';
 import { LoginComponent } from './pages/profile/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdministracionComponent } from './pages/administracion/administracion.component';
 import { ConsultaComponent } from './pages/consulta/consulta.component';
@@ -59,8 +57,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     NavbarComponent,
     AdministracionComponent,
     ConsultaComponent,
