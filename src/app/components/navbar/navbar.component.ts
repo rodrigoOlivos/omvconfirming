@@ -37,11 +37,8 @@ export class NavbarComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      console.log('RRRRRRRRRRRRROLES-NAV');
-      console.log(user);
       this.role = user.role;
       this.roles = user.roles;
-      console.log(user.role);
 
       // estas condiciones no deben ir, deben ser reeplazadas por lo que responde el server api (this.roles.includes('ROLE_ADMIN');)
       if (user.role === 'ROL_ADMIN') { // muestra todas las navbar

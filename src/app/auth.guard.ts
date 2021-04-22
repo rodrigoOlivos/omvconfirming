@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate {
     const cookie = this.cookieService.check('token_access'); // si existe token_access
     const user = this.tokenStorageService.getUser();
     // alert(cookie);
-    console.log(user.rutempresa);
 
     // esto no deben ir, deben ser reeplazado por lo que responde el server api (this.roles.includes('ROLE_ADMIN');)
 
@@ -55,7 +54,6 @@ export class AuthGuard implements CanActivate {
         '/admin-usuarios'
       ];
       if (array1.indexOf(state.url) < 0) {
-        console.log('fsdf');
         this.redirect(false);
         return false;
       } else {

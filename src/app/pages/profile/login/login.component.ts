@@ -1,7 +1,7 @@
-import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { TokenStorageService } from '../../../services/token-storage.service';
+import {CookieService} from 'ngx-cookie-service';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../../services/auth.service';
+import {TokenStorageService} from '../../../services/token-storage.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
               private tokenStorage: TokenStorageService,
               private cookieService: CookieService,
               private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     console.log('this.tokenStorage.getToken()');
@@ -48,10 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { rutempresa, rutpersona, password } = this.form;
-    // esta condición debe no debe ir, debe ser la respuesta del servicio api, si es que este usuario puede ingresar o no a la plataforma
-    console.log(rutempresa);
-    console.log('valida pass 123');
+    const {rutempresa, rutpersona, password} = this.form;
     this.authService.login(rutempresa, rutpersona, password).subscribe(
       data => {
         // this.tokenStorage.saveToken(data.accessToken);
@@ -67,9 +65,6 @@ export class LoginComponent implements OnInit {
           this.role = this.tokenStorage.getUser().role;
           this.router.navigate(['inicio']);
         } else {
-          console.log(rutempresa);
-          console.log(rutpersona);
-          console.log(password);
           this.showErrorCredenciales = true;
         }
       },

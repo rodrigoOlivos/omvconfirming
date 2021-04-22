@@ -29,10 +29,8 @@ export class TitleLayoutComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      console.log(user);
       this.role = user.role;
       this.roles = user.roles;
-      console.log(user.role);
 
       if (user.role === 'ROL_ADMIN') {
         this.showDashboard = true;
