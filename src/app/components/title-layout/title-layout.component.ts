@@ -43,7 +43,7 @@ export class TitleLayoutComponent implements OnInit {
       this.showAdminBoard = false; // this.role.includes('ROLE_ADMIN');
       this.showModeratorBoard = false; // this.role.includes('ROLE_MODERATOR');
 
-      this.username = user.username;
+      // this.username = user.username;
       this.rutempresa = user.rutempresa;
       this.rutpersona = user.rutpersona;
     }
