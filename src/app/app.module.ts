@@ -56,7 +56,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
 @NgModule({
   declarations: [
     AppComponent,

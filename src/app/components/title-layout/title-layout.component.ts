@@ -8,6 +8,7 @@ import {CookieService} from 'ngx-cookie-service';
   styleUrls: ['./title-layout.component.css']
 })
 export class TitleLayoutComponent implements OnInit {
+  role = '';
   private roles: string[] = [];
   isLoggedIn = false;
   inicioBoard = false;
@@ -28,19 +29,19 @@ export class TitleLayoutComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      console.log('RRRRRRRRRRRRROLES-TITLE');
       console.log(user);
+      this.role = user.role;
       this.roles = user.roles;
-      console.log(user.roles);
+      console.log(user.role);
 
-      if (user.rutempresa === '123') {
+      if (user.role === 'ROL_ADMIN') {
         this.showDashboard = true;
       }
-      if (user.rutempresa === '1234') {
+      if (user.role === 'ROL_USER') {
         this.showAll = true;
       }
-      this.showAdminBoard = false; // this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = false; // this.roles.includes('ROLE_MODERATOR');
+      this.showAdminBoard = false; // this.role.includes('ROLE_ADMIN');
+      this.showModeratorBoard = false; // this.role.includes('ROLE_MODERATOR');
 
       this.username = user.username;
       this.rutempresa = user.rutempresa;

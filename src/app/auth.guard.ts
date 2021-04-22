@@ -48,7 +48,7 @@ export class AuthGuard implements CanActivate {
       //   '/admin-usuarios'
       // ];
 
-    if (user.rutempresa === '1234') { // perfil muestra dash y usuarios
+    if (user.role === 'ROL_USER') { // perfil muestra dash y usuarios
       const array1 = [
         '/inicio', // inicio redirige a dashboard
         '/dashboard',

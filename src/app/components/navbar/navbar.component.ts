@@ -8,6 +8,7 @@ import {CookieService} from 'ngx-cookie-service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  role = '';
   private roles: string[] = [];
   isLoggedIn = false;
   inicioBoard = false;
@@ -38,19 +39,20 @@ export class NavbarComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       console.log('RRRRRRRRRRRRROLES-NAV');
       console.log(user);
+      this.role = user.role;
       this.roles = user.roles;
-      console.log(user.roles);
+      console.log(user.role);
 
       // estas condiciones no deben ir, deben ser reeplazadas por lo que responde el server api (this.roles.includes('ROLE_ADMIN');)
-      if (user.rutempresa === '123') { // muestra todas las navbar
+      if (user.role === 'ROL_ADMIN') { // muestra todas las navbar
         this.showDashboard = true;   // this.showDashboard = this.roles.includes('ROLE_ADMIN');
-        this.showAdministracion = true; // this.roles.includes('ROLE_ADMIN');
+        this.showAdministracion = true; // this.roles.includes('ROLE_ADMIN2');
         this.showOperaciones = true; // this.roles.includes('ROLE_ADMIN');
         this.showConsulta = true;    // this.roles.includes('ROLE_ADMIN');
         this.showIndicadores = true; // this.roles.includes('ROLE_ADMIN');
         this.showUsuarios = true;    // this.roles.includes('ROLE_ADMIN');
       }
-      if (user.rutempresa === '1234') { // muestra dash y usuarios
+      if (user.role === 'ROL_USER') { // muestra dash y usuarios
         this.showDashboard = true; // this.showDashboard = this.roles.includes('ROLE_ADMIN');
         this.showUsuarios = true;  // this.roles.includes('ROLE_ADMIN');
 

@@ -13,42 +13,43 @@
       novalidate
     >
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="rutempresa">rutempresa</label>
         <input
           type="text"
           class="form-control"
-          name="username"
-          [(ngModel)]="form.username"
+          id="rutempresa"
+          name="rutempresa"
+          [(ngModel)]="form.rutempresa"
           required
           minlength="3"
           maxlength="20"
-          #username="ngModel"
+          #rutempresa="ngModel"
         />
-        <div class="alert-danger" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors.required">Username is required</div>
-          <div *ngIf="username.errors.minlength">
-            Username must be at least 3 characters
+        <div class="alert-danger" *ngIf="rutempresa.errors && f.submitted">
+          <div *ngIf="rutempresa.errors.required">rutempresa is required</div>
+          <div *ngIf="rutempresa.errors.minlength">
+            rutempresa must be at least 3 characters
           </div>
-          <div *ngIf="username.errors.maxlength">
-            Username must be at most 20 characters
+          <div *ngIf="rutempresa.errors.maxlength">
+            rutempresa must be at most 20 characters
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="rutpersona">rutpersona</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          name="email"
-          [(ngModel)]="form.email"
+          id="rutpersona"
+          name="rutpersona"
+          [(ngModel)]="form.rutpersona"
           required
-          email
-          #email="ngModel"
+          #rutpersona="ngModel"
         />
-        <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.email">
-            Email must be a valid email address
+        <div class="alert-danger" *ngIf="rutpersona.errors && f.submitted">
+          <div *ngIf="rutpersona.errors.required">rutpersona is required</div>
+          <div *ngIf="rutpersona.errors.rutpersona">
+            rutpersona must be a valid rutpersona address
           </div>
         </div>
       </div>
@@ -57,6 +58,7 @@
         <input
           type="password"
           class="form-control"
+          id="password"
           name="password"
           [(ngModel)]="form.password"
           required
