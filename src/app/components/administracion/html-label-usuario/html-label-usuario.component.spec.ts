@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxDatatableComponent } from './ngx-datatable.component';
+import { HtmlLabelUsuarioComponent } from './html-label-usuario.component';
 
-describe('NgxDatatableComponent', () => {
-  let component: NgxDatatableComponent;
-  let fixture: ComponentFixture<NgxDatatableComponent>;
+describe('HtmlLabelUsuarioComponent', () => {
+  let component: HtmlLabelUsuarioComponent;
+  let fixture: ComponentFixture<HtmlLabelUsuarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxDatatableComponent ]
+      declarations: [ HtmlLabelUsuarioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxDatatableComponent);
+    fixture = TestBed.createComponent(HtmlLabelUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

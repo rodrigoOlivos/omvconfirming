@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+// ordenate estos orlando
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginOldComponent } from './pages/profile/login-old/login.component';
@@ -53,6 +53,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+// modulos componentes
+import {AdministracionModule} from './components/administracion/administracion.module';
 
 @NgModule({
   declarations: [
@@ -106,6 +108,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatDialogModule,
     MatButtonModule,
     NgxDatatableModule,
+    AdministracionModule
   ],
   exports: [
     HeaderLayoutComponent,

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
-  selector: 'app-in-line',
-  templateUrl: './ngx-datatable.component.html',
-  styleUrls: ['./ngx-datatable.component.scss'],
+  selector: 'app-ngx-datatable-resultado',
+  templateUrl: './ngx-datatable-resultado.component.html',
+  styleUrls: ['./ngx-datatable-resultado.component.css']
 })
-export class InlineEditComponent {
+export class NgxDatatableResultadoComponent {
   editing: any = {};
   rows: any[] = [];
   rowsInedit: any[] = [];
@@ -16,12 +16,11 @@ export class InlineEditComponent {
   columns: any;
 
   constructor() {
-    this.rows = [ { 1: '>0, <=3.000.000',  2: '0.4', 3: '0.5', 4: '0.7' },
-                  { 1: '>123, <=3.000',    2 : '0.4', 3: '0.6', 4: '0.7' },
-                  { 1: '>3.000.000, <=30.000.000',   2: '0.4', 3: '0.6', 4: '0.7' },
-                  { 1: '>30.000.000, <=300.000.000',   2: '0.4', 3: '0.6', 4: '0.7' }
-    ];
-    this.columns = [{  name:  '$/dias' }, { name: '>60,<=180' }, { name: '>60,<=180' }, { name: '>60,<=180' }];
+    this.rows = [ { 1: '0' , 2: '0' },
+                 { 1: '0',    2 : '0' },
+                  { 1: '0',   2: '0' },
+                  { 1: '0',   2: '0' }
+                ];
   }
   updateValue(event: any, cell: any, rowIndex: any): void {
     console.log('inline editing rowIndex', rowIndex);
@@ -40,3 +39,6 @@ export class InlineEditComponent {
     this.editCell = false;
   }
 }
+
+
+

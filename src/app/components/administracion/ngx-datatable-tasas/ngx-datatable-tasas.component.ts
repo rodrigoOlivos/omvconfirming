@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
-  selector: 'app-in-line',
-  templateUrl: './ngx-datatable.component.html',
-  styleUrls: ['./ngx-datatable.component.scss'],
+  selector: 'app-tabla-tasas',
+  templateUrl: './ngx-datatable-tasas.component.html',
+  styleUrls: ['./ngx-datatable-tasas.component.scss'],
 })
-export class InlineEditComponent {
+export class NgxDatatableTasasComponent {
   editing: any = {};
   rows: any[] = [];
   rowsInedit: any[] = [];
@@ -17,9 +17,9 @@ export class InlineEditComponent {
 
   constructor() {
     this.rows = [ { 1: '>0, <=3.000.000',  2: '0.4', 3: '0.5', 4: '0.7' },
-                  { 1: '>123, <=3.000',    2 : '0.4', 3: '0.6', 4: '0.7' },
-                  { 1: '>3.000.000, <=30.000.000',   2: '0.4', 3: '0.6', 4: '0.7' },
-                  { 1: '>30.000.000, <=300.000.000',   2: '0.4', 3: '0.6', 4: '0.7' }
+      { 1: '>123, <=3.000',    2 : '0.4', 3: '0.6', 4: '0.7' },
+      { 1: '>3.000.000, <=30.000.000',   2: '0.4', 3: '0.6', 4: '0.7' },
+      { 1: '>30.000.000, <=300.000.000',   2: '0.4', 3: '0.6', 4: '0.7' }
     ];
     this.columns = [{  name:  '$/dias' }, { name: '>60,<=180' }, { name: '>60,<=180' }, { name: '>60,<=180' }];
   }
@@ -40,3 +40,4 @@ export class InlineEditComponent {
     this.editCell = false;
   }
 }
+
