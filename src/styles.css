@@ -54,6 +54,26 @@
   color : #FFFFFF !important;
 }
 
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.btn-success.disabled, .btn-success:disabled {
+  color: #BABFC7 !important;
+  background-color: transparent!important;
+}
+.btn-success.disabled:hover , .btn-success:disabled:hover{
+  color: #BABFC7 !important;
+  background-color: transparent!important;
+}
+
+.btn-success.disabled:focus , .btn-success.disabled:active {
+  color: #BABFC7 !important;
+  background-color: transparent!important;
+}
+
 .btn-outline-light {
   color: #BABFC7;
   background-color: transparent;

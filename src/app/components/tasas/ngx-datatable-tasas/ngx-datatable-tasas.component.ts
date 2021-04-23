@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
@@ -10,7 +10,8 @@ export class NgxDatatableTasasComponent {
   editing: any = {};
   rows: any[] = [];
   rowsInedit: any[] = [];
-  editCell = false;
+  @Input()
+  tasaEdit = false;
 
   ColumnMode = ColumnMode;
   columns: any;
@@ -29,15 +30,6 @@ export class NgxDatatableTasasComponent {
     this.rows[rowIndex][cell] = event.target.value;
     this.rows = [...this.rows];
     console.log('UPDATED!', this.rows[rowIndex][cell]);
-  }
-  onSave(): void{
-    this.editCell = false;
-  }
-  onEdit(): void{
-    this.editCell = true;
-  }
-  onCancel(): void{
-    this.editCell = false;
   }
 }
 

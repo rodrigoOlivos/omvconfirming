@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-html-botonera-tabla',
@@ -10,7 +10,8 @@ export class HtmlBotoneraTablatasasComponent implements OnInit {
   editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>( false);
   editCell = false;
    constructor() { }
-
+   @Input()
+   databaseData: any;
   ngOnInit(): void {
   }
   onSave(): void{

@@ -17,55 +17,100 @@
   </ngx-datatable-column>
   <ngx-datatable-column name=">0,<=30" prop="2">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+      <ng-container *ngIf="tasaEdit; then editable; else blocked">
+      </ng-container>
+      <ng-template #editable>
             <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-2'] = true"
+              (click)="editing[rowIndex + '-2'] = true"
               *ngIf="!editing[rowIndex + '-2']"
             >
               {{ value }}
             </span>
-      <input
-        autofocus
-        (blur)="updateValue($event, '2', rowIndex)"
-        *ngIf="editing[rowIndex + '-2']"
-        type="text"
-        [value]="value"
-      />
-    </ng-template>
+        <input
+          autofocus
+          (blur)="updateValue($event, '2', rowIndex)"
+          *ngIf="editing[rowIndex + '-2']"
+          type="text"
+          [value]="value"
+        />
+      </ng-template>
+      <ng-template #blocked>
+        <span > {{ value }} </span>
+        <input
+          autofocus
+          (blur)="updateValue($event, '2', rowIndex)"
+          *ngIf="false"
+          type="text"
+          [value]="value"
+        />
+      </ng-template>
+
+      </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name=">30,<=60" prop="3">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+
+             <ng-container *ngIf="tasaEdit; then editable; else blocked">
+             </ng-container>
+             <ng-template #editable>
             <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-3'] = true"
+              (click)="editing[rowIndex + '-3'] = true"
               *ngIf="!editing[rowIndex + '-3']"
             >
               {{ value }}
             </span>
-      <input
-        autofocus
-        (blur)="updateValue($event, '3', rowIndex)"
-        *ngIf="editing[rowIndex + '-3']"
-        type="text"
-        [value]="value"
-      />
+               <input
+                 autofocus
+                 (blur)="updateValue($event, '3', rowIndex)"
+                 *ngIf="editing[rowIndex + '-3']"
+                 type="text"
+                 [value]="value"
+               />
+             </ng-template>
+              <ng-template #blocked>
+                <span> {{ value }} </span>
+                <input
+                  autofocus
+                  (blur)="updateValue($event, '3', rowIndex)"
+                  *ngIf="false"
+                  type="text"
+                  [value]="value"
+                />
+              </ng-template>
+
+
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name=">60,<=180"  prop="4">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+      <ng-container *ngIf="tasaEdit; then editable; else blocked">
+      </ng-container>
+      <ng-template #editable>
             <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-4'] = true"
+              (click)="editing[rowIndex + '-4'] = true"
               *ngIf="!editing[rowIndex + '-4']">
               {{ value }}
-            </span>
-      <input
-        autofocus
-        (blur)="updateValue($event, '4', rowIndex)"
-        *ngIf="editing[rowIndex + '-4']"
-        type="text"
-        [value]="value"
-      />
+           </span>
+        <input
+          autofocus
+          (blur)="updateValue($event, '4', rowIndex)"
+          *ngIf="editing[rowIndex + '-4']"
+          type="text"
+          [value]="value"
+        />
+      </ng-template>
+      <ng-template #blocked>
+        <span> {{ value }} </span>
+        <input
+          autofocus
+          (blur)="updateValue($event, '4', rowIndex)"
+          *ngIf="false"
+          type="text"
+          [value]="value"
+        />
+      </ng-template>
+
+
     </ng-template>
   </ngx-datatable-column>
 </ngx-datatable>
