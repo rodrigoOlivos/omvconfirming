@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-html-botonera-tabla',
@@ -6,19 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./html-botonera-tablatasas.component.css']
 })
 export class HtmlBotoneraTablatasasComponent implements OnInit {
-  public editCell = false;
-
-  constructor() { }
+  @Output()
+  editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>( false);
+  editCell = false;
+   constructor() { }
 
   ngOnInit(): void {
   }
   onSave(): void{
+    this.onSubmitButton(false);
     this.editCell = false;
   }
   onEdit(): void{
+    this.onSubmitButton(true);
     this.editCell = true;
   }
   onCancel(): void{
+    this.onSubmitButton(false);
     this.editCell = false;
+  }
+  onSubmitButton(estado: boolean): void{
+   this.editCellEmitter.emit(estado);
   }
 }
