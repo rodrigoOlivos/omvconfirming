@@ -134,7 +134,7 @@
 
                         <ul class="nav nav-tabs nav-justified  px-1 pt-1" id="pills-tab2" role="tablist">
                           <li class="nav-item" role="presentation">
-                            <a class="nav-link active tabs-colors-green" id="active2-tab" data-toggle="tab" href="#active2" aria-controls="active2"
+                            <a class="nav-link tabs-colors-green active" id="active2-tab" data-toggle="tab" href="#active2" aria-controls="active2"
                                aria-expanded="true">Línea</a>
                           </li>
                           <li class="nav-item" role="presentation">
@@ -151,98 +151,11 @@
                           </li>
                         </ul>
                         <br>
-                        <label  class="h5 texto-verde  px-1 pt-1" >Ofertas Proveedor&nbsp;&nbsp;</label>
-                        <button type="button" class="btn float-right btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i></button>
-                        <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
-                          <thead>
-                          <tr>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Monto</th>
-                            <th>Comis/Gtos</th>
-                            <th>Intereses</th>
-                            <th>DeudaActualizada</th>
-                            <th>TotalAcumulado</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-
-                          </tbody>
-                        </table>
-                        <div class="col-md-12 float-right">
-                          <button  type="button" class="btn  btn-success ">
-                            Cursar Oferta
-                          </button>
-                        </div>
+                        <app-ofertas-por-proveedor-linea></app-ofertas-por-proveedor-linea>
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
-                  </div>
+                  <app-ofertas-por-proveedor-vigentes></app-ofertas-por-proveedor-vigentes>
                 </div>
               </div>
             </div>
@@ -253,6 +166,7 @@
   </div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-ayuda-layout></app-ayuda-layout>
 <app-footer-layout></app-footer-layout>
 <!-- END PAGE LEVEL JS-->
 </body>

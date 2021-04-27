@@ -30,26 +30,8 @@
           <div class="col-12">
             <div class="card">
               <div class="tab-content px-1 pt-1">
-                <div class="form-group row col-md-12 ">
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Cliente:</label>
-                  </div>
-                  <div class="col-md-4">
-                    <select class="form-control" id="default-select">
-                      <option value="AK">Seleccione..</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row col-md-12">
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Convenio:</label>
-                  </div>
-                  <div class="col-md-4">
-                    <select class="form-control" id="default-select">
-                      <option value="AK">Seleccione..</option>
-                    </select>
-                  </div>
-                </div>
+                <app-html-combobox-cliente-nom></app-html-combobox-cliente-nom>
+                <app-html-combobox-convenio-nom></app-html-combobox-convenio-nom>
                 <hr>
                 <div class="form-group row col-md-12">
                   <div class="col-md-6">
@@ -59,151 +41,35 @@
                     <label  class="h6" >Datos Convenio</label>
                   </div>
                 </div>
-                <div class="form-group row col-md-12">
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Rut </label>
+                <div class="row col-md-12">
+                  <div class="form-group col-md-6">
+                    <app-html-input-rut-nom></app-html-input-rut-nom>
+                    <app-html-input-razon-social></app-html-input-razon-social>
+                    <app-html-input-nombre-fantasia></app-html-input-nombre-fantasia>
                   </div>
-                  <div class="col-md-4">
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Canal de Carga </label>
-                  </div>
-                  <div class="col-md-3">
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Razon Social</label>
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Formato</label>
-                  </div>
-                  <div class="col-md-3">
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Nombre Fantasia</label>
-                  </div>
-                  <div class="col-md-4">
-                    <input type="text" class="form-control">
+                  <div class="form-group col-md-6">
+                    <app-html-input-canal-de-carga></app-html-input-canal-de-carga>
+                    <app-html-input-formato></app-html-input-formato>
                   </div>
                 </div>
               </div>
               <div class="card-content collapse show">
                 <ul class="nav nav-tabs nav-justified" id="pills-tab" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link active tabs-colors-green" id="active-tab" data-toggle="tab" href="#active" aria-controls="active"
-                       aria-expanded="true">Nóminas</a>
+                    <a class="nav-link active tabs-colors-green" id="active-tab" data-toggle="tab" href="#active"
+                       aria-controls="active" aria-expanded="true">Nóminas</a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a class="nav-link tabs-colors-green" id="tmc-tab" data-toggle="tab" href="#tmc" aria-controls="tmc" aria-expanded="false"> Cargas</a>
+                    <a class="nav-link tabs-colors-green" id="tmc-tab" data-toggle="tab" href="#tmc"
+                       aria-controls="tmc" aria-expanded="false"> Cargas</a>
                   </li>
                 </ul>
                 <div class="tab-content px-1 pt-1">
                   <div role="tabpanel" class="tab-pane active in" id="active" aria-labelledby="active-tab">
-
-                    <div class="form-group row"  >
-                      <div class="form-actions col-md-6">
-                        <button type="button" class="btn left-panel-buttons btn-outline-light">
-                          Bajar Archivo
-                        </button>
-                        <button type="submit" class="btn left-panel-buttons btn-outline-light">
-                          Ver Resumen
-                        </button>
-                      </div>
-                      <div class="form-actions right col-md-6" align="right" >
-                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                          Actualizar
-                        </button>
-
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-4  border-less" style="" >
-                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
-                        <label  class="h6" >20/20/1990</label>
-                      </div>
-
-                      <div class="col-md-4 border-less" style="" >
-                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
-                        <label  class="h6" >966558601</label>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-
-                      <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
-                        <thead>
-                        <tr>
-                          <th>$ / Días</th>
-                          <th>Item</th>
-                          <th>Producto</th>
-                          <th>Producto</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>Tiger</td>
-                          <td>Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                        </tr>
-                        <tr>
-                          <td>Garrett</td>
-                          <td>Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                        </tr>
-                        <tr>
-                          <td>Ashton</td>
-                          <td>Cox</td>
-                          <td>Junior Technical Author</td>
-                          <td>San Francisco</td>
-                        </tr>
-                        <tr>
-                          <td>Cedric</td>
-                          <td>Kelly</td>
-                          <td>Senior Javascript Developer</td>
-                          <td>Edinburgh</td>
-                        </tr>
-                        <tr>
-                          <td>Airi</td>
-                          <td>Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>Williamson</td>
-                          <td>Integration Specialist</td>
-                          <td>New York</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
+                    <app-nominas-nominas></app-nominas-nominas>
                   </div>
-                  <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
+                  <div role="tabpanel" class="tab-pane" id="tmc" aria-labelledby="tmc-tab" aria-expanded="false">
+                    <app-nominas-cargas></app-nominas-cargas>
                   </div>
                 </div>
               </div>
@@ -215,6 +81,7 @@
   </div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-ayuda-layout></app-ayuda-layout>
 <app-footer-layout></app-footer-layout>
 <!-- END PAGE LEVEL JS-->
 </body>

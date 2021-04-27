@@ -1,0 +1,79 @@
+<ngx-datatable #Resultados
+               class="material ngx-datatable datatable-body-row"
+               [headerHeight]="50"
+               [limit]="5"
+               [columnMode]="ColumnMode.force"
+               [footerHeight]="50"
+               rowHeight="auto"
+               [rows]="rows"
+               [columns]="columns"
+>
+  <ngx-datatable-column name="ID Carga" prop="1">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Canal" prop="2">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-2'] = true"
+              *ngIf="!editing[rowIndex + '-2']"
+            >
+              {{ value }}
+            </span>
+      <input
+        autofocus
+        (blur)="updateValue($event, '2', rowIndex)"
+        *ngIf="editing[rowIndex + '-2']"
+        type="text"
+        [value]="value"
+      />
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Fecha Carga" prop="3">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Usuario Carga" prop="4">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Fecha Publicación" prop="5">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Usuario Publica" prop="6">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Nombre Archivo" prop="7">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Estado" prop="8">
+    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+    </ng-template>
+  </ngx-datatable-column>
+
+</ngx-datatable>

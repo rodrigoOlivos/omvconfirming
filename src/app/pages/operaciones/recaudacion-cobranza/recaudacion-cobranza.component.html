@@ -30,6 +30,13 @@
           <div class="col-12">
             <div class="card">
               <div class="tab-content px-1 pt-1">
+                <div class="col-6">
+                  <app-html-combobox-cliente-nom></app-html-combobox-cliente-nom>
+                  <app-html-combobox-convenio-nom></app-html-combobox-convenio-nom>
+                </div>
+                <div class="col-6">
+                  <app-html-input-rut></app-html-input-rut>
+                </div>
                 <div class="form-group row col-md-12 ">
                   <div class="col-md-2  form-control border-less" style="" >
                     <label  for="default-select" class="h6 " >Cliente:</label>
@@ -123,150 +130,8 @@
                     </div>
 
                     <div class="form-group row">
-                      <div class="col-md-8  "  >
-
-                        <label  class="h5 texto-verde  px-1 pt-1" >Recaudación&nbsp;&nbsp;</label>
-                        <button type="button" class="btn float-right btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i></button>
-                        <table class=" col-md-12 table display nowrap table-striped table-bordered tablaTasas">
-                          <thead>
-                          <tr>
-                            <th>Fecha</th>
-                            <th>Estado</th>
-                            <th>Monto</th>
-                            <th>Comis/Gtos</th>
-                            <th>Intereses</th>
-                            <th>DeudaActualizada</th>
-                            <th>TotalAcumulado</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
-
-
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-md-4 ">
-                        <label  class="h5 texto-verde  px-1 pt-1" >Proximos Cobros </label>
-                        <button type="button" class="btn float-right  btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i></button>
-                        <table class="  table display  table-striped table-bordered  tablaTasas ">
-                          <thead>
-                          <tr>
-                            <th>$ / Días</th>
-                            <th>Item</th>
-
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
+                      <app-recaudacion-cobranza-detalle></app-recaudacion-cobranza-detalle>
+                      <app-recaudacion-cobranza-proximos></app-recaudacion-cobranza-proximos>
                     </div>
 
                   </div>
@@ -282,6 +147,7 @@
   </div>
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
+<app-ayuda-layout></app-ayuda-layout>
 <app-footer-layout></app-footer-layout>
 <!-- END PAGE LEVEL JS-->
 </body>

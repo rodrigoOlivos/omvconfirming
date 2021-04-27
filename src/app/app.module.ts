@@ -53,8 +53,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+import { AyudaLayoutComponent } from './components/ayuda-layout/ayuda-layout.component';
 // modulos componentes
 import {AdministracionModule} from './components/tasas/administracion.module';
+import {AppNominasModule} from './components/app-nominas/app-nominas.module';
+import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion.module';
+import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
+import {UsuariosModule} from './pages/usuarios/usuarios.module';
 
 @NgModule({
   declarations: [
@@ -90,7 +96,8 @@ import {AdministracionModule} from './components/tasas/administracion.module';
     TablaJqueryComponent,
     DialogBoxComponent,
     TableEditComponent,
-    InlineEditComponent
+    InlineEditComponent,
+    AyudaLayoutComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -108,7 +115,12 @@ import {AdministracionModule} from './components/tasas/administracion.module';
     MatDialogModule,
     MatButtonModule,
     NgxDatatableModule,
-    AdministracionModule
+    AdministracionModule,
+    AppNominasModule,
+    AppRecaudacionModule,
+    UsuariosModule,
+    AppRecaudacionModule,
+    AppOfertasPorProveedorModule,
   ],
   exports: [
     HeaderLayoutComponent,

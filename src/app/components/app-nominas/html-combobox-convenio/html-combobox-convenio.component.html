@@ -1,0 +1,12 @@
+<div class="form-group row col-md-12">
+  <div class="col-md-2 form-control border-less" style="">
+    <label for="select-convenio" class="h6 ">Convenio:</label>
+  </div>
+  <div class="col-md-4">
+    <select class="form-control" id="select-convenio">
+      <option *ngFor="let order of orders; let i = index" [value]="orders[i].id ">
+        {{orders[i].name}}
+      </option>
+    </select>
+  </div>
+</div>
