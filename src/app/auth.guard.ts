@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
       // const array1 = [
       //   '/inicio',
       //   '/dashboard',
-      //   '/tasas',
+      //   '/app-tasas',
       //   '/panel',
       //   '/alta',
       //   '/nominas',

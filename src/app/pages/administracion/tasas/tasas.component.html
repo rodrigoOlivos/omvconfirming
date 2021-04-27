@@ -77,142 +77,52 @@
                     </div>
                   </div>
                   <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
-                    <div class="form-group row">
-                      <div class="col-md-1  form-control border-less" style="" >
-                        <label  for="moneda_tmc" class="h6 " >Moneda</label>
-                      </div>
-                      <div class="col-md-2">
-                        <select class="form-control" id="moneda_tmc">
-                          <option value="AK">Peso Chileno</option>
-                          <option value="HI">US Dolar</option>
-                        </select>
+                    <div class=" row">
+                      <div class="col-12" style="width: 100%">
+                        <app-html-combobox-moneda></app-html-combobox-moneda>
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <div class="col-md-4  border-less" style="" >
-                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
-                        <label  class="h6" >20/20/1990</label>
+                    <br>
+                    <div class="form-group row" >
+                      <div class="col-4" style="width: 100%">
+                        <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
                       </div>
-
-                      <div class="col-md-4 border-less" style="" >
-                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
-                        <label  class="h6" >966558601</label>
+                      <div class="col-4" style="width: 100%">
+                        <app-html-label-usuario></app-html-label-usuario>
                       </div>
-
                     </div>
-                    <div class="form-group row">
-
-                      <table class="col-md-12 table display  table-striped table-bordered tmcData">
-                        <thead >
-                        <tr >
-                          <th >$ / Días</th>
-                          <th >>0,<=180</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>Tiger</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Garrett</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Ashton</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Cedric</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Airi</td>
-                          <td>0</td>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>0</td>
-                        </tr>
-                        <tr>
-                          <td>Brielle</td>
-                          <td>0</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="form-group row"  >
-                      <div class="form-actions right col-md-12" align="right" >
-                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                          Editar
-                        </button>
-                        <button type="submit" class="btn right-panel-buttons btn-success" >
-                          Guardar
-                        </button>
-                        <button type="submit" class="btn right-panel-buttons btn-outline-light" >
-                          Cancelar
-                        </button>
+                    <div class="form-group row ">
+                      <div class="col-12" style="width: 100%">
+                       <app-ngx-datatable-tmc></app-ngx-datatable-tmc>
+                        <br>
+                        <app-html-botonera-tmc></app-html-botonera-tmc>
                       </div>
-
                     </div>
 
                   </div>
                   <div class="tab-pane" id="matriz" role="tabpanel" aria-labelledby="matriz-tab" aria-expanded="false">
-                    <div class="form-group row">
-                      <div class="col-md-1  form-control border-less" style="" >
-                        <label  for="moneda_matriz" class="h6 " >Moneda</label>
+                    <div class=" row">
+                      <div class="col-12" style="width: 100%">
+                        <app-html-combobox-moneda></app-html-combobox-moneda>
                       </div>
-                      <div class="col-md-2">
-                        <select class="form-control" id="moneda_matriz">
-                          <option value="AK">Peso Chileno</option>
-                          <option value="HI">US Dolar</option>
-                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group row" >
+                      <div class="col-4" style="width: 100%">
+                        <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
+                      </div>
+                      <div class="col-4" style="width: 100%">
+                        <app-html-label-usuario></app-html-label-usuario>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <div class="col-md-4  border-less" style="" >
-                        <label  class="h6" >Fecha última Actualización:&nbsp;&nbsp;</label>
-                        <label  class="h6" >20/20/1990</label>
-                      </div>
-
-                      <div class="col-md-4 border-less" style="" >
-                        <label  class="h6" >Usuario:&nbsp;&nbsp;</label>
-                        <label  class="h6" >966558601</label>
-                      </div>
-
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-md-1  form-control border-less" style="" >
-                        <label  for="tipo_matriz" class="h6 " >Tipo de Matriz:</label>
-                      </div>
-                      <div class="col-md-2">
-                        <select class="form-control" id="tipo_matriz">
-                          <option value="AK">Seleccionar</option>
-                          <option value="HI">Costo Fondo</option>
-                          <option value="HI">Comprador</option>
-                          <option value="HI">Proveedor</option>
-                          <option value="HI">TMC</option>
-                          <option value="HI">Comisiones</option>
-                          <option value="HI">Gastos</option>
-                        </select>
-                      </div>
-                      <div class="col-md-3">
-                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                          Refrescar
-                        </button>
-                        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                          Guardar
-                        </button>
-                      </div>
-
+                        <div class="col-6" style="width: 100%">
+                          <app-html-combobox-tipomatriz></app-html-combobox-tipomatriz>
+                        </div>
+                        <div class="col-6" style="width: 100%">
+                          <app-html-botonera-tablasmatriz></app-html-botonera-tablasmatriz>
+                        </div>
+                      <br>
                     </div>
                     <div class=" row">
                       <div class="col-md-12" >
@@ -220,111 +130,18 @@
                       </div>
                       <div class=" col-md-6" >
                         <label  class="h6" >Rango de Plazos</label>
-                        <table class="col-md-6 table display  table-striped table-bordered matrizA" style="padding-right:0px !important; padding-left: 0px !important;">
-                          <thead >
-                          <tr >
-                            <th ></th>
-                            <th >Desde(>)</th>
-                            <th >Hasta(<=)</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-
-                          </tbody>
-                        </table>
+                        <app-ngx-datatable-rangoplazos></app-ngx-datatable-rangoplazos>
+                        <br>
                         <div class="form-group row"  >
-                          <div class=" form-group right col-md-12" align="right" >
-                            <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                              Nuevo
-                            </button>
-                            <button type="submit" class="btn right-panel-buttons btn-outline-light" style="margin-right: 15px; !important;">
-                              Eliminar
-                            </button>
-                          </div>
+                          <app-html-botonera-matrizguardar></app-html-botonera-matrizguardar>
                         </div>
                       </div>
                       <div class="col-md-6" >
                         <label  class="h6 " >Rango de Montos en $</label>
-                        <table class="table display  table-striped table-bordered matrizB" style="padding-right:0px !important; padding-left: 0px !important;">
-                          <thead >
-                          <tr >
-                            <th ></th>
-                            <th >Desde(>)</th>
-                            <th >Hasta(<=)</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td>0</td>
-                            <td>0</td>
-                          </tr>
-                          </tbody>
-                        </table>
+                        <app-ngx-datatable-rangomontos></app-ngx-datatable-rangomontos>
+                        <br>
                         <div class="form-group row"  >
-                          <div class="form-actions right col-md-12" align="right" >
-                            <button  type="button" class="btn right-panel-buttons btn-outline-light ">
-                              Nuevo
-                            </button>
-                            <button type="submit" class="btn right-panel-buttons btn-outline-light" style="margin-right: 15px; !important;">
-                              Eliminar
-                            </button>
-                          </div>
+                          <app-html-botonera-matrizguardar></app-html-botonera-matrizguardar>
                         </div>
                       </div>
 

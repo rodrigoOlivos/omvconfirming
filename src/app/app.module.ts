@@ -56,7 +56,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AyudaLayoutComponent } from './components/ayuda-layout/ayuda-layout.component';
 // modulos componentes
-import {AdministracionModule} from './components/tasas/administracion.module';
+import {AdministracionModule} from './components/app-tasas/administracion.module';
+import {AppAltaDeProveedoresModule} from './components/app-alta-de-proveedores/app-alta-de-proveedores.module';
+import {AppPanelDeControlModule} from './components/app-panel-de-control/app-panel-de-control.module';
 import {AppNominasModule} from './components/app-nominas/app-nominas.module';
 import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion.module';
 import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
@@ -97,7 +99,7 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     DialogBoxComponent,
     TableEditComponent,
     InlineEditComponent,
-    AyudaLayoutComponent,
+    AyudaLayoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -116,11 +118,11 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     MatButtonModule,
     NgxDatatableModule,
     AdministracionModule,
+    AppAltaDeProveedoresModule,
+    AppPanelDeControlModule,
+    AppRecaudacionModule,
     AppNominasModule,
-    AppRecaudacionModule,
-    UsuariosModule,
-    AppRecaudacionModule,
-    AppOfertasPorProveedorModule,
+    AppOfertasPorProveedorModule
   ],
   exports: [
     HeaderLayoutComponent,

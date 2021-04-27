@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-2  form-control border-less" style="" >
+    <label  class="h6  " > Tipo Matriz:  </label>
+  </div>
+  <div class="col-4">
+    <select class="form-control" id="orders" >
+      <option *ngFor="let order of orders; let i = index" [value]="orders[i].id ">
+        {{orders[i].name}}
+      </option>
+    </select>
+  </div>
+</div>
