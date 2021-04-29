@@ -21,5 +21,11 @@ export class HtmlComboboxMonedaPanelComponent {
     of(comboMonedaService.getComboMoneda()).subscribe(orders => {
       this.orders = orders;
     });
+
+    of(comboMonedaService.getComboMonedaHttp()).subscribe(data => {
+        console.log('datagrddfg');
+        console.log(data);
+      }
+    );
   }
 }

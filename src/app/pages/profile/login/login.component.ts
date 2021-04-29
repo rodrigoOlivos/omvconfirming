@@ -58,24 +58,20 @@ export class LoginComponent implements OnInit {
       data => {
         // this.tokenStorage.saveToken(data.accessToken);
         console.log(data);
-        const setHeaderApi = data['set-header-api'];
-        alert(setHeaderApi);
-        const idPersonaString = data.idPersona.toString();
-        if (idPersonaString === '1') {
-          this.tokenStorage.saveToken(idPersonaString);
-          this.tokenStorage.saveUser(data);
+        const setHeaderApi = data.headers.get('set-header-api');
 
-          this.cookieService.set('token_access', setHeaderApi, 4, '/');
+        this.tokenStorage.saveToken(data.idPersona);
+        this.tokenStorage.saveUser(data);
 
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.role = this.tokenStorage.getUser().role;
-          this.router.navigate(['inicio']);
-        } else {
-          this.showErrorCredenciales = true;
-        }
+        this.cookieService.set('token_access', setHeaderApi, 1, '/');
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.role = this.tokenStorage.getUser().role;
+        this.router.navigate(['inicio']);
       },
       err => {
+        this.showErrorCredenciales = true;
         this.errorMessage = err.error.message;
         console.log('login NO OK');
         this.isLoginFailed = true;
