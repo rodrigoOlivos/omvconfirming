@@ -6,7 +6,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {TokenStorageService} from '../services/token-storage.service';
 import {Observable} from 'rxjs';
 
-const TOKEN_HEADER_KEY = 'set-header-api';       // for Spring Boot back-end
+const TOKEN_HEADER_KEY = 'set-header-api2';       // for Spring Boot back-end
 // const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
 
 @Injectable()
