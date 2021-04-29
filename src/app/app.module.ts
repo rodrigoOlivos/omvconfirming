@@ -135,7 +135,12 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     TableEditComponent,
     InlineEditComponent,
   ],
-  providers: [CookieService, authInterceptorProviders],
-  bootstrap: [AppComponent]
+  providers: [
+    CookieService,
+    authInterceptorProviders
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

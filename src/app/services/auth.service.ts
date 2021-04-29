@@ -10,6 +10,7 @@ const AUTH_API = 'http://52.60.210.85:8080/omvagf/usuarios/f01/';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   constructor(private http: HttpClient) {
   }

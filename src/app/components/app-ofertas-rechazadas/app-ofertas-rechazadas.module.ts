@@ -8,7 +8,6 @@ import { NgxDatatableRechazadasComponent } from './ngx-datatable-rechazadas/ngx-
 
 @NgModule({
   declarations: [
-  
     HtmlInputRutComponent,
        HtmlComboboxConvenioComponent,
        NgxDatatableRechazadasComponent

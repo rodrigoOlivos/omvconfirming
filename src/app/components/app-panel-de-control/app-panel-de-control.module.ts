@@ -12,8 +12,6 @@ import { NgxTablaSpreadProveedorComponent } from './ngx-tabla-spread-proveedor/n
 import { HtmlBotoneraMatrizSpreadProveedorComponent } from './html-botonera-matriz-spread-proveedor/html-botonera-matriz-spread-proveedor.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
-
-
 @NgModule({
   declarations: [
     HtmlComboboxMonedaPanelComponent,

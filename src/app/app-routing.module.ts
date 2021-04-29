@@ -20,10 +20,12 @@ import {OfertasPendientesComponent} from './pages/consulta/ofertas-pendientes/of
 import {OfertasRechazadasComponent} from './pages/consulta/ofertas-rechazadas/ofertas-rechazadas.component';
 import {NominasComponent} from './pages/operaciones/nominas/nominas.component';
 import {RecaudacionCobranzaComponent} from './pages/operaciones/recaudacion-cobranza/recaudacion-cobranza.component';
+import {LogoutComponent} from './pages/profile/logout/logout.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'inicio', component: DashboardComponent, canActivate: [AuthGuard] },
 
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },

@@ -8,6 +8,7 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
   templateUrl: './html-combobox-moneda-panel.component.html',
   styleUrls: ['./html-combobox-moneda-panel.component.css']
 })
+
 export class HtmlComboboxMonedaPanelComponent {
   form: FormGroup;
   orders =  [{ id: '0', name: 'seleccione...' }];
@@ -17,10 +18,10 @@ export class HtmlComboboxMonedaPanelComponent {
       orders: ['']
     });
 
-    // async orders
-    of(comboMonedaService.getComboMoneda()).subscribe(orders => {
-      this.orders = orders;
-    });
+    // // async orders
+    // of(comboMonedaService.getComboMoneda()).subscribe(orders => {
+    //   this.orders = orders;
+    // });
 
     of(comboMonedaService.getComboMonedaHttp()).subscribe(data => {
         console.log('datagrddfg');
