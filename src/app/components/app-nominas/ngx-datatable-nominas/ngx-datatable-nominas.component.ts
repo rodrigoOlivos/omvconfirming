@@ -4,7 +4,7 @@ import {ColumnMode} from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-ngx-datatable-nominas',
   templateUrl: './ngx-datatable-nominas.component.html',
-  styleUrls: ['./ngx-datatable-nominas.component.css']
+  styleUrls: ['./ngx-datatable-nominas.component.scss']
 })
 export class NgxDatatableNominasComponent {
   editing: any = {};

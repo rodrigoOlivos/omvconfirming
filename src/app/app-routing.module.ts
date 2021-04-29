@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './pages/profile/register/register.component';
-import { LoginOldComponent } from './pages/profile/login-old/login.component';
 import { LoginComponent } from './pages/profile/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BoardUserComponent } from './pages/profile/board-user/board-user.component';
@@ -24,7 +23,6 @@ import {RecaudacionCobranzaComponent} from './pages/operaciones/recaudacion-cobr
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
-  { path: 'login-old', component: LoginOldComponent },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: DashboardComponent, canActivate: [AuthGuard] },
 

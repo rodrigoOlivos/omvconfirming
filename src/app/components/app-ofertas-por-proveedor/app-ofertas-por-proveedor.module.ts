@@ -9,6 +9,11 @@ import {HtmlOfertasPorProveedorPendientesComponent} from './html-ofertas-por-pro
 import {HtmlOfertasPorProveedorRechazadasComponent} from './html-ofertas-por-proveedor-rechazadas/html-ofertas-por-proveedor-rechazadas.component';
 // tslint:disable-next-line:max-line-length
 import {HtmlOfertasPorProveedorVigentesComponent} from './html-ofertas-por-proveedor-vigentes/html-ofertas-por-proveedor-vigentes.component';
+import { NgxDatatableResumenComponent } from './ngx-datatable-resumen/ngx-datatable-resumen.component';
+import { NgxDatatableOfertasComponent } from './ngx-datatable-ofertas/ngx-datatable-ofertas.component';
+import { HtmlComboboxClienteComponent } from './html-combobox-cliente/html-combobox-cliente.component';
+import { HtmlComboboxConvenioComponent } from './html-combobox-convenio/html-combobox-convenio.component';
+import { HtmlInputRutComponent } from './html-input-rut/html-input-rut.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import {HtmlOfertasPorProveedorVigentesComponent} from './html-ofertas-por-prove
     HtmlOfertasPorProveedorLineaComponent,
     HtmlOfertasPorProveedorPendientesComponent,
     HtmlOfertasPorProveedorRechazadasComponent,
-    HtmlOfertasPorProveedorVigentesComponent
+    HtmlOfertasPorProveedorVigentesComponent,
+    NgxDatatableResumenComponent,
+    NgxDatatableOfertasComponent,
+    HtmlComboboxClienteComponent,
+    HtmlComboboxConvenioComponent,
+    HtmlInputRutComponent
   ],
   imports: [
     CommonModule,

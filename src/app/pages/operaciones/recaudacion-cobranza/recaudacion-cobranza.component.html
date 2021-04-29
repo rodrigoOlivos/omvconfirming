@@ -30,41 +30,17 @@
           <div class="col-12">
             <div class="card">
               <div class="tab-content px-1 pt-1">
-                <div class="col-6">
+<!--                <div class="col-6">-->
                   <app-html-combobox-cliente-nom></app-html-combobox-cliente-nom>
                   <app-html-combobox-convenio-nom></app-html-combobox-convenio-nom>
-                </div>
+<!--                </div>-->
                 <div class="col-6">
                   <app-html-input-rut></app-html-input-rut>
                 </div>
                 <div class="form-group row col-md-12 ">
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Cliente:</label>
-                  </div>
-                  <div class="col-md-4">
-                    <select class="form-control" id="default-select1">
-                      <option value="AK">Seleccione..</option>
-                    </select>
-                  </div>
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Rut:</label>
-                  </div>
-                  <div class="col-md-3">
-                    <input type="text" class="form-control">
-                  </div>
                 </div>
 
-
-
                 <div class="form-group row col-md-12">
-                  <div class="col-md-2  form-control border-less" style="" >
-                    <label  for="default-select" class="h6 " >Convenio:</label>
-                  </div>
-                  <div class="col-md-4">
-                    <select class="form-control" id="default-select">
-                      <option value="AK">Seleccione..</option>
-                    </select>
-                  </div>
                 </div>
                 <hr>
 
@@ -130,8 +106,18 @@
                     </div>
 
                     <div class="form-group row">
-                      <app-recaudacion-cobranza-detalle></app-recaudacion-cobranza-detalle>
-                      <app-recaudacion-cobranza-proximos></app-recaudacion-cobranza-proximos>
+                      <div class="col-md-8">
+                        <label class="h5 texto-verde  px-1 pt-1">Recaudación</label>
+                        <button type="button" class="btn float-right btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i>
+                        </button>
+                        <app-ngx-datatable-recaudacion></app-ngx-datatable-recaudacion>
+                      </div>
+                      <div class="form-group col-4">
+                        <label class="h5 texto-verde  px-1 pt-1">Proximos Cobros</label>
+                        <button type="button" class="btn float-right btn-outline-light" style="margin-right: 15px;"><i class="ft-copy"></i>
+                        </button>
+                        <app-ngx-datatable-prox-cobros></app-ngx-datatable-prox-cobros>
+                      </div>
                     </div>
 
                   </div>

@@ -28,6 +28,11 @@
                       <div class="alert alert-danger" role="alert" *ngIf="rutempresa.errors && f.submitted">
                         RUT Empresa es requerido
                       </div>
+<!--                      &lt;!&ndash;                      <div *ngIf="f.rutempresa.touched && f.rutempresa.invalid" class="alert alert-danger">&ndash;&gt;-->
+<!--                      <div *ngIf="submitted && f.rutempresa.errors" class="alert alert-danger">-->
+<!--                        <div *ngIf="f.rutempresa.errors.required">Rut Empresa es requerido</div>-->
+<!--                        <div *ngIf="f.rutempresa.errors.minlength">Rut Empresa mínimo 3 caracteres</div>-->
+<!--                      </div>-->
                     </fieldset>
 
                     <fieldset class="form-group position-relative has-icon-left">
@@ -49,6 +54,10 @@
                         <div *ngIf="password.errors.required">Clave es requerida</div>
 <!--                        <div *ngIf="password.errors.minlength">Clave mínimo 6 caracteres</div>-->
                       </div>
+<!--                      <div *ngIf="submitted && f.clave.errors" class="alert alert-danger">-->
+<!--                        <div *ngIf="f.clave.errors.required">Clave es requerida</div>-->
+<!--                        <div *ngIf="f.clave.errors.minlength">Clave mínimo 3 caracteres</div>-->
+<!--                      </div>-->
                     </fieldset>
 
                     <button type="submit" class="btn btn-success btn-block" style="color:white"> Entrar</button>

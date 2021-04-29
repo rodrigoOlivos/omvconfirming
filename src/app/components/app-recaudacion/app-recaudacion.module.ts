@@ -15,6 +15,8 @@ import {HtmlInputDeudaExigComponent} from './html-input-deuda-exig/html-input-de
 import {HtmlInputSpreadMoraComponent} from './html-input-spread-mora/html-input-spread-mora.component';
 import {HtmlInputSpreadProrrComponent} from './html-input-spread-prorr/html-input-spread-prorr.component';
 import {HtmlInputTipoProrrComponent} from './html-input-tipo-prorr/html-input-tipo-prorr.component';
+import {NgxDatatableRecaudacionComponent} from './ngx-datatable-recaudacion/ngx-datatable-recaudacion.component';
+import {NgxDatatableProxCobrosComponent} from './ngx-datatable-prox-cobros/ngx-datatable-prox-cobros.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {HtmlInputTipoProrrComponent} from './html-input-tipo-prorr/html-input-ti
     HtmlInputTipoProrrComponent,
     HtmlRecaudacionCobranzaDetalleComponent,
     HtmlRecaudacionCobranzaProximosComponent,
+    NgxDatatableRecaudacionComponent,
+    NgxDatatableProxCobrosComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +55,8 @@ import {HtmlInputTipoProrrComponent} from './html-input-tipo-prorr/html-input-ti
     HtmlInputTipoProrrComponent,
     HtmlRecaudacionCobranzaDetalleComponent,
     HtmlRecaudacionCobranzaProximosComponent,
+    NgxDatatableRecaudacionComponent,
+    NgxDatatableProxCobrosComponent
   ]
 })
 export class AppRecaudacionModule {

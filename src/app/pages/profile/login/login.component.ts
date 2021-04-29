@@ -25,8 +25,12 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
               private tokenStorage: TokenStorageService,
               private cookieService: CookieService,
-              private router: Router
+              private router: Router,
+              // private formBuilder: FormBuilder
   ) {
+    // rutempresa: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    // rutpersona: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    // clave:      new FormControl(null, [Validators.required, Validators.minLength(3)]),
   }
 
   ngOnInit(): void {
@@ -54,11 +58,14 @@ export class LoginComponent implements OnInit {
       data => {
         // this.tokenStorage.saveToken(data.accessToken);
         console.log(data);
-        if (data.auth === '1') {
-          this.tokenStorage.saveToken(data.id);
+        const setHeaderApi = data['set-header-api'];
+        alert(setHeaderApi);
+        const idPersonaString = data.idPersona.toString();
+        if (idPersonaString === '1') {
+          this.tokenStorage.saveToken(idPersonaString);
           this.tokenStorage.saveUser(data);
 
-          this.cookieService.set('token_access', data.id, 4, '/');
+          this.cookieService.set('token_access', setHeaderApi, 4, '/');
 
           this.isLoginFailed = false;
           this.isLoggedIn = true;
@@ -74,6 +81,17 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+    // this.submitted = true;
+    // if (this.reactiveForm.invalid) {
+    //   return;
+    // }
+    //
+    // if (this.reactiveForm.value.rutempresa === '123' &&
+    //   this.reactiveForm.value.rutpersona === '123' &&
+    //   this.reactiveForm.value.clave === '123'
+    // ) {
+    //   this.router.navigate(['/inicio']);
+    // }
   }
 
   reloadPage(): void {

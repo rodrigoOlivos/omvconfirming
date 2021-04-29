@@ -4,10 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 // ordenate estos orlando
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginOldComponent } from './pages/profile/login-old/login.component';
 import { LoginComponent } from './pages/profile/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/layout-navbar/navbar.component';
 import { AdministracionComponent } from './pages/administracion/administracion.component';
 import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { IndicadoresComponent } from './pages/indicadores/indicadores.component';
@@ -22,9 +21,9 @@ import { BoardUserComponent } from './pages/profile/board-user/board-user.compon
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {TasasComponent} from './pages/administracion/tasas/tasas.component';
-import {HeaderLayoutComponent} from './components/header-layout/header-layout.component';
-import {FooterLayoutComponent} from './components/footer-layout/footer-layout.component';
-import {TitleLayoutComponent} from './components/title-layout/title-layout.component';
+import {HeaderLayoutComponent} from './components/layout-header/header-layout.component';
+import {FooterLayoutComponent} from './components/layout-footer/footer-layout.component';
+import {TitleLayoutComponent} from './components/layout-title/title-layout.component';
 import {PanelComponent} from './pages/administracion/panel/panel.component';
 import {AltaComponent} from './pages/administracion/alta/alta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -54,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-import { AyudaLayoutComponent } from './components/ayuda-layout/ayuda-layout.component';
+import { AyudaLayoutComponent } from './components/layout-ayuda/ayuda-layout.component';
 // modulos componentes
 import {AdministracionModule} from './components/app-tasas/administracion.module';
 import {AppAltaDeProveedoresModule} from './components/app-alta-de-proveedores/app-alta-de-proveedores.module';
@@ -72,7 +71,6 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     ConsultaComponent,
     IndicadoresComponent,
     UsuariosComponent,
-    LoginOldComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
