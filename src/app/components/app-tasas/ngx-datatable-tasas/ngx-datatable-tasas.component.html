@@ -22,15 +22,15 @@
       </ng-container>
       <ng-template #editable>
             <span
-              (click)="editing[rowIndex + '-{{i+2}}'] = true"
-              *ngIf="!editing[rowIndex + '-{{i+2}}']"
+              (click)="editing[rowIndex + '-' + (i+2) ] = true"
+              *ngIf="!editing[rowIndex + '-' + (i+2) ]"
             >
               {{ value }}
             </span>
         <input
           autofocus
-          (blur)="updateValue($event, '{{i+2}}', rowIndex)"
-          *ngIf="editing[rowIndex + '-{{i+2}}']"
+          (blur)="updateValue($event, (i+2), rowIndex)"
+          *ngIf="editing[rowIndex + '-'+ (i+2) ]"
           type="text"
           [value]="value"
         />
@@ -39,7 +39,7 @@
         <span > {{ value }} </span>
         <input
           autofocus
-          (blur)="updateValue($event, '{{i+2}}', rowIndex)"
+          (blur)="updateValue($event, (i+2), rowIndex)"
           *ngIf="false"
           type="text"
           [value]="value"

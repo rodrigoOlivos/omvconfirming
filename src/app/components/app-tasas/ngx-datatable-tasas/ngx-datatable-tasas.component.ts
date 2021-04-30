@@ -19,7 +19,8 @@ export class NgxDatatableTasasComponent {
   columnaReferencia: any[] = [];
   preCargaRows: any[] = [];
   cargaRows: any[] = [];
-  itemsRows = {};
+  ordenColums: any[] = [];
+  itemsRows = { };
   @Input()
   idTipoMoneda = '1';
   @Input()
@@ -29,6 +30,7 @@ export class NgxDatatableTasasComponent {
   ColumnMode = ColumnMode;
   columns: any;
 
+
   constructor(private ngxDataF31Service: NgxDataF31Service, private ngxDataF32Service: NgxDataF32Service) {
 
     ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).subscribe(data => {
@@ -36,6 +38,9 @@ export class NgxDatatableTasasComponent {
         this.encabezadoTabla = data.arrayOfRow312.row312;
         console.log('datatable');
         console.log(data);
+        this.columnaReferencia.forEach(( value ) => {
+          this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
+        });
       },
       err => {
         console.log(err);
@@ -54,9 +59,7 @@ export class NgxDatatableTasasComponent {
             columncount = value.idRangoMonto;
             rowcount = 2;
             // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde
-              + ', <= ' + this.columnaReferencia[columnaref].montoHasta;
-            console.log(this.columnaReferencia);
+            this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
             columnaref++;
           }
           if (columncount === value.idRangoMonto) {
@@ -73,8 +76,7 @@ export class NgxDatatableTasasComponent {
             this.cargaRows.push(this.itemsRows);
             this.itemsRows = {};
             // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde + ', <= '
-              + this.columnaReferencia[columnaref].montoHasta;
+            this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
             columnaref++;
             // @ts-ignore
             this.itemsRows[rowcount] = value.tasa;
@@ -83,6 +85,7 @@ export class NgxDatatableTasasComponent {
           }
         });
         this.rows = this.cargaRows;
+        console.log( this.rows);
       },
       err => {
         console.log(err);
@@ -90,10 +93,8 @@ export class NgxDatatableTasasComponent {
     );
   }
   updateValue(event: any, cell: any, rowIndex: any): void {
-    console.log('inline editing rowIndex', rowIndex);
-    this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell] = event.target.value;
-    this.rows = [...this.rows];
-    console.log('UPDATED!', this.rows[rowIndex][cell]);
+      this.editing[rowIndex + '-' + cell] = false;
+      this.rows[rowIndex][cell] = event.target.value;
+      this.rows = [...this.rows];
   }
 }
