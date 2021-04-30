@@ -1,9 +1,6 @@
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AuthInterceptor} from '../helpers/auth.interceptor';
-import {TokenStorageService} from './token-storage.service';
 
 import {CookieService} from 'ngx-cookie-service';
 
@@ -27,6 +24,7 @@ export class ComboMonedaService {
       }, observe: 'body'
     });
   }
+
   getComboMoneda(): any {
     return [
       {id: '1', name: 'Cl Peso'},

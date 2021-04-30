@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { of } from 'rxjs';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {of} from 'rxjs';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 
 @Component({
@@ -11,17 +11,12 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
 
 export class HtmlComboboxMonedaPanelComponent {
   form: FormGroup;
-  orders =  [{ idMoneda: '0', moneda: 'seleccione...' }];
+  orders = [{idMoneda: '0', moneda: 'seleccione...'}];
 
-  constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboMonedaService ) {
+  constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboMonedaService) {
     this.form = this.formBuilder.group({
       orders: ['']
     });
-
-    // // async orders
-    // of(comboMonedaService.getComboMoneda()).subscribe(orders => {
-    //   this.orders = orders;
-    // });
 
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
         console.log('getComboMonedaHttp');
