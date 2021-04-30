@@ -81,13 +81,6 @@ export class LoginComponent implements OnInit {
     // if (this.reactiveForm.invalid) {
     //   return;
     // }
-    //
-    // if (this.reactiveForm.value.rutempresa === '123' &&
-    //   this.reactiveForm.value.rutpersona === '123' &&
-    //   this.reactiveForm.value.clave === '123'
-    // ) {
-    //   this.router.navigate(['/inicio']);
-    // }
   }
 
   reloadPage(): void {

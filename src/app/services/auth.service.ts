@@ -20,7 +20,7 @@ export class AuthService {
 
     return this.http
       .post(API_AUTH, {
-        empresa: rutEmp,
+        empresa: 966558601,
         usuario: rutPer,
         password: pass
         // auth: '1', // 0

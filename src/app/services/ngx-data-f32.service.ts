@@ -15,9 +15,10 @@ export class NgxDataF32Service {
               private cookieService: CookieService) {
   }
 
-  getDataf32(idTipoTabla: number, idTipoMoneda: number): Observable<any> {
+  // http://${servidor}/api/f32/12/0/0/1
+  getDataf32(idTipoTabla: number, idComprador: number, idProveedor: number, idTipoMoneda: number): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
-    return this.http.get(API_F32 + '/' + idTipoTabla + '-1/' + idTipoMoneda, {
+    return this.http.get(API_F32 + '/' + idTipoTabla + '/' + idComprador + '/' + idProveedor + '/' + idTipoMoneda, {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'
