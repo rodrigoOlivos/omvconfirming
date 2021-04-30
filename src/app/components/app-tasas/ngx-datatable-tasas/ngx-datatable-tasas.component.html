@@ -7,8 +7,9 @@
                rowHeight="auto"
                [rows]="rows"
                [columns]="columns"
+
 >
-  <ngx-datatable-column name="$\Días" prop="1" >
+  <ngx-datatable-column [sortable]="false" name="$\Días" prop="1" >
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
             <span>
               {{ value }}
@@ -16,7 +17,7 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
+  <ngx-datatable-column [sortable]="false"  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
       <ng-container *ngIf="tasaEdit; then editable; else blocked">
       </ng-container>
