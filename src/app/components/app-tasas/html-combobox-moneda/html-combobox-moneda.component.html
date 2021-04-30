@@ -3,7 +3,7 @@
     <label class="h6"> Moneda </label>
   </div>
   <div class="col-2">
-    <select class="form-control" id="orders">
+    <select   #mySelect   (change)='onChange(mySelect.value)' class="form-control" id="orders">
       <option *ngFor="let order of orders; let i = index" [value]="orders[i].idMoneda ">
         {{orders[i].moneda}}
       </option>

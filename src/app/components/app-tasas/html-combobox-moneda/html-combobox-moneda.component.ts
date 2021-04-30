@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {of} from 'rxjs';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
@@ -10,8 +10,12 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
   styleUrls: ['./html-combobox-moneda.component.css']
 })
 export class HtmlComboboxMonedaComponent {
+  @Output()
+  monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
+  monedaSelect = '1';
   form: FormGroup;
   orders = [{idMoneda: '0', moneda: 'seleccione...'}];
+
 
   constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboMonedaService) {
     this.form = this.formBuilder.group({
@@ -25,6 +29,14 @@ export class HtmlComboboxMonedaComponent {
         console.log(err);
       }
     );
+  }
 
+  onChange(value: string): void{
+    this.monedaSelect = value;
+    this.onSubmit(value);
+  }
+
+  onSubmit(value: string): void{
+    this.monedaEmitter.emit(value);
   }
 }

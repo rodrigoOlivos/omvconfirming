@@ -15,9 +15,9 @@ export class HtmlLabelUsuarioComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.rutempresa = user.rutempresa;
-      this.rutpersona = user.rutpersona;
+      const user = this.tokenStorageService.getUser().body;
+      this.rutempresa = user.rutEmpresa;
+      this.rutpersona = user.rutUsuario;
     }
   }
 
