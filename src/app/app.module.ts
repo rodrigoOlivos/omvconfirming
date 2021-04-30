@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 // ordenate estos orlando
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +62,7 @@ import {AppNominasModule} from './components/app-nominas/app-nominas.module';
 import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion.module';
 import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
 import {UsuariosModule} from './pages/usuarios/usuarios.module';
+import {TokenInterceptorService} from './helpers/token.interceptor.service';
 
 @NgModule({
   declarations: [
@@ -137,7 +138,12 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
   ],
   providers: [
     CookieService,
-    authInterceptorProviders
+    authInterceptorProviders,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent

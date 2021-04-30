@@ -10,6 +10,7 @@ export class TasasComponent implements OnInit {
   dtOptions: any;
   dtEditor: any;
   edicionTabla = false;
+  monedaActual = '1';
 
   constructor() { }
 

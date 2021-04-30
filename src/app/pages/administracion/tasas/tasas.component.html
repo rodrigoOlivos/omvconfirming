@@ -46,7 +46,7 @@
 
                     <div class=" row">
                       <div class="col-12" style="width: 100%">
-                      <app-html-combobox-moneda></app-html-combobox-moneda>
+                      <app-html-combobox-moneda (monedaEmitter) = "monedaActual = $event" ></app-html-combobox-moneda>
                       </div>
                     </div>
                     <br>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group row ">
                       <div class="col-12" style="width: 100%">
-                        <app-tabla-tasas [tasaEdit] ="edicionTabla"></app-tabla-tasas>
+                        <app-tabla-tasas [tasaEdit] ="edicionTabla" [idTipoMoneda]="monedaActual" ></app-tabla-tasas>
                         <br>
                         <app-html-botonera-tabla (editCellEmitter) = "edicionTabla = $event"> </app-html-botonera-tabla>
                       </div>
