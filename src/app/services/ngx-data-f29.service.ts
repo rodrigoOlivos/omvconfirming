@@ -1,0 +1,26 @@
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {CookieService} from 'ngx-cookie-service';
+
+const API_F29 = 'http://52.60.210.85:8080/omvagf/api/f29/';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NgxDataF29Service {
+
+  constructor(private http: HttpClient,
+              private cookieService: CookieService) {
+  }
+
+  getDataf29(idTipoTabla: number, idTipoMoneda: number): Observable<any> {
+    const cookieToken = this.cookieService.get('token_access');
+    return this.http.get(API_F29 + '/' + idTipoTabla + '/' + idTipoMoneda, {
+      headers: {
+        'Set-Header-Api': cookieToken
+      }, observe: 'body'
+    });
+  }
+
+}
