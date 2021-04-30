@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
+import {ComboMonedaService} from '../../../services/combo-moneda.service';
+import {NgxDataF31Service} from '../../../services/ngx-data-f31.service';
 
 @Component({
   selector: 'app-tabla-tasas',
@@ -16,7 +18,17 @@ export class NgxDatatableTasasComponent {
   ColumnMode = ColumnMode;
   columns: any;
 
-  constructor() {
+  constructor(private ngxDataF31Service: NgxDataF31Service) {
+
+    ngxDataF31Service.getDataf31(12, 1 ).subscribe(data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+
     this.rows = [ { 1: '>0, <=3.000.000',  2: '0.4', 3: '0.5', 4: '0.7' },
       { 1: '>123, <=3.000',    2 : '0.4', 3: '0.6', 4: '0.7' },
       { 1: '>3.000.000, <=30.000.000',   2: '0.4', 3: '0.6', 4: '0.7' },
@@ -31,5 +43,6 @@ export class NgxDatatableTasasComponent {
     this.rows = [...this.rows];
     console.log('UPDATED!', this.rows[rowIndex][cell]);
   }
+
 }
 
