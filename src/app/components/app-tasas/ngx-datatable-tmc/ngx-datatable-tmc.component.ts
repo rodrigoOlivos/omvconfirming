@@ -7,7 +7,7 @@ import {NgxDataF32Service} from '../../../services/ngx-data-f32.service';
 @Component({
   selector: 'app-ngx-datatable-tmc',
   templateUrl: './ngx-datatable-tmc.component.html',
-  styleUrls: ['./ngx-datatable-tmc.component.css']
+  styleUrls: ['./ngx-datatable-tmc.component.scss']
 })
 export class NgxDatatableTmcComponent {
 

@@ -5,7 +5,7 @@ import {NgxDataF29Service} from '../../../services/ngx-data-f29.service';
 @Component({
   selector: 'app-ngx-datatable-rangomontos',
   templateUrl: './ngx-datatable-rangomontos.component.html',
-  styleUrls: ['./ngx-datatable-rangomontos.component.css']
+  styleUrls: ['./ngx-datatable-rangomontos.component.scss']
 })
 export class NgxDatatableRangomontosComponent {
 
