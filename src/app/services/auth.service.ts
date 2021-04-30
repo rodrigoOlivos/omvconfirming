@@ -23,8 +23,6 @@ export class AuthService {
         empresa: 966558601,
         usuario: rutPer,
         password: pass
-        // auth: '1', // 0
-        // role: 'ROL_ADMIN' // 'ROL_USER'
       }, {
         observe: 'response'
       });

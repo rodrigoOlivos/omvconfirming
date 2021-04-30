@@ -1,4 +1,4 @@
-<ngx-datatable #mydatatable
+<ngx-datatable #myCostoFondo
                class="material ngx-datatable datatable-body-row"
                [headerHeight]="50"
                [limit]="5"
@@ -8,28 +8,29 @@
                [rows]="rows"
                [columns]="columns"
 >
-  <ngx-datatable-column name="$/DIAS" prop="1" >
+  <ngx-datatable-column name="$\Días" prop="1" >
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
             <span>
               {{ value }}
             </span>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column name=">0,<=30" prop="2">
+
+  <ngx-datatable-column  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
       <ng-container *ngIf="tasaEdit; then editable; else blocked">
       </ng-container>
       <ng-template #editable>
             <span
-              (click)="editing[rowIndex + '-2'] = true"
-              *ngIf="!editing[rowIndex + '-2']"
+              (click)="editing[rowIndex + '-{{i+2}}'] = true"
+              *ngIf="!editing[rowIndex + '-{{i+2}}']"
             >
               {{ value }}
             </span>
         <input
           autofocus
-          (blur)="updateValue($event, '2', rowIndex)"
-          *ngIf="editing[rowIndex + '-2']"
+          (blur)="updateValue($event, '{{i+2}}', rowIndex)"
+          *ngIf="editing[rowIndex + '-{{i+2}}']"
           type="text"
           [value]="value"
         />
@@ -38,70 +39,7 @@
         <span > {{ value }} </span>
         <input
           autofocus
-          (blur)="updateValue($event, '2', rowIndex)"
-          *ngIf="false"
-          type="text"
-          [value]="value"
-        />
-      </ng-template>
-
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name=">30,<=60" prop="3">
-    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-
-             <ng-container *ngIf="tasaEdit; then editable; else blocked">
-             </ng-container>
-             <ng-template #editable>
-            <span
-              (click)="editing[rowIndex + '-3'] = true"
-              *ngIf="!editing[rowIndex + '-3']"
-            >
-              {{ value }}
-            </span>
-               <input
-                 autofocus
-                 (blur)="updateValue($event, '3', rowIndex)"
-                 *ngIf="editing[rowIndex + '-3']"
-                 type="text"
-                 [value]="value"
-               />
-             </ng-template>
-              <ng-template #blocked>
-                <span> {{ value }} </span>
-                <input
-                  autofocus
-                  (blur)="updateValue($event, '3', rowIndex)"
-                  *ngIf="false"
-                  type="text"
-                  [value]="value"
-                />
-              </ng-template>
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name=">60,<=180"  prop="4">
-    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-      <ng-container *ngIf="tasaEdit; then editable; else blocked">
-      </ng-container>
-      <ng-template #editable>
-            <span
-              (click)="editing[rowIndex + '-4'] = true"
-              *ngIf="!editing[rowIndex + '-4']">
-              {{ value }}
-           </span>
-        <input
-          autofocus
-          (blur)="updateValue($event, '4', rowIndex)"
-          *ngIf="editing[rowIndex + '-4']"
-          type="text"
-          [value]="value"
-        />
-      </ng-template>
-      <ng-template #blocked>
-        <span> {{ value }} </span>
-        <input
-          autofocus
-          (blur)="updateValue($event, '4', rowIndex)"
+          (blur)="updateValue($event, '{{i+2}}', rowIndex)"
           *ngIf="false"
           type="text"
           [value]="value"
