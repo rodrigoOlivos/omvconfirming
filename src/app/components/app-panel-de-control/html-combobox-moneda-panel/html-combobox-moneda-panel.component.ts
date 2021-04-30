@@ -11,7 +11,7 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
 
 export class HtmlComboboxMonedaPanelComponent {
   form: FormGroup;
-  orders =  [{ id: '0', name: 'seleccione...' }];
+  orders =  [{ idMoneda: '0', moneda: 'seleccione...' }];
 
   constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboMonedaService ) {
     this.form = this.formBuilder.group({
@@ -26,10 +26,12 @@ export class HtmlComboboxMonedaPanelComponent {
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
         console.log('getComboMonedaHttp');
         console.log(data.arrayOfMoneda);
+        this.orders = data.arrayOfMoneda.rowMoneda;
       },
       err => {
         console.log(err);
       }
     );
+
   }
 }
