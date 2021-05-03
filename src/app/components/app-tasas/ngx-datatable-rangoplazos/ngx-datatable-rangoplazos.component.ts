@@ -42,6 +42,8 @@ export class NgxDatatableRangoplazosComponent {
       },
       err => {
         console.log(err);
+        // @ts-ignore
+        $('#sesionInvalida').modal('show');
       }
     );
 

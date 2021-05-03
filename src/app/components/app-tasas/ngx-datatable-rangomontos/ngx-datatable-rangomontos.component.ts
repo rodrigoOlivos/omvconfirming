@@ -42,6 +42,8 @@ export class NgxDatatableRangomontosComponent {
       },
       err => {
         console.log(err);
+        // @ts-ignore
+        $('#sesionInvalida').modal('show');
       }
     );
 

@@ -7,26 +7,35 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class HtmlBotoneraTablatasasComponent implements OnInit {
   @Output()
-  editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>( false);
+  editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   editCell = false;
-   constructor() { }
-   @Input()
-   databaseData: any;
+
+  constructor() {
+  }
+
+  @Input()
+  databaseData: any;
+
   ngOnInit(): void {
   }
-  onSave(): void{
+
+  onSave(): void {
     this.onSubmitButton(false);
     this.editCell = false;
   }
-  onEdit(): void{
+
+  onEdit(): void {
     this.onSubmitButton(true);
     this.editCell = true;
   }
-  onCancel(): void{
+
+  onCancel(): void {
     this.onSubmitButton(false);
     this.editCell = false;
   }
-  onSubmitButton(estado: boolean): void{
-   this.editCellEmitter.emit(estado);
+
+  onSubmitButton(estado: boolean): void {
+    this.editCellEmitter.emit(estado);
   }
+
 }

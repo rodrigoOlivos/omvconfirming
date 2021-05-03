@@ -27,6 +27,8 @@ export class HtmlComboboxMonedaComponent {
       },
       err => {
         console.log(err);
+        // @ts-ignore
+        $('#sesionInvalida').modal('show');
       }
     );
   }

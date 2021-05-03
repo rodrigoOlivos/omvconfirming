@@ -19,7 +19,7 @@
 
               <div class="card-content">
                 <div class="card-body">
-                  <form class="form-horizontal form-simple" style="zoom:80%" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                  <form class="form-horizontal form-simple" style="zoom:80%" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                     <!--                  <form class="form-horizontal form-simple" style="zoom:80%" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" novalidate  >-->
 
                     <fieldset class="form-group position-relative has-icon-left">
@@ -83,6 +83,7 @@
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <app-ayuda-layout></app-ayuda-layout>
+<app-layout-session-out></app-layout-session-out>
 <app-footer-layout></app-footer-layout>
 </body>
 </html>

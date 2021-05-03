@@ -62,6 +62,7 @@ import {AppNominasModule} from './components/app-nominas/app-nominas.module';
 import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion.module';
 import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
 import {UsuariosModule} from './pages/usuarios/usuarios.module';
+import { LayoutSessionOutComponent } from './components/layout-session-out/layout-session-out.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     DialogBoxComponent,
     TableEditComponent,
     InlineEditComponent,
-    AyudaLayoutComponent
+    AyudaLayoutComponent,
+    LayoutSessionOutComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -120,7 +122,7 @@ import {UsuariosModule} from './pages/usuarios/usuarios.module';
     AppPanelDeControlModule,
     AppRecaudacionModule,
     AppNominasModule,
-    AppOfertasPorProveedorModule
+    AppOfertasPorProveedorModule,
   ],
   exports: [
     HeaderLayoutComponent,

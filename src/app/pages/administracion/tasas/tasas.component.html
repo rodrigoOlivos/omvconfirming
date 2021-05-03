@@ -60,9 +60,9 @@
                     </div>
                     <div class="form-group row ">
                       <div class="col-12" style="width: 100%">
-                        <app-tabla-tasas [tasaEdit] ="edicionTabla" [idTipoMoneda]="monedaActual" ></app-tabla-tasas>
-                        <br>
-                        <app-html-botonera-tabla (editCellEmitter) = "edicionTabla = $event"> </app-html-botonera-tabla>
+                        <app-tabla-tasas [tasaEdit] ="edicionTabla" [idTipoMoneda]="monedaActual" (editCellEmitter) = "edicionTabla = $event"></app-tabla-tasas>
+<!--                        <br>-->
+<!--                        <app-html-botonera-tabla (editCellEmitter) = "edicionTabla = $event"> </app-html-botonera-tabla>-->
                       </div>
                     </div>
                     <br>
@@ -159,6 +159,7 @@
 </div>
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <app-ayuda-layout></app-ayuda-layout>
+<app-layout-session-out></app-layout-session-out>
 <app-footer-layout></app-footer-layout>
 </body>
 </html>
