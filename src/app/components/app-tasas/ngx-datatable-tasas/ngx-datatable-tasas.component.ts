@@ -175,8 +175,11 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   }
 
   updateValue(event: any, cell: any, rowIndex: any): void {
+    console.log('editando');
+    console.log(this.rows);
     this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell] = event.target.value;
+    // @ts-ignore
+    this.rows[rowIndex][cell].tasa = event.target.value;
     this.rows = [...this.rows];
   }
 
