@@ -17,7 +17,6 @@
             </span>
     </ng-template>
   </ngx-datatable-column>
-
   <ngx-datatable-column [sortable]="false"  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
       <ng-container *ngIf="tasaEdit; then editable; else blocked">
@@ -27,24 +26,24 @@
               (click)="editing[rowIndex + '-' + (i+2) ] = true"
               *ngIf="!editing[rowIndex + '-' + (i+2) ]"
             >
-              {{ value }}
+              {{ value.tasa }}
             </span>
         <input
           autofocus
           (blur)="updateValue($event, (i+2), rowIndex)"
           *ngIf="editing[rowIndex + '-'+ (i+2) ]"
           type="text"
-          [value]="value"
+          [value]="value.tasa"
         />
       </ng-template>
       <ng-template #blocked>
-        <span > {{ value }} </span>
+        <span > {{ value.tasa }} </span>
         <input
           autofocus
           (blur)="updateValue($event, (i+2), rowIndex)"
           *ngIf="false"
           type="text"
-          [value]="value"
+          [value]="value.tasa"
         />
       </ng-template>
     </ng-template>

@@ -15,8 +15,8 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   formF33: any = {
     idTipoMat: 12,
     idTipoMoneda: 1,
-    idComprador: 99541470,
-    idProveedor: 96930940
+    idComprador: 0,
+    idProveedor: 0
   };
   arrayCostoFondo: any[][] | undefined;
 
@@ -27,6 +27,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   editing: any = {};
   @Input()
   rows: any[] = [];
+  val = {};
   rowsInedit: any[] = [];
   idTipoTabla = 12;
   encabezadoTabla: any[] = [];
@@ -81,8 +82,16 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
             columnaref++;
           }
           if (columncount === value.idRangoMonto) {
+
             // @ts-ignore
-            this.itemsRows[rowcount] = value.tasa;
+            this.val.idRangoMonto = value.idRangoMonto;
+            // @ts-ignore
+            this.val.idRangoPlazo = value.idRangoPlazo;
+            // @ts-ignore
+            this.val.tasa =  value.tasa;
+            // @ts-ignore
+            this.itemsRows[rowcount]  = this.val;
+            this.val = {};
             rowcount++;
             ciclo++;
             if (ciclo === this.preCargaRows.length) {
@@ -97,7 +106,14 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
             this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
             columnaref++;
             // @ts-ignore
-            this.itemsRows[rowcount] = value.tasa;
+            this.val.idRangoMonto = value.idRangoMonto;
+              // @ts-ignore
+            this.val.idRangoPlazo = value.idRangoPlazo;
+              // @ts-ignore
+            this.val.tasa =  value.tasa;
+            // @ts-ignore
+            this.itemsRows[rowcount]  = this.val;
+            this.val = {};
             rowcount++;
             ciclo++;
           }
