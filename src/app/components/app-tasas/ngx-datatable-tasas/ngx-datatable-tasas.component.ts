@@ -42,29 +42,25 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   tasaEdit = false;
   ColumnMode = ColumnMode;
   columns: any;
-
+  loadingIndicator = false;
   constructor(private ngxDataF31Service: NgxDataF31Service,
               private ngxDataF32Service: NgxDataF32Service,
               private ngxDataF33Service: NgxDataF33Service
   ) {
-
+    this.loadingIndicator = true;
     ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
         this.encabezadoTabla = data.arrayOfRow312.row312;
-        console.log('datatable');
-        console.log(data);
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-        ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then(data => {
-            console.log('datatable');
-            this.preCargaRows = data.arrayOfRow32.row32;
+        ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then( data2 => {
+            this.preCargaRows = data2.arrayOfRow32.row32;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;
             let ciclo = 0;
             this.preCargaRows.forEach((value) => {
-
               if (columncount === 0) {
                 columncount = value.idRangoMonto;
                 rowcount = 2;
@@ -73,7 +69,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
                 columnaref++;
               }
               if (columncount === value.idRangoMonto) {
-
                 // @ts-ignore
                 this.val.idRangoMonto = value.idRangoMonto;
                 // @ts-ignore
@@ -125,6 +120,9 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
         $('#sesionInvalida').modal('show');
       }
     );
+    setTimeout(() => {
+      this.loadingIndicator = false;
+    }, 1500);
   }
 
   @ViewChild(DatatableComponent)
