@@ -106,6 +106,9 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
             });
             this.rows = this.cargaRows;
             console.log(this.rows);
+            setTimeout(() => {
+              this.loadingIndicator = false;
+            }, 1500);
           },
           err => {
             console.log(err);
@@ -120,9 +123,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
         $('#sesionInvalida').modal('show');
       }
     );
-    setTimeout(() => {
-      this.loadingIndicator = false;
-    }, 1500);
   }
 
   @ViewChild(DatatableComponent)
@@ -173,7 +173,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
   }
 
   updateValue(event: any, cell: any, rowIndex: any): void {

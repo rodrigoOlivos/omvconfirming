@@ -11,15 +11,15 @@ export class NgxDatatableResultadoComponent {
   rows: any[] = [];
   rowsInedit: any[] = [];
   editCell = false;
-
+  loadingIndicator = false;
   ColumnMode = ColumnMode;
   columns: any;
 
   constructor() {
-    this.rows = [ { 1: '0' , 2: '0' },
-                 { 1: '0',    2 : '0' },
-                  { 1: '0',   2: '0' },
-                  { 1: '0',   2: '0' }
+    this.rows = [ { 1: '' , 2: '' },
+                 { 1: '',    2 : '' },
+                  { 1: '',   2: '' },
+                  { 1: '',   2: '' }
                 ];
   }
   updateValue(event: any, cell: any, rowIndex: any): void {

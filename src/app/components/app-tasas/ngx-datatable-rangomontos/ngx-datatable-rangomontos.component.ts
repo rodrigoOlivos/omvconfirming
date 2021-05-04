@@ -19,17 +19,14 @@ export class NgxDatatableRangomontosComponent {
   idTipoMoneda = 1;
   @Input()
   tasaEdit = false;
-
+  loadingIndicator = false;
   ColumnMode = ColumnMode;
   columns: any;
 
   constructor(private ngxDataF29Service: NgxDataF29Service) {
-
-    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).subscribe(data => {
-        console.log(data.arrayOfRow292.row292);
-        console.log(data.arrayOfRow291.row291);
+    this.loadingIndicator = true;
+    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.preCargaRows = data.arrayOfRow291.row291;
-
         this.preCargaRows.forEach((value) => {
           // @ts-ignore
           this.itemsRows[1] = value.montoDesde;
@@ -39,6 +36,9 @@ export class NgxDatatableRangomontosComponent {
           this.itemsRows = {};
         });
         this.rows = this.cargaRows;
+        setTimeout(() => {
+          this.loadingIndicator = false;
+        }, 1500);
       },
       err => {
         console.log(err);

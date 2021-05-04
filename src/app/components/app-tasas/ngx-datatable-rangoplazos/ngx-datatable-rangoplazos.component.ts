@@ -19,13 +19,13 @@ export class NgxDatatableRangoplazosComponent {
   idTipoMoneda = 1;
   @Input()
   tasaEdit = false;
-
+  loadingIndicator = false;
   ColumnMode = ColumnMode;
   columns: any;
 
   constructor(private ngxDataF29Service: NgxDataF29Service) {
-
-    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).subscribe(data => {
+    this.loadingIndicator = true;
+    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         console.log(data.arrayOfRow292.row292);
         console.log(data.arrayOfRow291.row291);
         this.preCargaRows = data.arrayOfRow292.row292;
@@ -39,6 +39,9 @@ export class NgxDatatableRangoplazosComponent {
           this.itemsRows = {};
         });
         this.rows = this.cargaRows;
+        setTimeout(() => {
+          this.loadingIndicator = false;
+        }, 1500);
       },
       err => {
         console.log(err);

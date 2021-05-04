@@ -24,75 +24,89 @@ export class NgxDatatableTmcComponent {
   idTipoMoneda = 1;
   @Input()
   tasaEdit = false;
-
+  loadingIndicator = false;
   ColumnMode = ColumnMode;
   columns: any;
+  val = {};
 
   constructor(private ngxDataF31Service: NgxDataF31Service, private ngxDataF32Service: NgxDataF32Service) {
-
-    ngxDataF31Service.getDataf31(this.idTipoTabla, this.idTipoMoneda).subscribe(data => {
+    this.loadingIndicator = true;
+    ngxDataF31Service.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
         this.encabezadoTabla = data.arrayOfRow312.row312;
-        console.log('datatable');
-        console.log(data);
+        ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data2 => {
+            this.preCargaRows = data2.arrayOfRow32.row32;
+            let columnaref = 0;
+            let columncount = 0;
+            let rowcount = 2;
+            let ciclo = 0;
+            this.preCargaRows.forEach((value) => {
+
+              if (columncount === 0) {
+                columncount = value.idRangoMonto;
+                rowcount = 2;
+                // @ts-ignore
+                this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde
+                  + ', <= ' + this.columnaReferencia[columnaref].montoHasta;
+                console.log(this.columnaReferencia);
+                columnaref++;
+              }
+              if (columncount === value.idRangoMonto) {
+                // @ts-ignore
+                this.val.idRangoMonto = value.idRangoMonto;
+                // @ts-ignore
+                this.val.idRangoPlazo = value.idRangoPlazo;
+                // @ts-ignore
+                this.val.tasa = value.tasa;
+                // @ts-ignore
+                this.itemsRows[rowcount] = this.val;
+                this.val = {};
+                rowcount++;
+                ciclo++;
+                if (ciclo === this.preCargaRows.length) {
+                  this.cargaRows.push(this.itemsRows);
+                }
+              } else {
+                columncount = value.idRangoMonto;
+                rowcount = 2;
+                this.cargaRows.push(this.itemsRows);
+                this.itemsRows = {};
+                // @ts-ignore
+                this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde + ', <= '
+                  + this.columnaReferencia[columnaref].montoHasta;
+                columnaref++;
+                // @ts-ignore
+                this.val.idRangoMonto = value.idRangoMonto;
+                // @ts-ignore
+                this.val.idRangoPlazo = value.idRangoPlazo;
+                // @ts-ignore
+                this.val.tasa = value.tasa;
+                // @ts-ignore
+                this.itemsRows[rowcount] = this.val;
+                this.val = {};
+                rowcount++;
+                ciclo++;
+              }
+            });
+            this.rows = this.cargaRows;
+            setTimeout(() => {
+              this.loadingIndicator = false;
+            }, 1500);
+          },
+          err => {
+            console.log(err);
+          }
+        );
       },
       err => {
         console.log(err);
       }
     );
-    ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).subscribe(data => {
-        console.log('datatable');
-        this.preCargaRows = data.arrayOfRow32.row32;
-        let columnaref = 0;
-        let columncount = 0;
-        let rowcount = 2;
-        let ciclo = 0;
-        this.preCargaRows.forEach((value) => {
-
-          if (columncount === 0) {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde
-              + ', <= ' + this.columnaReferencia[columnaref].montoHasta;
-            console.log(this.columnaReferencia);
-            columnaref++;
-          }
-          if (columncount === value.idRangoMonto) {
-            // @ts-ignore
-            this.itemsRows[rowcount] = value.tasa;
-            rowcount++;
-            ciclo++;
-            if (ciclo === this.preCargaRows.length) {
-              this.cargaRows.push(this.itemsRows);
-            }
-          } else {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            this.cargaRows.push(this.itemsRows);
-            this.itemsRows = {};
-            // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde + ', <= '
-              + this.columnaReferencia[columnaref].montoHasta;
-            columnaref++;
-            // @ts-ignore
-            this.itemsRows[rowcount] = value.tasa;
-            rowcount++;
-            ciclo++;
-          }
-        });
-        this.rows = this.cargaRows;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
   }
 
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell] = event.target.value;
+    this.rows[rowIndex][cell].tasa = event.target.value;
     this.rows = [...this.rows];
   }
 
