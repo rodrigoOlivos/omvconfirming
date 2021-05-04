@@ -40,7 +40,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   idTipoMoneda = '1';
   @Input()
   tasaEdit = false;
-
   ColumnMode = ColumnMode;
   columns: any;
 
@@ -49,7 +48,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
               private ngxDataF33Service: NgxDataF33Service
   ) {
 
-    ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).subscribe(data => {
+    ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
         this.encabezadoTabla = data.arrayOfRow312.row312;
         console.log('datatable');
@@ -57,68 +56,68 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-      },
-      err => {
-        console.log(err);
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
-      }
-    );
-    ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).subscribe(data => {
-        console.log('datatable');
-        this.preCargaRows = data.arrayOfRow32.row32;
-        let columnaref = 0;
-        let columncount = 0;
-        let rowcount = 2;
-        let ciclo = 0;
-        this.preCargaRows.forEach((value) => {
+        ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then(data => {
+            console.log('datatable');
+            this.preCargaRows = data.arrayOfRow32.row32;
+            let columnaref = 0;
+            let columncount = 0;
+            let rowcount = 2;
+            let ciclo = 0;
+            this.preCargaRows.forEach((value) => {
 
-          if (columncount === 0) {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            // @ts-ignore
-            this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
-            columnaref++;
-          }
-          if (columncount === value.idRangoMonto) {
+              if (columncount === 0) {
+                columncount = value.idRangoMonto;
+                rowcount = 2;
+                // @ts-ignore
+                this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
+                columnaref++;
+              }
+              if (columncount === value.idRangoMonto) {
 
+                // @ts-ignore
+                this.val.idRangoMonto = value.idRangoMonto;
+                // @ts-ignore
+                this.val.idRangoPlazo = value.idRangoPlazo;
+                // @ts-ignore
+                this.val.tasa = value.tasa;
+                // @ts-ignore
+                this.itemsRows[rowcount] = this.val;
+                this.val = {};
+                rowcount++;
+                ciclo++;
+                if (ciclo === this.preCargaRows.length) {
+                  this.cargaRows.push(this.itemsRows);
+                }
+              } else {
+                columncount = value.idRangoMonto;
+                rowcount = 2;
+                this.cargaRows.push(this.itemsRows);
+                this.itemsRows = {};
+                // @ts-ignore
+                this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
+                columnaref++;
+                // @ts-ignore
+                this.val.idRangoMonto = value.idRangoMonto;
+                // @ts-ignore
+                this.val.idRangoPlazo = value.idRangoPlazo;
+                // @ts-ignore
+                this.val.tasa = value.tasa;
+                // @ts-ignore
+                this.itemsRows[rowcount] = this.val;
+                this.val = {};
+                rowcount++;
+                ciclo++;
+              }
+            });
+            this.rows = this.cargaRows;
+            console.log(this.rows);
+          },
+          err => {
+            console.log(err);
             // @ts-ignore
-            this.val.idRangoMonto = value.idRangoMonto;
-            // @ts-ignore
-            this.val.idRangoPlazo = value.idRangoPlazo;
-            // @ts-ignore
-            this.val.tasa = value.tasa;
-            // @ts-ignore
-            this.itemsRows[rowcount] = this.val;
-            this.val = {};
-            rowcount++;
-            ciclo++;
-            if (ciclo === this.preCargaRows.length) {
-              this.cargaRows.push(this.itemsRows);
-            }
-          } else {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            this.cargaRows.push(this.itemsRows);
-            this.itemsRows = {};
-            // @ts-ignore
-            this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
-            columnaref++;
-            // @ts-ignore
-            this.val.idRangoMonto = value.idRangoMonto;
-            // @ts-ignore
-            this.val.idRangoPlazo = value.idRangoPlazo;
-            // @ts-ignore
-            this.val.tasa = value.tasa;
-            // @ts-ignore
-            this.itemsRows[rowcount] = this.val;
-            this.val = {};
-            rowcount++;
-            ciclo++;
+            $('#sesionInvalida').modal('show');
           }
-        });
-        this.rows = this.cargaRows;
-        console.log(this.rows);
+        );
       },
       err => {
         console.log(err);
@@ -140,7 +139,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     console.log(this.arrayCostoFondo);
     this.ngxDataF33Service.getDataf33(idTipoMat, idTipoMoneda, idComprador, idProveedor, this.arrayCostoFondo).subscribe(
       data => {
-        // this.tokenStorage.saveToken(data.accessToken);
         console.log(data);
       },
       err => {
@@ -177,13 +175,10 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // console.log('aaaa2');
-    // console.log(this.myCostoFondo.bodyComponent.rows);
+
   }
 
   updateValue(event: any, cell: any, rowIndex: any): void {
-    console.log('editando');
-    console.log(this.rows);
     this.editing[rowIndex + '-' + cell] = false;
     // @ts-ignore
     this.rows[rowIndex][cell].tasa = event.target.value;
