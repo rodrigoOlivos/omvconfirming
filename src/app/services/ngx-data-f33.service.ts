@@ -14,15 +14,19 @@ export class NgxDataF33Service {
               private cookieService: CookieService) {
   }
 
-  getDataf33(idTipoMat: number, idTipoMoneda: number, idComprador: number, idProveedor: number, arrayCostoFondo: {}): Observable<any> {
+  getDataf33(idTipoMat: number, idTipoMoneda: number, idComprador: number, idProveedor: number, arrayCostoFondo: any[]): Observable<any> {
+    console.log('consumo getDataf33');
     const cookieToken = this.cookieService.get('token_access');
-    return this.http.post(API_F33, {
-      IdTipoMatriz: idTipoMat,
-      Moneda: idTipoMoneda,
-      IdCmp: idComprador,
-      IdPrv: idProveedor,
-      ArrayOfRow33: arrayCostoFondo
-    }, {
+    const bodyF33 = {
+      idTipoMatriz: idTipoMat,
+      moneda: idTipoMoneda,
+      idCmp: idComprador,
+      idPrv: idProveedor,
+      arrayOfRow33: {
+        row33: arrayCostoFondo
+      }
+    };
+    return this.http.post(API_F33, bodyF33, {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'

@@ -18,7 +18,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     idComprador: 0,
     idProveedor: 0
   };
-  arrayCostoFondo: {} | undefined;
+  arrayCostoFondo: any[][] | undefined;
 
   @Output()
   editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>(false);
@@ -148,25 +148,26 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
 
   }
 
-  parseMatrizF33(myCostoFondoArray: any[]): {} {
-    // @ts-ignore
-    const objetoF33: {
-      Tasa: number;
-      IdRangoMonto: any;
-      IdRangoPlazo: any;
-    } = {};
+  parseMatrizF33(myCostoFondoArray: any[]): any[] {
+    const arr: any[] = [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < myCostoFondoArray.length; i++) {
+      // tslint:disable-next-line:only-arrow-functions
       for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
-        if (typeof myCostoFondoArray[i][j].tasa === 'string') {
-          objetoF33.Tasa = Number(myCostoFondoArray[i][j].tasa);
-          objetoF33.IdRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
-          objetoF33.IdRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
-        }
+        // @ts-ignore
+        const objetoF33: {
+          tasa: number;
+          idRangoMonto: any;
+          idRangoPlazo: any;
+        } = {};
+        objetoF33.tasa = Number(myCostoFondoArray[i][j].tasa);
+        objetoF33.idRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
+        objetoF33.idRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
+        arr.push(objetoF33);
       }
     }
     console.log('resultado');
-    return objetoF33;
+    return arr;
   }
 
   ngOnInit(): void {
