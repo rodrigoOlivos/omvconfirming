@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 import {CookieService} from 'ngx-cookie-service';
 
@@ -11,7 +11,7 @@ const API_TRAE_MONEDAS = 'http://52.60.210.85:8080/omvagf/api/trae-monedas/';
 })
 
 export class ComboMonedaService {
-
+  private moneda = new Subject<any>();
   constructor(private http: HttpClient,
               private cookieService: CookieService) {
   }
@@ -32,5 +32,12 @@ export class ComboMonedaService {
       {id: '3', name: 'Aus Dolar'},
       {id: '4', name: 'Mx Peso'}
     ];
+  }
+
+  sendMoneda(){
+    this.moneda.next();
+  }
+  getMonedaEvent():Observable<any>{
+    return this.moneda.asObservable();
   }
 }

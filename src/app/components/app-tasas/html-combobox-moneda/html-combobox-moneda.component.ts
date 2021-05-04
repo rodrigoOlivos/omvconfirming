@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {of} from 'rxjs';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
-
+import { NgxDatatableTasasComponent } from '../ngx-datatable-tasas/ngx-datatable-tasas.component';
 
 @Component({
   selector: 'app-html-combobox-moneda',
@@ -10,6 +10,9 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
   styleUrls: ['./html-combobox-moneda.component.css']
 })
 export class HtmlComboboxMonedaComponent {
+
+
+
   @Output()
   monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
   monedaSelect = '1';
@@ -24,6 +27,7 @@ export class HtmlComboboxMonedaComponent {
 
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
         this.orders = data.arrayOfMoneda.rowMoneda;
+
       },
       err => {
         console.log(err);
@@ -36,9 +40,11 @@ export class HtmlComboboxMonedaComponent {
   onChange(value: string): void{
     this.monedaSelect = value;
     this.onSubmit(value);
+
   }
 
   onSubmit(value: string): void{
+    this.comboMonedaService.sendMoneda();
     this.monedaEmitter.emit(value);
   }
 }

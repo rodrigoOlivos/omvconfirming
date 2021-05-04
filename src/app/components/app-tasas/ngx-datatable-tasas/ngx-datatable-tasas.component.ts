@@ -5,7 +5,8 @@ import {NgxDataF31Service} from '../../../services/ngx-data-f31.service';
 import {NgxDataF32Service} from '../../../services/ngx-data-f32.service';
 import {DatatableComponent} from '@swimlane/ngx-datatable/';
 import {NgxDataF33Service} from '../../../services/ngx-data-f33.service';
-import {forkJoin, zip} from 'rxjs';
+
+import {forkJoin, Subscription, zip} from 'rxjs';
 
 @Component({
   selector: 'app-tabla-tasas',
@@ -44,89 +45,17 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   ColumnMode = ColumnMode;
   columns: any;
   loadingIndicator = false;
+  comboMonedaSubcripcion:Subscription;
+
   constructor(private ngxDataF31Service: NgxDataF31Service,
               private ngxDataF32Service: NgxDataF32Service,
-              private ngxDataF33Service: NgxDataF33Service
+              private ngxDataF33Service: NgxDataF33Service,
+              private comboMoneda: ComboMonedaService
   ) {
-    this.loadingIndicator = true;
-    const tabla31 = ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(data => {
-        this.columnaReferencia = data.arrayOfRow311.row311;
-        this.encabezadoTabla = data.arrayOfRow312.row312;
-        this.columnaReferencia.forEach((value) => {
-          this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
-        });
-        const tabla32 = ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then(  data => {
-            this.preCargaRows = data.arrayOfRow32.row32;
-            let orden =  this.ordenColums;
-            let columnaref = 0;
-            let columncount = 0;
-            let rowcount = 2;
-            let ciclo = 0;
-            this.preCargaRows.forEach((value) => {
-              if (columncount === 0) {
-                columncount = value.idRangoMonto;
-                rowcount = 2;
-                // @ts-ignore
-                this.itemsRows[1] =  orden[value.idRangoMonto];
-                columnaref++;
-              }
-              if (columncount === value.idRangoMonto) {
-                // @ts-ignore
-                this.val.idRangoMonto = value.idRangoMonto;
-                // @ts-ignore
-                this.val.idRangoPlazo = value.idRangoPlazo;
-                // @ts-ignore
-                this.val.tasa = value.tasa;
-                // @ts-ignore
-                this.itemsRows[rowcount] = this.val;
-                this.val = {};
-                rowcount++;
-                ciclo++;
-                if (ciclo === this.preCargaRows.length) {
-                  this.cargaRows.push(this.itemsRows);
-                }
-              } else {
-                columncount = value.idRangoMonto;
-                rowcount = 2;
-                this.cargaRows.push(this.itemsRows);
-                this.itemsRows = {};
-                // @ts-ignore
-                this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
-                columnaref++;
-                // @ts-ignore
-                this.val.idRangoMonto = value.idRangoMonto;
-                // @ts-ignore
-                this.val.idRangoPlazo = value.idRangoPlazo;
-                // @ts-ignore
-                this.val.tasa = value.tasa;
-                // @ts-ignore
-                this.itemsRows[rowcount] = this.val;
-                this.val = {};
-                rowcount++;
-                ciclo++;
-              }
-              this.rows = this.cargaRows;
-              setTimeout(() => {
-                this.loadingIndicator = false;
-              }, 500);
-
-            });
-          },
-          err => {
-            console.log(err);
-            // @ts-ignore
-            $('#sesionInvalida').modal('show');
-          });
-        },
-      err => {
-        console.log(err);
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
-      }
-    );
-
-
-
+    this.comboMonedaSubcripcion= this.comboMoneda.getMonedaEvent().subscribe(()=>{
+      this.cargaTabla()
+    })
+    this.cargaTabla()
   }
 
   @ViewChild(DatatableComponent)
@@ -139,7 +68,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     const {idTipoMat, idTipoMoneda, idComprador, idProveedor} = this.formF33;
     this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
     console.log(this.arrayCostoFondo);
-    this.ngxDataF33Service.getDataf33(idTipoMat, idTipoMoneda, idComprador, idProveedor, this.arrayCostoFondo).subscribe(
+    this.ngxDataF33Service.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
       data => {
         console.log(data);
       },
@@ -200,16 +129,20 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     this.editCellEmitter.emit(estado);
   }
 
-  onChangeTable(): void{
+  cargaTabla(): void {
+    this.cargaRows = [];
+    this.columnaReferencia =[];
+    this.encabezadoTabla = [];
     this.loadingIndicator = true;
-    this.ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(data => {
-        this.columnaReferencia = data.arrayOfRow311.row311;
-        this.encabezadoTabla = data.arrayOfRow312.row312;
+         this.ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(datachange => {
+        this.columnaReferencia = datachange.arrayOfRow311.row311;
+        this.encabezadoTabla = datachange.arrayOfRow312.row312;
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-        this.ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then( data2 => {
-            this.preCargaRows = data2.arrayOfRow32.row32;
+        this.ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then(  data => {
+            this.preCargaRows = data.arrayOfRow32.row32;
+            let orden =  this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;
@@ -219,7 +152,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
                 columncount = value.idRangoMonto;
                 rowcount = 2;
                 // @ts-ignore
-                this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
+                this.itemsRows[1] =  orden[value.idRangoMonto];
                 columnaref++;
               }
               if (columncount === value.idRangoMonto) {
@@ -257,19 +190,19 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
                 rowcount++;
                 ciclo++;
               }
+              this.rows = this.cargaRows;
+              this.rows = [...this.rows];
+              setTimeout(() => {
+                this.loadingIndicator = false;
+              }, 500);
+
             });
-            this.rows = this.cargaRows;
-            console.log(this.rows);
-            setTimeout(() => {
-              this.loadingIndicator = false;
-            }, 1500);
           },
           err => {
             console.log(err);
             // @ts-ignore
             $('#sesionInvalida').modal('show');
-          }
-        );
+          });
       },
       err => {
         console.log(err);
@@ -277,6 +210,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
         $('#sesionInvalida').modal('show');
       }
     );
+
   }
 
 }
