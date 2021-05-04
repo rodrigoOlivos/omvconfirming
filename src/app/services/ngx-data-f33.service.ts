@@ -14,7 +14,7 @@ export class NgxDataF33Service {
               private cookieService: CookieService) {
   }
 
-  getDataf33(idTipoMat: number, idTipoMoneda: number, idComprador: number, idProveedor: number, arrayCostoFondo: any[]): Observable<any> {
+  getDataf33(idTipoMat: number, idTipoMoneda: number, idComprador: number, idProveedor: number, arrayCostoFondo: {}): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
     return this.http.post(API_F33, {
       IdTipoMatriz: idTipoMat,

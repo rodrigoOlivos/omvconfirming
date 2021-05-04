@@ -18,7 +18,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     idComprador: 0,
     idProveedor: 0
   };
-  arrayCostoFondo: any[][] | undefined;
+  arrayCostoFondo: {} | undefined;
 
   @Output()
   editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>(false);
@@ -40,7 +40,6 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   idTipoMoneda = '1';
   @Input()
   tasaEdit = false;
-
 
   ColumnMode = ColumnMode;
   columns: any;
@@ -88,9 +87,9 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
             // @ts-ignore
             this.val.idRangoPlazo = value.idRangoPlazo;
             // @ts-ignore
-            this.val.tasa =  value.tasa;
+            this.val.tasa = value.tasa;
             // @ts-ignore
-            this.itemsRows[rowcount]  = this.val;
+            this.itemsRows[rowcount] = this.val;
             this.val = {};
             rowcount++;
             ciclo++;
@@ -107,12 +106,12 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
             columnaref++;
             // @ts-ignore
             this.val.idRangoMonto = value.idRangoMonto;
-              // @ts-ignore
-            this.val.idRangoPlazo = value.idRangoPlazo;
-              // @ts-ignore
-            this.val.tasa =  value.tasa;
             // @ts-ignore
-            this.itemsRows[rowcount]  = this.val;
+            this.val.idRangoPlazo = value.idRangoPlazo;
+            // @ts-ignore
+            this.val.tasa = value.tasa;
+            // @ts-ignore
+            this.itemsRows[rowcount] = this.val;
             this.val = {};
             rowcount++;
             ciclo++;
@@ -153,17 +152,25 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
 
   }
 
-  parseMatrizF33(myCostoFondoArray: any[]): any[] {
-    // tslint:disable-next-line:only-arrow-functions typedef
-    const resultado = myCostoFondoArray.map(function(elemento: any[]) {
-      const arr: any[] = [];
-      for (let i = 2; i <= Object.keys(elemento).length; i++) {
-        arr.push(Number(elemento[i]));
+  parseMatrizF33(myCostoFondoArray: any[]): {} {
+    // @ts-ignore
+    const objetoF33: {
+      Tasa: number;
+      IdRangoMonto: any;
+      IdRangoPlazo: any;
+    } = {};
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < myCostoFondoArray.length; i++) {
+      for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
+        if (typeof myCostoFondoArray[i][j].tasa === 'string') {
+          objetoF33.Tasa = Number(myCostoFondoArray[i][j].tasa);
+          objetoF33.IdRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
+          objetoF33.IdRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
+        }
       }
-      return arr;
-    });
+    }
     console.log('resultado');
-    return resultado;
+    return objetoF33;
   }
 
   ngOnInit(): void {
