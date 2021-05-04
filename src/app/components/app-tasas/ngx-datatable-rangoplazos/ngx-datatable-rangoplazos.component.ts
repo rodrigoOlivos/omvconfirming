@@ -26,10 +26,7 @@ export class NgxDatatableRangoplazosComponent {
   constructor(private ngxDataF29Service: NgxDataF29Service) {
     this.loadingIndicator = true;
     ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
-        console.log(data.arrayOfRow292.row292);
-        console.log(data.arrayOfRow291.row291);
         this.preCargaRows = data.arrayOfRow292.row292;
-
         this.preCargaRows.forEach((value) => {
           // @ts-ignore
           this.itemsRows[1] = value.diasDesde;
@@ -51,7 +48,6 @@ export class NgxDatatableRangoplazosComponent {
     );
 
   }
-
   updateValue(event: any, cell: any, rowIndex: any): void {
     console.log('inline editing rowIndex', rowIndex);
     this.editing[rowIndex + '-' + cell] = false;
