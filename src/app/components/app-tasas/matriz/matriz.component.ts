@@ -2,12 +2,12 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {of} from 'rxjs';
-import { NgxDatatableTasasComponent } from '../ngx-datatable-tasas/ngx-datatable-tasas.component';
-import {NgxDataF29Service} from '../../../services/ngx-data-f29.service';
+import {NgxDatatableTasasComponent} from '../ngx-datatable-tasas/ngx-datatable-tasas.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {any} from 'codelyzer/util/function';
 import {TokenStorageService} from '../../../services/token-storage.service';
 import {OfflineServicesService} from '../../../services/offline-services.service';
+import {AgfProviderService} from '../../../services/agf-provider.service';
 
 @Component({
   selector: 'app-matriz',
@@ -16,16 +16,23 @@ import {OfflineServicesService} from '../../../services/offline-services.service
 })
 export class MatrizComponent implements OnInit {
 
-  form: FormGroup;
-  orders =  [{ id: '0', name: 'seleccione...' }];
-  ordersMoneda = [{idMoneda: '0', moneda: 'seleccione...'}];
+  formTipoMatriz: FormGroup;
+  formMoneda: FormGroup;
+  selectTipoMatriz = [{id: '0', name: 'Seleccione...'}];
+  selectMoneda = [{idMoneda: '0', moneda: 'Seleccione...'}];
 
-  editing: any = {};
-  rows: any[] = [];
+  editingMontos: any = {};
+  editingPlazos: any = {};
+  rowsMontos: any[] = [];
+  rowsPlazos: any[] = [];
+  preCargaRowsMontos: any[] = [];
+  preCargaRowsPlazos: any[] = [];
+  cargaRowsMontos: any[] = [];
+  cargaRowsPlazos: any[] = [];
+  itemsRowsMontos = {};
+  itemsRowsPlazos = {};
+
   idTipoTabla = 12;
-  preCargaRows: any[] = [];
-  cargaRows: any[] = [];
-  itemsRows = {};
   @Input()
   idTipoMoneda = 1;
   @Input()
@@ -34,50 +41,34 @@ export class MatrizComponent implements OnInit {
   ColumnMode = ColumnMode;
   columns: any;
 
-  // editing: any = {};
-  // rows: any[] = [];
-  // idTipoTabla = 12;
-  public val1 = {};
-  public val2 = { };
-  // preCargaRows: any[] = [];
-  // cargaRows: any = [];
-  // itemsRows = {};
-  @Input()
-  // idTipoMoneda = 1;
-  @Input()
-  // tasaEdit = true;
-  // loadingIndicator = false;
-  // columns: any;
-
-  selected = [];
-  // ColumnMode = ColumnMode;
+  selectedPlazos = [];
+  selectedMontos = [];
   SelectionType = SelectionType;
 
   @Output()
-  monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
+  monedaEmitter: EventEmitter<string> = new EventEmitter<string>(false);
   monedaSelect = '1';
 
   constructor(private formBuilder: FormBuilder,
               private comboMonedaService: ComboMonedaService,
-              private ngxDataF29Service: NgxDataF29Service,
+              private agfProviderService: AgfProviderService,
               private offlineServicesService: OfflineServicesService
   ) {
-    this.form = this.formBuilder.group({
+    this.formTipoMatriz = this.formBuilder.group({
       orders: ['']
     });
 
-    this.form = this.formBuilder.group({
+    this.formMoneda = this.formBuilder.group({
       ordersMoneda: ['']
     });
 
     // async orders
     of(offlineServicesService.getComboTipoMatriz()).subscribe(orders => {
-      this.orders = orders;
+      this.selectTipoMatriz = orders;
     });
 
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
-        this.ordersMoneda = data.arrayOfMoneda.rowMoneda;
-
+        this.selectMoneda = data.arrayOfMoneda.rowMoneda;
       },
       err => {
         console.log(err);
@@ -85,52 +76,58 @@ export class MatrizComponent implements OnInit {
         $('#sesionInvalida').modal('show');
       }
     );
+    this.getDataf29();
+  }
 
+  getDataf29(): void {
     this.loadingIndicator = true;
-    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
-        this.preCargaRows = data.arrayOfRow291.row291;
-        this.preCargaRows.forEach((value) => {
+    this.agfProviderService.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
+        this.preCargaRowsPlazos = data.arrayOfRow292.row292; // rangos plazos
+        this.preCargaRowsMontos = data.arrayOfRow291.row291; // rangos montos
+        let contadorFilasPlazos = 0;
+        let contadorFilasMontos = 0;
+        this.preCargaRowsPlazos.forEach((value) => {
+          // Plazos
           // @ts-ignore
-          this.itemsRows[1] = value.montoDesde;
-          // @ts-ignore
-          this.itemsRows[2] = value.montoHasta;
-          this.cargaRows.push(this.itemsRows);
-          this.itemsRows = {};
-        });
-        this.rows = this.cargaRows;
-        setTimeout(() => {
-          this.loadingIndicator = false;
-        }, 1500);
-      },
-      err => {
-        console.log(err);
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
-      }
-    );
-
-    this.loadingIndicator = true;
-    ngxDataF29Service.getDataf29(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
-        this.preCargaRows = data.arrayOfRow292.row292;
-        let contadorFilas = 0;
-        this.preCargaRows.forEach((value) => {
-          // @ts-ignore
-          this.itemsRows['1'] = {
-            nroFila: contadorFilas,
+          this.itemsRowsPlazos['1'] = {
+            nroFila: contadorFilasPlazos,
             valor: value.diasDesde
           };
           // @ts-ignore
-          this.itemsRows['2'] = {
-            nroFila: contadorFilas,
+          this.itemsRowsPlazos['2'] = {
+            nroFila: contadorFilasPlazos,
             valor: value.diasHasta
           };
-          this.cargaRows.push(this.itemsRows);
-          this.itemsRows = {};
-          contadorFilas++;
+          this.cargaRowsPlazos.push(this.itemsRowsPlazos);
+          this.itemsRowsPlazos = {};
+          contadorFilasPlazos++;
+
+          // Montos
+          // @ts-ignore
+          this.itemsRowsMontos['1'] = {
+            nroFila: contadorFilasMontos,
+            valor: value.montoDesde
+          };
+          // @ts-ignore
+          this.itemsRowsMontos['2'] = {
+            nroFila: contadorFilasMontos,
+            valor: value.montoHasta
+          };
+          this.cargaRowsMontos.push(this.itemsRowsMontos);
+          this.itemsRowsMontos = {};
+          contadorFilasMontos++;
+
+
+          // this.itemsRowsMontos[1] = value.montoDesde;
+          // // @ts-ignore
+          // this.itemsRowsMontos[2] = value.montoHasta;
+          // this.cargaRowsMontos.push(this.itemsRowsMontos);
+          // this.itemsRowsMontos = {};
         });
-        this.rows = this.cargaRows;
+        this.rowsPlazos = this.cargaRowsPlazos;
+        this.rowsMontos = this.cargaRowsMontos;
         console.log('this.rows');
-        console.log(this.rows);
+        console.log(this.rowsPlazos);
         setTimeout(() => {
           this.loadingIndicator = false;
         }, 1500);
@@ -143,65 +140,99 @@ export class MatrizComponent implements OnInit {
     );
   }
 
-  onChange(value: string): void{
-
-    this.onSubmit(value);
-
+  onChangeMoneda(value: string): void {
+    this.onSubmitMoneda(value);
   }
 
-  onSubmit(value: string): void{
+  onSubmitMoneda(value: string): void {
     this.monedaEmitter.emit(value);
   }
 
   ngOnInit(): void {
   }
 
-  updateValue(event: any, cell: any, rowIndex: any): void {
+  updateValuePlazos(event: any, cell: any, rowIndex: any): void {
+    this.rowsPlazos.push();
     console.log('inline editing rowIndex', rowIndex);
-    this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell] = event.target.value;
-    this.rows = [...this.rows];
-    console.log('UPDATED!', this.rows[rowIndex][cell]);
+    this.editingPlazos[rowIndex + '-' + cell] = false;
+    this.rowsPlazos[rowIndex][cell].value = event.target.value;
+    this.rowsPlazos = [...this.rowsPlazos];
+    console.log('UPDATED!', this.rowsPlazos[rowIndex][cell]);
   }
 
-  updateValueValue(event: any, cell: any, rowIndex: any): void {
-    this.rows.push();
+  updateValueMontos(event: any, cell: any, rowIndex: any): void {
+    this.rowsMontos.push();
     console.log('inline editing rowIndex', rowIndex);
-    this.editing[rowIndex + '-' + cell] = false;
-    this.rows[rowIndex][cell].value = event.target.value;
-    this.rows = [...this.rows];
-    console.log('UPDATED!', this.rows[rowIndex][cell]);
+    this.editingMontos[rowIndex + '-' + cell] = false;
+    this.rowsMontos[rowIndex][cell].value = event.target.value;
+    this.rowsMontos = [...this.rowsMontos];
+    console.log('UPDATED!', this.rowsMontos[rowIndex][cell]);
   }
 
-  newRow(): void {
+  newRowPlazos(): void {
     const filaNueva = {
       1: 0,
       2: 0
     }; // inicializado
-    this.rows.push(filaNueva);
-    this.rows = [...this.rows];
+    this.rowsPlazos.push(filaNueva);
+    this.rowsPlazos = [...this.rowsPlazos];
     console.log('btn agregar');
-    console.log(this.rows);
+    console.log(this.rowsPlazos);
   }
 
-  onRemoveRow(index: number): void {
+  newRowMontos(): void {
+    const filaNueva = {
+      1: 0,
+      2: 0
+    }; // inicializado
+    this.rowsMontos.push(filaNueva);
+    this.rowsMontos = [...this.rowsMontos];
+    console.log('btn agregar');
+    console.log(this.rowsMontos);
+  }
+
+  onRemoveRowPlazos(): void {
     console.log('onRemoveRow');
-    this.selected.forEach(childObj => {
+    this.selectedPlazos.forEach(childObj => {
       // @ts-ignore
-      this.rows.splice(childObj[1].nroFila, 1);
-      this.rows = [...this.rows];
+      this.rowsPlazos.splice(childObj[1].nroFila, 1);
+      this.rowsPlazos = [...this.rowsPlazos];
     });
   }
 
-  onSelect({selected}: any): void {
-    console.log('Select Event', selected, this.selected);
-    this.selected.splice(0, this.selected.length);
-    // @ts-ignore
-    this.selected.push(...selected);
+  onRemoveRowMontos(): void {
+    console.log('onRemoveRow');
+    this.selectedMontos.forEach(childObj => {
+      // @ts-ignore
+      this.rowsMontos.splice(childObj[1].nroFila, 1);
+      this.rowsMontos = [...this.rowsMontos];
+    });
   }
 
-  displayCheck(row: any): boolean {
+  onSelectMontos({selected}: any): void {
+    console.log('Select Event', selected, this.selectedMontos);
+    this.selectedMontos.splice(0, this.selectedMontos.length);
+    // @ts-ignore
+    this.selectedMontos.push(...selected);
+  }
+
+  onSelectPlazos({selected}: any): void {
+    console.log('Select Event', selected, this.selectedPlazos);
+    this.selectedPlazos.splice(0, this.selectedPlazos.length);
+    // @ts-ignore
+    this.selectedPlazos.push(...selected);
+  }
+
+  displayCheckMontos(row: any): boolean {
     return row.name !== 'Ethel Price';
+  }
+
+  displayCheckPlazos(row: any): boolean {
+    return row.name !== 'Ethel Price';
+  }
+
+  refresh(): void {
+    this.getDataf29();
   }
 
 }

@@ -41,7 +41,8 @@ export class ComboMonedaService {
     this.monedaActualizada = value;
     this.moneda.next();
   }
-  getMonedaEvent():Observable<any>{
+
+  getMonedaEvent(): Observable<any> {
     return this.moneda.asObservable();
   }
 }

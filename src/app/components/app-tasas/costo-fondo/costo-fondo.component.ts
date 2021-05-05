@@ -47,7 +47,7 @@ export class CostoFondoComponent implements OnInit {
   columns: any;
   loadingIndicator = false;
 
-  resultadosrows =[ { 1: '' , 2: '' }];
+  resultadosrows = [ { 1: '' , 2: '' }];
   constructor(
     private formBuilder: FormBuilder,
     private comboMonedaService: ComboMonedaService,

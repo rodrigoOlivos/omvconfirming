@@ -6,9 +6,9 @@
         <label class="h6"> Moneda </label>
       </div>
       <div class="col-2">
-        <select   #mySelect  (change)='onChange(mySelect.value)'  class="form-control" id="ordersMoneda">
-          <option *ngFor="let order of orders; let i = index" [value]="ordersMoneda[i].idMoneda ">
-            {{ordersMoneda[i].moneda}}
+        <select #mySelect (change)='onChangeMoneda(mySelect.value)' class="form-control" id="ordersMoneda">
+          <option *ngFor="let order of selectMoneda; let i = index" [value]="selectMoneda[i].idMoneda ">
+            {{selectMoneda[i].moneda}}
           </option>
         </select>
       </div>
@@ -17,7 +17,7 @@
   </div>
 </div>
 <br>
-<div class="form-group row" >
+<div class="form-group row">
   <div class="col-4" style="width: 100%">
     <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
   </div>
@@ -28,51 +28,51 @@
 <div class="form-group row">
   <div class="col-6" style="width: 100%">
     <div class="row">
-      <div class="col-md-2  form-control border-less" style="" >
-        <label  class="h6  " > Tipo Matriz:  </label>
+      <div class="col-md-2  form-control border-less" style="">
+        <label class="h6"> Tipo Matriz: </label>
       </div>
       <div class="col-4">
         <select class="form-control" id="orders">
-          <option *ngFor="let order of orders; let i = index" [value]="orders[i].id ">
-            {{orders[i].name}}
+          <option *ngFor="let order of selectTipoMatriz; let i = index" [value]="selectTipoMatriz[i].id ">
+            {{selectTipoMatriz[i].name}}
           </option>
         </select>
       </div>
     </div>
   </div>
   <div class="col-6" style="width: 100%">
-    <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+    <button type="button" (click)="refresh()" class="btn right-panel-buttons btn-outline-light">
       Refrescar
     </button>
-    <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+    <button type="button" class="btn right-panel-buttons btn-outline-light">
       Guardar
     </button>
   </div>
   <br>
 </div>
 <div class=" row">
-  <div class="col-md-12" >
+  <div class="col-md-12">
     <hr>
   </div>
-  <div class=" col-md-6" >
-    <label  class="h6" >Rango de Plazos</label>
+  <div class=" col-md-6">
+    <label class="h6">Rango de Plazos</label>
 
-    <ngx-datatable #mydataRango
+    <ngx-datatable #mydataPlazos
                    class="material ngx-datatable datatable-body-row"
                    [headerHeight]="50"
                    [limit]="5"
                    [columnMode]="ColumnMode.force"
                    [footerHeight]="50"
                    rowHeight="auto"
-                   [rows]="rows"
+                   [rows]="rowsPlazos"
                    [columns]="columns"
                    [loadingIndicator]="loadingIndicator"
 
-                   [selected]="selected"
+                   [selected]="selectedPlazos"
                    [selectionType]="SelectionType.checkbox"
                    [selectAllRowsOnPage]="false"
-                   [displayCheck]="displayCheck"
-                   (select)="onSelect($event)"
+                   [displayCheck]="displayCheckPlazos"
+                   (select)="onSelectPlazos($event)"
     >
       <ngx-datatable-column
         [width]="30"
@@ -90,15 +90,15 @@
           </ng-container>
           <ng-template #editable>
             <span
-              (click)="editing[rowIndex + '-1'] = true"
-              *ngIf="!editing[rowIndex + '-1']"
+              (click)="editingPlazos[rowIndex + '-1'] = true"
+              *ngIf="!editingPlazos[rowIndex + '-1']"
             >
               {{ value.valor }}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, '1', rowIndex)"
-              *ngIf="editing[rowIndex + '-1']"
+              (blur)="updateValuePlazos($event, '1', rowIndex)"
+              *ngIf="editingPlazos[rowIndex + '-1']"
               type="text"
               [value]="value.valor"
             />
@@ -111,15 +111,15 @@
           </ng-container>
           <ng-template #editable>
             <span
-              (click)="editing[rowIndex + '-2'] = true"
-              *ngIf="!editing[rowIndex + '-2']"
+              (click)="editingPlazos[rowIndex + '-2'] = true"
+              *ngIf="!editingPlazos[rowIndex + '-2']"
             >
               {{ value.valor }}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, '2', rowIndex)"
-              *ngIf="editing[rowIndex + '-2']"
+              (blur)="updateValuePlazos($event, '2', rowIndex)"
+              *ngIf="editingPlazos[rowIndex + '-2']"
               type="text"
               [value]="value.valor"
             />
@@ -129,83 +129,105 @@
     </ngx-datatable>
     <br>
     <div class="form-group row">
-      <div class="form-actions right col-md-12" align="right" >
-        <button  type="button" class="btn right-panel-buttons btn-outline-light" (click)="newRow()">
+      <div class="form-actions right col-md-12" align="right">
+        <button type="button" class="btn right-panel-buttons btn-outline-light" (click)="newRowPlazos()">
           Nuevo
         </button>
-        <button type="submit" class="btn right-panel-buttons btn-outline-light" (click)="onRemoveRow(0)" style="margin-right: 15px; !important;">
+        <button type="submit" class="btn right-panel-buttons btn-outline-light" (click)="onRemoveRowPlazos()"
+                style="margin-right: 15px; !important;">
           Eliminar
         </button>
       </div>
     </div>
 
   </div>
-  <div class="col-md-6" >
-    <label  class="h6 " >Rango de Montos en $</label>
+  <div class="col-md-6">
+    <label class="h6 ">Rango de Montos en $</label>
 
-    <ngx-datatable #mydataMonto
+    <ngx-datatable #mydataMontos
                    class="material ngx-datatable datatable-body-row"
                    [headerHeight]="50"
                    [limit]="5"
                    [columnMode]="ColumnMode.force"
                    [footerHeight]="50"
                    rowHeight="auto"
-                   [rows]="rows"
+                   [rows]="rowsMontos"
                    [columns]="columns"
                    [loadingIndicator]="loadingIndicator"
+
+                   [selected]="selectedMontos"
+                   [selectionType]="SelectionType.checkbox"
+                   [selectAllRowsOnPage]="false"
+                   [displayCheck]="displayCheckMontos"
+                   (select)="onSelectMontos($event)"
     >
-      <ngx-datatable-column name="Desde(>)" prop="1" >
+      <ngx-datatable-column
+        [width]="30"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true"
+      >
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Desde(>)" prop="1">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span>
-              {{ value }}
+          <ng-container *ngIf="tasaEdit; then editable; else editable">
+          </ng-container>
+          <ng-template #editable>
+            <span
+              (click)="editingMontos[rowIndex + '-1'] = true"
+              *ngIf="!editingMontos[rowIndex + '-1']"
+            >
+              {{ value.valor }}
             </span>
+            <input
+              autofocus
+              (blur)="updateValueMontos($event, '1', rowIndex)"
+              *ngIf="editingMontos[rowIndex + '-1']"
+              type="text"
+              [value]="value.valor"
+            />
+          </ng-template>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Hasta(<=)" prop="2">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-          <ng-container *ngIf="tasaEdit; then editable; else blocked">
+          <ng-container *ngIf="tasaEdit; then editable; else editable">
           </ng-container>
           <ng-template #editable>
             <span
-              (click)="editing[rowIndex + '-2'] = true"
-              *ngIf="!editing[rowIndex + '-2']"
+              (click)="editingMontos[rowIndex + '-2'] = true"
+              *ngIf="!editingMontos[rowIndex + '-2']"
             >
-              {{ value }}
+              {{ value.valor }}
             </span>
             <input
               autofocus
-              (blur)="updateValue($event, '2', rowIndex)"
-              *ngIf="editing[rowIndex + '-2']"
+              (blur)="updateValueMontos($event, '2', rowIndex)"
+              *ngIf="editingMontos[rowIndex + '-2']"
               type="text"
-              [value]="value"
+              [value]="value.valor"
             />
           </ng-template>
-          <ng-template #blocked>
-            <span > {{ value }} </span>
-            <input
-              autofocus
-              (blur)="updateValue($event, '2', rowIndex)"
-              *ngIf="false"
-              type="text"
-              [value]="value"
-            />
-          </ng-template>
-
         </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
 
     <br>
-    <div class="form-group row"  >
-      <div class="form-actions right col-md-12" align="right" >
-        <button  type="button" class="btn right-panel-buttons btn-outline-light ">
+    <div class="form-group row">
+      <div class="form-actions right col-md-12" align="right">
+        <button type="button" class="btn right-panel-buttons btn-outline-light" (click)="newRowMontos()">
           Nuevo
         </button>
-        <button type="submit" class="btn right-panel-buttons btn-outline-light" style="margin-right: 15px; !important;">
+        <button type="submit" class="btn right-panel-buttons btn-outline-light" (click)="onRemoveRowMontos()"
+                style="margin-right: 15px; !important;">
           Eliminar
         </button>
       </div>
     </div>
+
   </div>
 
 </div>
