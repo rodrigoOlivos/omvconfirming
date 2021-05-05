@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 
@@ -14,7 +14,13 @@ export class NgxDataF33Service {
               private cookieService: CookieService) {
   }
 
-  getDataf33(idTipoMat: number, idTipoMoneda: number, idComprador: number, idProveedor: number, arrayCostoFondo: any[]): Observable<any> {
+  getDataf33(
+    idTipoMat: number,
+    idTipoMoneda: number,
+    idComprador: number,
+    idProveedor: number,
+    arrayCostoFondo: any[]
+  ): Observable<any> {
     console.log('consumo getDataf33');
     const cookieToken = this.cookieService.get('token_access');
     const bodyF33 = {
