@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { of } from 'rxjs';
-import {ComboTipoMatrizService} from '../../../services/combo-tipo-matriz.service';
+import {OfflineServicesService} from '../../../services/offline-services.service';
 
 
 @Component({
@@ -13,13 +13,13 @@ export class HtmlComboboxTipomatrizComponent  {
   form: FormGroup;
   orders =  [{ id: '0', name: 'seleccione...' }];
 
-  constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboTipoMatrizService ) {
+  constructor(private formBuilder: FormBuilder, private offlineServicesService: OfflineServicesService ) {
     this.form = this.formBuilder.group({
       orders: ['']
     });
 
     // async orders
-    of(comboMonedaService.getComboMatriz()).subscribe(orders => {
+    of(offlineServicesService.getComboTipoMatriz()).subscribe(orders => {
       this.orders = orders;
     });
   }
