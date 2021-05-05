@@ -4,7 +4,9 @@ import {Observable} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 
 const API_AGF = 'http://52.60.210.85:8080/omvagf';
-
+@Injectable({
+  providedIn: 'root'
+})
 export class AgfProviderService {
 
   constructor(private http: HttpClient,

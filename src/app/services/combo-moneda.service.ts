@@ -11,6 +11,9 @@ const API_TRAE_MONEDAS = 'http://52.60.210.85:8080/omvagf/api/trae-monedas/';
 })
 
 export class ComboMonedaService {
+
+   monedaActualizada = "";
+
   private moneda = new Subject<any>();
   constructor(private http: HttpClient,
               private cookieService: CookieService) {
@@ -34,7 +37,8 @@ export class ComboMonedaService {
     ];
   }
 
-  sendMoneda(){
+  sendMoneda(value :string){
+    this.monedaActualizada = value;
     this.moneda.next();
   }
   getMonedaEvent():Observable<any>{

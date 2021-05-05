@@ -171,8 +171,8 @@ export class TmcComponent implements OnInit {
   }
 
   onSubmit(value: string): void{
-    this.comboMonedaService.sendMoneda();
-    this.monedaEmitter.emit(value);
+
+
   }
 
 }

@@ -144,13 +144,12 @@ export class MatrizComponent implements OnInit {
   }
 
   onChange(value: string): void{
-    this.monedaSelect = value;
+
     this.onSubmit(value);
 
   }
 
   onSubmit(value: string): void{
-    this.comboMonedaService.sendMoneda();
     this.monedaEmitter.emit(value);
   }
 
