@@ -3,8 +3,6 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {of} from 'rxjs';
 import {ColumnMode, DatatableComponent, SelectionType} from '@swimlane/ngx-datatable';
-import {any} from 'codelyzer/util/function';
-import {TokenStorageService} from '../../../services/token-storage.service';
 import {OfflineServicesService} from '../../../services/offline-services.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
 
@@ -37,13 +35,10 @@ export class MatrizComponent implements OnInit {
         this.selectMoneda = data.arrayOfMoneda.rowMoneda;
       },
       err => {
-        console.log(err);
         // @ts-ignore
         $('#sesionInvalida').modal('show');
       }
     );
-
-    // this.getDataf29();
   }
 
   formF30: any = {
@@ -51,8 +46,6 @@ export class MatrizComponent implements OnInit {
   };
   arrayRangoPlazos: any[][] | undefined;
   arrayRangoMontos: any[][] | undefined;
-  // cantRangoMontos = 0;
-  // cantRangoPlazos = 0;
 
   formTipoMatriz: FormGroup;
   formMoneda: FormGroup;
@@ -189,12 +182,10 @@ export class MatrizComponent implements OnInit {
   }
 
   updateValueMontos(event: any, cell: any, rowIndex: any): void {
-    // this.rowsMontos.push();
-    // console.log('inline editing rowIndex', rowIndex);
     this.editingMontos[rowIndex + '-' + cell] = false;
     this.rowsMontos[rowIndex][cell].valor = event.target.value;
     this.rowsMontos = [...this.rowsMontos];
-    // console.log('UPDATED!', this.rowsMontos[rowIndex][cell]);
+
   }
 
   newRowPlazos(): void {
