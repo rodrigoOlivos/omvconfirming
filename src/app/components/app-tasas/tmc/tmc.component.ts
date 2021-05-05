@@ -1,25 +1,27 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {NgxDataF31Service} from '../../../services/ngx-data-f31.service';
-import {NgxDataF32Service} from '../../../services/ngx-data-f32.service';
-import {ColumnMode} from '@swimlane/ngx-datatable';
+import {ColumnMode, DatatableComponent} from '@swimlane/ngx-datatable';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
-import {of} from 'rxjs';
-import { NgxDatatableTasasComponent } from '../ngx-datatable-tasas/ngx-datatable-tasas.component';
+import {AgfProviderService} from '../../../services/agf-provider.service';
 
 @Component({
   selector: 'app-tmc',
   templateUrl: './tmc.component.html',
   styleUrls: ['./tmc.component.scss']
 })
-export class TmcComponent implements OnInit {
+export class TmcComponent
+{
 
   @Output()
   monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
   monedaSelect = '1';
   form: FormGroup;
   orders = [{idMoneda: '0', moneda: 'seleccione...'}];
-
+  formF33: any = {
+    idTipoMat: 11,
+    idComprador: 0,
+    idProveedor: 0
+  };
   @Output()
   editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>( false);
   editCell = false;
@@ -43,11 +45,12 @@ export class TmcComponent implements OnInit {
   ColumnMode = ColumnMode;
   columns: any;
   val = {};
+  arrayCostoFondo: any[][] | undefined;
 
-  constructor(private ngxDataF31Service: NgxDataF31Service,
-              private ngxDataF32Service: NgxDataF32Service,
-              private formBuilder: FormBuilder,
-              private comboMonedaService: ComboMonedaService
+  constructor(private formBuilder: FormBuilder,
+              private comboMonedaService: ComboMonedaService,
+              private AgfProvider: AgfProviderService,
+
   ) {
     this.form = this.formBuilder.group({
       orders: ['']
@@ -55,88 +58,14 @@ export class TmcComponent implements OnInit {
 
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
         this.orders = data.arrayOfMoneda.rowMoneda;
-
       },
       err => {
-        console.log(err);
         // @ts-ignore
         $('#sesionInvalida').modal('show');
       }
     );
-    this.loadingIndicator = true;
-    let tabla31tmc = ngxDataF31Service.getDataf31(this.idTipoTabla, this.idTipoMoneda).subscribe(data => {
-        this.columnaReferencia = data.arrayOfRow311.row311;
-        this.encabezadoTabla = data.arrayOfRow312.row312;
-      },
-      err => {
-        console.log(err);
-      }
-    );
-    let tabla32tmc = ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).subscribe(data => {
-        this.preCargaRows = data.arrayOfRow32.row32;
-        let columnaref = 0;
-        let columncount = 0;
-        let rowcount = 2;
-        let ciclo = 0;
-        this.preCargaRows.forEach((value) => {
+    this.onChangeTable();
 
-          if (columncount === 0) {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde
-              + ', <= ' + this.columnaReferencia[columnaref].montoHasta;
-            console.log(this.columnaReferencia);
-            columnaref++;
-          }
-          if (columncount === value.idRangoMonto) {
-            // @ts-ignore
-            this.val.idRangoMonto = value.idRangoMonto;
-            // @ts-ignore
-            this.val.idRangoPlazo = value.idRangoPlazo;
-            // @ts-ignore
-            this.val.tasa = value.tasa;
-            // @ts-ignore
-            this.itemsRows[rowcount] = this.val;
-            this.val = {};
-            rowcount++;
-            ciclo++;
-            if (ciclo === this.preCargaRows.length) {
-              this.cargaRows.push(this.itemsRows);
-            }
-          } else {
-            columncount = value.idRangoMonto;
-            rowcount = 2;
-            this.cargaRows.push(this.itemsRows);
-            this.itemsRows = {};
-            // @ts-ignore
-            this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde + ', <= '
-              + this.columnaReferencia[columnaref].montoHasta;
-            columnaref++;
-            // @ts-ignore
-            this.val.idRangoMonto = value.idRangoMonto;
-            // @ts-ignore
-            this.val.idRangoPlazo = value.idRangoPlazo;
-            // @ts-ignore
-            this.val.tasa = value.tasa;
-            // @ts-ignore
-            this.itemsRows[rowcount] = this.val;
-            this.val = {};
-            rowcount++;
-            ciclo++;
-          }
-        });
-      },
-      err => {
-        console.log(err);
-      }
-    );
-    Promise.all([tabla31tmc, tabla32tmc]).then(responses => {
-      this.rows = this.cargaRows;
-      setTimeout(() => {
-        this.loadingIndicator = false;
-      }, 500);
-    });
   }
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
@@ -144,34 +73,135 @@ export class TmcComponent implements OnInit {
     this.rows = [...this.rows];
   }
 
-  ngOnInit(): void {
-  }
-  onSave(): void{
-    this.onSubmitButton(false);
-    this.editCell = false;
-  }
-  onEdit(): void{
-    this.onSubmitButton(true);
-    this.editCell = true;
-  }
-  onCancel(): void{
-    this.onSubmitButton(false);
-    this.editCell = false;
-  }
-  onSubmitButton(estado: boolean): void{
-    this.editCellEmitter.emit(estado);
-  }
 
-
-
+  onEdit(): void {
+    this.tasaEdit = true;
+  }
+  onCancel(): void {
+    this.tasaEdit = false;
+  }
   onChange(value: string): void{
-    this.monedaSelect = value;
-    this.onSubmit(value);
+    this.idTipoMoneda = Number(value);
+    this.onChangeTable();
+  }
+  @ViewChild(DatatableComponent)
+  myCostoFondo!: DatatableComponent;
 
+  onSave(): void {
+    this.tasaEdit = false;
+
+    const {idTipoMat, idComprador, idProveedor} = this.formF33;
+    this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
+    console.log(this.arrayCostoFondo);
+    this.AgfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+        // @ts-ignore
+        // $('#sesionInvalida').modal('show');
+      }
+    );
   }
 
-  onSubmit(value: string): void{
+  parseMatrizF33(myCostoFondoArray: any[]): any[] {
+    const arr: any[] = [];
+    for (let i = 0; i < myCostoFondoArray.length; i++) {
+      for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
+        // @ts-ignore
+        const objetoF33: {
+          tasa: number;
+          idRangoMonto: any;
+          idRangoPlazo: any;
+        } = {};
+        objetoF33.tasa = Number(myCostoFondoArray[i][j].tasa);
+        objetoF33.idRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
+        objetoF33.idRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
+        arr.push(objetoF33);
+      }
+    }
+    console.log('resultado');
+    return arr;
+  }
 
+  onChangeTable() :void {
+    this.cargaRows = [];
+    this.columnaReferencia = [];
+    this.encabezadoTabla = [];
+    this.loadingIndicator = true;
+    this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
+        this.columnaReferencia = data.arrayOfRow311.row311;
+        this.encabezadoTabla = data.arrayOfRow312.row312;
+        this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
+            this.preCargaRows = data.arrayOfRow32.row32;
+            let columnaref = 0;
+            let columncount = 0;
+            let rowcount = 2;
+            let ciclo = 0;
+            this.preCargaRows.forEach((value) => {
+
+                if (columncount === 0) {
+                  columncount = value.idRangoMonto;
+                  rowcount = 2;
+                  // @ts-ignore
+                  this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde
+                    + ', <= ' + this.columnaReferencia[columnaref].montoHasta;
+                  console.log(this.columnaReferencia);
+                  columnaref++;
+                }
+                if (columncount === value.idRangoMonto) {
+                  // @ts-ignore
+                  this.val.idRangoMonto = value.idRangoMonto;
+                  // @ts-ignore
+                  this.val.idRangoPlazo = value.idRangoPlazo;
+                  // @ts-ignore
+                  this.val.tasa = value.tasa;
+                  // @ts-ignore
+                  this.itemsRows[rowcount] = this.val;
+                  this.val = {};
+                  rowcount++;
+                  ciclo++;
+                  if (ciclo === this.preCargaRows.length) {
+                    this.cargaRows.push(this.itemsRows);
+                  }
+                } else {
+                  columncount = value.idRangoMonto;
+                  rowcount = 2;
+                  this.cargaRows.push(this.itemsRows);
+                  this.itemsRows = {};
+                  // @ts-ignore
+                  this.itemsRows[1] = '>' + this.columnaReferencia[columnaref].montoDesde + ', <= '
+                    + this.columnaReferencia[columnaref].montoHasta;
+                  columnaref++;
+                  // @ts-ignore
+                  this.val.idRangoMonto = value.idRangoMonto;
+                  // @ts-ignore
+                  this.val.idRangoPlazo = value.idRangoPlazo;
+                  // @ts-ignore
+                  this.val.tasa = value.tasa;
+                  // @ts-ignore
+                  this.itemsRows[rowcount] = this.val;
+                  this.val = {};
+                  rowcount++;
+                  ciclo++;
+                }
+              }
+            );
+            this.rows = this.cargaRows;
+            setTimeout(() => {
+              this.loadingIndicator = false;
+            }, 500);
+          },
+          err => {
+            console.log(err);
+          }
+        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
 
   }
 

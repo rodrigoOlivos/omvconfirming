@@ -46,7 +46,7 @@ export class CostoFondoComponent implements OnInit {
   ColumnMode = ColumnMode;
   columns: any;
   loadingIndicator = false;
-  comboMonedaSubcripcion:Subscription;
+
   resultadosrows =[ { 1: '' , 2: '' }];
   constructor(
     private formBuilder: FormBuilder,
