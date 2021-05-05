@@ -10,7 +10,6 @@ export class OfflineServicesService {
 
   getComboTipoMatriz(): any {
     return [
-      {id: '0', name: 'Seleccione...'},
       {id: '12', name: 'Costo Fondo'},
       {id: '13', name: 'Comprador'},
       {id: '14', name: 'Proveedor'},
