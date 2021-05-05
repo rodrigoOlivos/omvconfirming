@@ -12,6 +12,25 @@ import {TokenStorageService} from '../../../services/token-storage.service';
 })
 export class TmcComponent {
 
+  constructor(private formBuilder: FormBuilder,
+              private comboMonedaService: ComboMonedaService,
+              private agfProvider: AgfProviderService
+  ) {
+    this.form = this.formBuilder.group({
+      orders: ['']
+    });
+
+    comboMonedaService.getComboMonedaHttp().subscribe(data => {
+        this.orders = data.arrayOfMoneda.rowMoneda;
+      },
+      err => {
+        // @ts-ignore
+        $('#sesionInvalida').modal('show');
+      }
+    );
+    this.onChangeTable();
+  }
+
   isLoggedIn = false;
   rutempresa: any;
   rutpersona: any;
@@ -55,34 +74,8 @@ export class TmcComponent {
   val = {};
   arrayCostoFondo: any[][] | undefined;
 
-  constructor(private formBuilder: FormBuilder,
-              private comboMonedaService: ComboMonedaService,
-              private agfProvider: AgfProviderService,
-              private tokenStorageService: TokenStorageService
-  ) {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser().body;
-      this.timestamp = user.timestamp;
-      this.nombreUsuario = user.usuario;
-    }
-
-    this.form = this.formBuilder.group({
-      orders: ['']
-    });
-
-    comboMonedaService.getComboMonedaHttp().subscribe(data => {
-        this.orders = data.arrayOfMoneda.rowMoneda;
-      },
-      err => {
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
-      }
-    );
-    this.onChangeTable();
-
-  }
+  @ViewChild(DatatableComponent)
+  myCostoFondo!: DatatableComponent;
 
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
@@ -103,9 +96,6 @@ export class TmcComponent {
     this.idTipoMoneda = Number(value);
     this.onChangeTable();
   }
-
-  @ViewChild(DatatableComponent)
-  myCostoFondo!: DatatableComponent;
 
   onSave(): void {
     this.tasaEdit = false;
@@ -155,6 +145,8 @@ export class TmcComponent {
         this.encabezadoTabla = data.arrayOfRow312.row312;
         this.agfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
+            this.timestamp = data.timestampUpdate;
+            this.nombreUsuario = data.userUpdate;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;

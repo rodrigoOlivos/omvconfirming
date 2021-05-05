@@ -13,6 +13,24 @@ import {TokenStorageService} from '../../../services/token-storage.service';
   styleUrls: ['./costo-fondo.component.scss']
 })
 export class CostoFondoComponent implements OnInit {
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private comboMonedaService: ComboMonedaService,
+    private AgfProvider: AgfProviderService,
+    private tokenStorageService: TokenStorageService
+  ) {
+    this.form = this.formBuilder.group({orders: ['']});
+    comboMonedaService.getComboMonedaHttp().subscribe(
+      data => {
+        this.monedaServicio = data.arrayOfMoneda.rowMoneda;
+      },
+      err => {
+        // $('#sesionInvalida').modal('show');
+      });
+    this.cargaTabla();
+  }
+
   curdate = new Date();
   isLoggedIn = false;
   timestamp: any;
@@ -56,38 +74,13 @@ export class CostoFondoComponent implements OnInit {
   loadingIndicator = false;
   resultadosrows = [];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private comboMonedaService: ComboMonedaService,
-    private AgfProvider: AgfProviderService,
-    private tokenStorageService: TokenStorageService
-  ) {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser().body;
-      this.timestamp = user.timestamp;
-      this.nombreUsuario = user.usuario;
-    }
-
-    this.form = this.formBuilder.group({orders: ['']});
-    comboMonedaService.getComboMonedaHttp().subscribe(
-      data => {
-        this.monedaServicio = data.arrayOfMoneda.rowMoneda;
-      },
-      err => {
-        // $('#sesionInvalida').modal('show');
-      });
-    this.cargaTabla();
-  }
+  @ViewChild(DatatableComponent)
+  myCostoFondo!: DatatableComponent;
 
   onChangeCombo(value: string): void {
     this.idTipoMoneda = Number(value);
     this.cargaTabla();
   }
-
-  @ViewChild(DatatableComponent)
-  myCostoFondo!: DatatableComponent;
 
   onSave(): void {
     this.tasaEdit = false;
@@ -158,6 +151,8 @@ export class CostoFondoComponent implements OnInit {
         });
         this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
+            this.timestamp = data.timestampUpdate;
+            this.nombreUsuario = data.userUpdate;
             const orden = this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
