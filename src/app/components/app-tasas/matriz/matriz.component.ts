@@ -33,9 +33,9 @@ export class MatrizComponent implements OnInit {
   itemsRowsPlazos = {};
 
   idTipoTabla = 12;
-  @Input()
+
   idTipoMoneda = 1;
-  @Input()
+
   tasaEdit = true;
   loadingIndicator = false;
   ColumnMode = ColumnMode;
@@ -60,11 +60,6 @@ export class MatrizComponent implements OnInit {
 
     this.formMoneda = this.formBuilder.group({
       ordersMoneda: ['']
-    });
-
-    // async orders
-    of(offlineServicesService.getComboTipoMatriz()).subscribe(orders => {
-      this.selectTipoMatriz = orders;
     });
 
     comboMonedaService.getComboMonedaHttp().subscribe(data => {
@@ -139,14 +134,19 @@ export class MatrizComponent implements OnInit {
       }
     );
   }
-
-  onChangeMoneda(value: string): void {
-    this.onSubmitMoneda(value);
-  }
-
+  
   onSubmitMoneda(value: string): void {
     this.monedaEmitter.emit(value);
   }
+  onChangeMoneda(value: string): void{
+    this.idTipoMoneda = Number(value);
+    this.getDataf29();
+  }
+  onChangeTabla(value: string): void{
+    this.idTipoTabla = Number(value);
+    this.getDataf29();
+  }
+
 
   ngOnInit(): void {
   }

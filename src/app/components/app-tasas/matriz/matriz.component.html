@@ -32,7 +32,7 @@
         <label class="h6"> Tipo Matriz: </label>
       </div>
       <div class="col-4">
-        <select class="form-control" id="orders">
+        <select class="form-control" (change)='onChangeTabla(mySelect.value)' id="orders">
           <option *ngFor="let order of selectTipoMatriz; let i = index" [value]="selectTipoMatriz[i].id ">
             {{selectTipoMatriz[i].name}}
           </option>
