@@ -1,4 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+// import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+// import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+// import { BsModalService } from 'ngx-bootstrap/modal';
+
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-layout-session-out',
