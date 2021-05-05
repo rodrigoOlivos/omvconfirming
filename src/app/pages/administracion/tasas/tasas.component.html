@@ -43,38 +43,7 @@
                 </ul>
                 <div class="tab-content px-1 pt-1">
                   <div role="tabpanel" class="tab-pane active in" id="active" aria-labelledby="active-tab">
-
-                    <div class=" row">
-                      <div class="col-12" style="width: 100%">
-                      <app-html-combobox-moneda (monedaEmitter) = "monedaActual = $event" ></app-html-combobox-moneda>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-group row" >
-                      <div class="col-4" style="width: 100%">
-                      <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
-                      </div>
-                      <div class="col-4" style="width: 100%">
-                      <app-html-label-usuario></app-html-label-usuario>
-                      </div>
-                    </div>
-                    <div class="form-group row ">
-                      <div class="col-12" style="width: 100%">
-                        <app-tabla-tasas [tasaEdit] ="edicionTabla" [idTipoMoneda]="monedaActual" (editCellEmitter) = "edicionTabla = $event"></app-tabla-tasas>
-<!--                        <br>-->
-<!--                        <app-html-botonera-tabla (editCellEmitter) = "edicionTabla = $event"> </app-html-botonera-tabla>-->
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-group row">
-                      <br>
-                      <label  class="h6 col-md-12" >Resultado Validacion TMC</label>
-                    </div>
-                    <div class="form-group row ">
-                      <div class="col-12" style="width: 100%">
-                        <app-ngx-datatable-resultado></app-ngx-datatable-resultado>
-                      </div>
-                    </div>
+                    <app-costo-fondo></app-costo-fondo>
                   </div>
                   <div class="tab-pane" id="tmc" role="tabpanel" aria-labelledby="tmc-tab" aria-expanded="false">
                     <div class=" row">

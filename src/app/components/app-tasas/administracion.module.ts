@@ -15,8 +15,7 @@ import { NgxDatatableRangomontosComponent } from './ngx-datatable-rangomontos/ng
 import { HtmlBotoneraTablasmatrizComponent } from './html-botonera-tablasmatriz/html-botonera-tablasmatriz.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {FormsModule} from '@angular/forms';
-
-
+import {CostoFondoComponent} from './costo-fondo/costo-fondo.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,8 @@ import {FormsModule} from '@angular/forms';
     HtmlBotoneraMatrizguardarComponent,
     NgxDatatableRangoplazosComponent,
     NgxDatatableRangomontosComponent,
-    HtmlBotoneraTablasmatrizComponent
+    HtmlBotoneraTablasmatrizComponent,
+    CostoFondoComponent
   ],
     imports: [
         CommonModule,
@@ -52,7 +52,8 @@ import {FormsModule} from '@angular/forms';
     HtmlBotoneraMatrizguardarComponent,
     NgxDatatableRangoplazosComponent,
     NgxDatatableRangomontosComponent,
-    HtmlBotoneraTablasmatrizComponent
+    HtmlBotoneraTablasmatrizComponent,
+    CostoFondoComponent
   ]
 })
 export class AdministracionModule { }
