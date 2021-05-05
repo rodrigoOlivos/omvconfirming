@@ -19,10 +19,18 @@
 <br>
 <div class="form-group row">
   <div class="col-4" style="width: 100%">
-    <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
+    <div class="col-md-12  border-less" style="">
+      <div class="row">
+        <label class="h6">Fecha última actualización:&nbsp;&nbsp;</label>
+        <label class="h6">{{timestamp | date: 'dd/MM/yyyy HH:mm:ss'}}</label>
+      </div>
+    </div>
   </div>
   <div class="col-4" style="width: 100%">
-    <app-html-label-usuario></app-html-label-usuario>
+    <div class="col-md-12 border-less" style="">
+      <label class="h6">Usuario:&nbsp;&nbsp;</label>
+      <label class="h6">{{nombreUsuario}}</label>
+    </div>
   </div>
 </div>
 <div class="form-group row">
@@ -32,7 +40,7 @@
         <label class="h6"> Tipo Matriz: </label>
       </div>
       <div class="col-4">
-        <select class="form-control" (change)='onChangeTabla(mySelect.value)' id="orders">
+        <select #mySelectMatriz class="form-control" (change)='onChangeTipoMatriz(mySelectMatriz.value)' id="orders">
           <option *ngFor="let order of selectTipoMatriz; let i = index" [value]="selectTipoMatriz[i].id ">
             {{selectTipoMatriz[i].name}}
           </option>
@@ -44,7 +52,7 @@
     <button type="button" (click)="refresh()" class="btn right-panel-buttons btn-outline-light">
       Refrescar
     </button>
-    <button type="button" class="btn right-panel-buttons btn-outline-light">
+    <button type="button" (click)="onSave()" class="btn right-panel-buttons btn-outline-light">
       Guardar
     </button>
   </div>
@@ -57,7 +65,7 @@
   <div class=" col-md-6">
     <label class="h6">Rango de Plazos</label>
 
-    <ngx-datatable #mydataPlazos
+    <ngx-datatable #myDataPlazos
                    class="material ngx-datatable datatable-body-row"
                    [headerHeight]="50"
                    [limit]="5"
@@ -144,7 +152,7 @@
   <div class="col-md-6">
     <label class="h6 ">Rango de Montos en $</label>
 
-    <ngx-datatable #mydataMontos
+    <ngx-datatable #myDataMontos
                    class="material ngx-datatable datatable-body-row"
                    [headerHeight]="50"
                    [limit]="5"

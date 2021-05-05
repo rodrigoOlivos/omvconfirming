@@ -9,11 +9,10 @@ import {AgfProviderService} from '../../../services/agf-provider.service';
   templateUrl: './tmc.component.html',
   styleUrls: ['./tmc.component.scss']
 })
-export class TmcComponent
-{
+export class TmcComponent {
 
   @Output()
-  monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
+  monedaEmitter: EventEmitter<string> = new EventEmitter<string>(false);
   monedaSelect = '1';
   form: FormGroup;
   orders = [{idMoneda: '0', moneda: 'seleccione...'}];
@@ -23,7 +22,7 @@ export class TmcComponent
     idProveedor: 0
   };
   @Output()
-  editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>( false);
+  editCellEmitter: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   editCell = false;
   @Input()
   databaseData: any;
@@ -49,8 +48,7 @@ export class TmcComponent
 
   constructor(private formBuilder: FormBuilder,
               private comboMonedaService: ComboMonedaService,
-              private AgfProvider: AgfProviderService,
-
+              private agfProvider: AgfProviderService,
   ) {
     this.form = this.formBuilder.group({
       orders: ['']
@@ -67,6 +65,7 @@ export class TmcComponent
     this.onChangeTable();
 
   }
+
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
     this.rows[rowIndex][cell].tasa = event.target.value;
@@ -77,13 +76,16 @@ export class TmcComponent
   onEdit(): void {
     this.tasaEdit = true;
   }
+
   onCancel(): void {
     this.tasaEdit = false;
   }
-  onChange(value: string): void{
+
+  onChange(value: string): void {
     this.idTipoMoneda = Number(value);
     this.onChangeTable();
   }
+
   @ViewChild(DatatableComponent)
   myCostoFondo!: DatatableComponent;
 
@@ -93,7 +95,7 @@ export class TmcComponent
     const {idTipoMat, idComprador, idProveedor} = this.formF33;
     this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
     console.log(this.arrayCostoFondo);
-    this.AgfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
+    this.agfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
       data => {
         console.log(data);
       },
@@ -107,33 +109,33 @@ export class TmcComponent
 
   parseMatrizF33(myCostoFondoArray: any[]): any[] {
     const arr: any[] = [];
-    for (let i = 0; i < myCostoFondoArray.length; i++) {
-      for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
+    myCostoFondoArray.forEach(item => {
+      for (let j = 2; j <= Object.keys(item).length; j++) {
         // @ts-ignore
         const objetoF33: {
           tasa: number;
           idRangoMonto: any;
           idRangoPlazo: any;
         } = {};
-        objetoF33.tasa = Number(myCostoFondoArray[i][j].tasa);
-        objetoF33.idRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
-        objetoF33.idRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
+        objetoF33.tasa = Number(item[j].tasa);
+        objetoF33.idRangoMonto = item[j].idRangoMonto;
+        objetoF33.idRangoPlazo = item[j].idRangoPlazo;
         arr.push(objetoF33);
       }
-    }
+    });
     console.log('resultado');
     return arr;
   }
 
-  onChangeTable() :void {
+  onChangeTable(): void {
     this.cargaRows = [];
     this.columnaReferencia = [];
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
-    this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
+    this.agfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
         this.encabezadoTabla = data.arrayOfRow312.row312;
-        this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
+        this.agfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
             let columnaref = 0;
             let columncount = 0;

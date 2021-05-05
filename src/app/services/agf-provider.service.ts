@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 
 const API_AGF = 'http://52.60.210.85:8080/omvagf';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,10 @@ export class AgfProviderService {
               private cookieService: CookieService) {
   }
 
-  getDataf29(idTipoTabla: number, idTipoMoneda: number): Observable<any> {
+  getDataf29(
+    idTipoTabla: number,
+    idTipoMoneda: number
+  ): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
     return this.http.get(API_AGF + '/api/f29/' + idTipoTabla + '/' + idTipoMoneda, {
       headers: {
@@ -21,8 +25,16 @@ export class AgfProviderService {
       }, observe: 'body'
     });
   }
-  getDataf30( idTipoMat: number, idRoll: number, cantRangoMontos: number, cantRangoPlazos: number, idTipoMoneda: number,
-    arrayRangoPlazos: any[], arrayRangoMontos: any[] ): Observable<any> {
+
+  getDataf30(
+    idTipoMat: number,
+    idRoll: number,
+    cantRangoMontos: number,
+    cantRangoPlazos: number,
+    idTipoMoneda: number,
+    arrayRangoPlazos: any[],
+    arrayRangoMontos: any[]
+  ): Observable<any> {
     const bodyF30 = {
       idTipoMatriz: idTipoMat,
       idRol: idRoll,
@@ -30,28 +42,41 @@ export class AgfProviderService {
       cantidadRangosPlazos: cantRangoPlazos,
       moneda: idTipoMoneda,
       arrayOfRow301: {
-        row301: arrayRangoPlazos
+        row301: arrayRangoMontos
       },
       arrayOfRow302: {
-        row302: arrayRangoMontos
+        row302: arrayRangoPlazos
       }
     };
+    console.log('bodyF30');
+    console.log(bodyF30);
+    console.log(JSON.stringify(bodyF30));
     const cookieToken = this.cookieService.get('token_access');
-    return this.http.post(API_AGF +'/api/f30/', bodyF30, {
+    return this.http.post(API_AGF + '/api/f30/', bodyF30, {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'
     });
   }
-  getDataf31(idTipoTabla: number, idTipoMoneda: number ): Observable<any> {
+
+  getDataf31(
+    idTipoTabla: number,
+    idTipoMoneda: number
+  ): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
-    return this.http.get(API_AGF+'/api/f31/' + idTipoTabla + '/' + idTipoMoneda, {
+    return this.http.get(API_AGF + '/api/f31/' + idTipoTabla + '/' + idTipoMoneda, {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'
     });
   }
-  getDataf32(idTipoTabla: number, idComprador: number, idProveedor: number, idTipoMoneda: number): Observable<any> {
+
+  getDataf32(
+    idTipoTabla: number,
+    idComprador: number,
+    idProveedor: number,
+    idTipoMoneda: number
+  ): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
     return this.http.get(API_AGF + '/api/f32/' + idTipoTabla + '/' + idComprador + '/' + idProveedor + '/' + idTipoMoneda, {
       headers: {
@@ -59,6 +84,7 @@ export class AgfProviderService {
       }, observe: 'body'
     });
   }
+
   getDataf33(
     idTipoMat: number,
     idTipoMoneda: number,
@@ -82,7 +108,5 @@ export class AgfProviderService {
       }, observe: 'body'
     });
   }
-
-
 
 }

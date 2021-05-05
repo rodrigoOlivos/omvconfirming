@@ -1,18 +1,18 @@
-
 import {Component, EventEmitter, Input, AfterViewInit, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {of, Subscription} from 'rxjs';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
-import { ColumnMode } from '@swimlane/ngx-datatable';
+import {ColumnMode} from '@swimlane/ngx-datatable';
+
 @Component({
   selector: 'app-costo-fondo',
   templateUrl: './costo-fondo.component.html',
   styleUrls: ['./costo-fondo.component.scss']
 })
 export class CostoFondoComponent implements OnInit {
- //combomoneda
+  // combomoneda
   monedaSelect = '1';
   form: FormGroup;
   monedaServicio = [{idMoneda: '0', moneda: 'seleccione...'}];
@@ -47,13 +47,13 @@ export class CostoFondoComponent implements OnInit {
   columns: any;
   loadingIndicator = false;
 
-  resultadosrows = [ { 1: '' , 2: '' }];
+  resultadosrows = [{1: '', 2: ''}];
+
   constructor(
     private formBuilder: FormBuilder,
     private comboMonedaService: ComboMonedaService,
     private AgfProvider: AgfProviderService,
-
-    ) {
+  ) {
     this.form = this.formBuilder.group({orders: ['']});
     comboMonedaService.getComboMonedaHttp().subscribe(
       data => {
@@ -63,11 +63,13 @@ export class CostoFondoComponent implements OnInit {
         // $('#sesionInvalida').modal('show');
       });
     this.cargaTabla();
-    }
-  onChangeCombo(value: string): void{
+  }
+
+  onChangeCombo(value: string): void {
     this.idTipoMoneda = Number(value);
     this.cargaTabla();
   }
+
   @ViewChild(DatatableComponent)
   myCostoFondo!: DatatableComponent;
 
@@ -91,34 +93,38 @@ export class CostoFondoComponent implements OnInit {
 
   parseMatrizF33(myCostoFondoArray: any[]): any[] {
     const arr: any[] = [];
-    for (let i = 0; i < myCostoFondoArray.length; i++) {
-      for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
+    myCostoFondoArray.forEach(item => {
+      for (let j = 2; j <= Object.keys(item).length; j++) {
         // @ts-ignore
         const objetoF33: {
           tasa: number;
           idRangoMonto: any;
           idRangoPlazo: any;
         } = {};
-        objetoF33.tasa = Number(myCostoFondoArray[i][j].tasa);
-        objetoF33.idRangoMonto = myCostoFondoArray[i][j].idRangoMonto;
-        objetoF33.idRangoPlazo = myCostoFondoArray[i][j].idRangoPlazo;
+        objetoF33.tasa = Number(item[j].tasa);
+        objetoF33.idRangoMonto = item[j].idRangoMonto;
+        objetoF33.idRangoPlazo = item[j].idRangoPlazo;
         arr.push(objetoF33);
       }
-    }
+    });
     console.log('resultado');
     return arr;
   }
+
   ngOnInit(): void {
   }
+
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
     // @ts-ignore
     this.rows[rowIndex][cell].tasa = event.target.value;
     this.rows = [...this.rows];
   }
+
   onEdit(): void {
     this.tasaEdit = true;
   }
+
   onCancel(): void {
     this.tasaEdit = false;
   }
@@ -128,15 +134,15 @@ export class CostoFondoComponent implements OnInit {
     this.columnaReferencia = [];
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
-    this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then( data => {
+    this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
-        this.encabezadoTabla   = data.arrayOfRow312.row312;
+        this.encabezadoTabla = data.arrayOfRow312.row312;
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-        this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(  data => {
+        this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
-            let orden =  this.ordenColums;
+            const orden = this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;
@@ -146,7 +152,7 @@ export class CostoFondoComponent implements OnInit {
                 columncount = value.idRangoMonto;
                 rowcount = 2;
                 // @ts-ignore
-                this.itemsRows[1] =  orden[value.idRangoMonto];
+                this.itemsRows[1] = orden[value.idRangoMonto];
                 columnaref++;
               }
               if (columncount === value.idRangoMonto) {
@@ -206,5 +212,4 @@ export class CostoFondoComponent implements OnInit {
     );
   }
 
-
-  }
+}

@@ -1,9 +1,9 @@
-<div class="modal fade text-left" id="sesionInvalida" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+<div class="modal fade text-left" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title text-ayuda-h4" id="myModalLabel1">Sesión Inválida</h4>
+        <h4 class="modal-title text-ayuda-h4" id="modalLabel">{{nombreLabelDefecto}}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -11,11 +11,13 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-12">
-            <h5 class="text-ayuda-h5">Su sesión ha sido invalidada, ingrese nuevamente.</h5>
+            <h5 class="text-ayuda-h5" id="modalTexto">{{nombreTextoDefecto}}</h5>
           </div>
         </div>
       </div>
-
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
     </div>
   </div>
 </div>
