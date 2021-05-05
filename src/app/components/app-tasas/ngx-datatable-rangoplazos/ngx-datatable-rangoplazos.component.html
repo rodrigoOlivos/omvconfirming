@@ -8,45 +8,74 @@
                [rows]="rows"
                [columns]="columns"
                [loadingIndicator]="loadingIndicator"
+
+               [selected]="selected"
+               [selectionType]="SelectionType.checkbox"
+               [selectAllRowsOnPage]="false"
+               [displayCheck]="displayCheck"
+               (select)="onSelect($event)"
 >
-  <ngx-datatable-column name="Desde(>)" prop="1" >
+  <ngx-datatable-column
+    [width]="30"
+    [sortable]="false"
+    [canAutoResize]="false"
+    [draggable]="false"
+    [resizeable]="false"
+    [headerCheckboxable]="true"
+    [checkboxable]="true"
+  >
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Desde(>)" prop="1">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span>
-              {{ value }}
+      <ng-container *ngIf="tasaEdit; then editable; else editable">
+      </ng-container>
+      <ng-template #editable>
+            <span
+              (click)="editing[rowIndex + '-1'] = true"
+              *ngIf="!editing[rowIndex + '-1']"
+            >
+              {{ value.valor }}
             </span>
+        <input
+          autofocus
+          (blur)="updateValue($event, '1', rowIndex)"
+          *ngIf="editing[rowIndex + '-1']"
+          type="text"
+          [value]="value.valor"
+        />
+      </ng-template>
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Hasta(<=)" prop="2">
     <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-      <ng-container *ngIf="tasaEdit; then editable; else blocked">
+      <ng-container *ngIf="tasaEdit; then editable; else editable">
       </ng-container>
       <ng-template #editable>
             <span
               (click)="editing[rowIndex + '-2'] = true"
               *ngIf="!editing[rowIndex + '-2']"
             >
-              {{ value }}
+              {{ value.valor }}
             </span>
         <input
           autofocus
           (blur)="updateValue($event, '2', rowIndex)"
           *ngIf="editing[rowIndex + '-2']"
           type="text"
-          [value]="value"
+          [value]="value.valor"
         />
       </ng-template>
-      <ng-template #blocked>
-        <span > {{ value }} </span>
-        <input
-          autofocus
-          (blur)="updateValue($event, '2', rowIndex)"
-          *ngIf="false"
-          type="text"
-          [value]="value"
-        />
-      </ng-template>
-
     </ng-template>
   </ngx-datatable-column>
 </ngx-datatable>
-
+<br>
+<div class="form-group row">
+  <div class="form-actions right col-md-12" align="right" >
+    <button  type="button" class="btn right-panel-buttons btn-outline-light" (click)="newRow()">
+      Nuevo
+    </button>
+    <button type="submit" class="btn right-panel-buttons btn-outline-light" (click)="onRemoveRow(0)" style="margin-right: 15px; !important;">
+      Eliminar
+    </button>
+  </div>
+</div>

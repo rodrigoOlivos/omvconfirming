@@ -38,7 +38,5 @@ export class NgxDatatableResultadoComponent {
   onCancel(): void{
     this.editCell = false;
   }
+
 }
-
-
-
