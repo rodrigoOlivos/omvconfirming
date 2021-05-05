@@ -3,10 +3,10 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-ngx-tabla-alta-proveedores',
-  templateUrl: './ngx-tabla-alta-proveedores.component.html',
-  styleUrls: ['./ngx-tabla-alta-proveedores.component.scss']
+  templateUrl: './alta-proveedores.component.html',
+  styleUrls: ['./alta-proveedores.component.scss']
 })
-export class NgxTablaAltaProveedoresComponent {
+export class AltaProveedoresComponent {
   editing: any = {};
   rows: any[] = [];
   rowsInedit: any[] = [];

@@ -14,7 +14,7 @@ export class OfflineServicesService {
       {id: '12', name: 'Costo Fondo'},
       {id: '13', name: 'Comprador'},
       {id: '14', name: 'Proveedor'},
-      {id: '11', name: 'Tmc'},
+      {id: '11', name: 'TMC'},
       {id: '16', name: 'Comisiones'},
       {id: '17', name: 'Gastos'}
     ];

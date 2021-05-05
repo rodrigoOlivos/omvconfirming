@@ -14,7 +14,6 @@ import {HtmlNominasNominasComponent} from './html-nominas-nominas/html-nominas-n
 import {NgxDatatableNominasComponent} from './ngx-datatable-nominas/ngx-datatable-nominas.component';
 import {NgxDatatableCargasComponent} from './ngx-datatable-cargas/ngx-datatable-cargas.component';
 import {HtmlLabelFechaUltActComponent} from './html-label-fecha-ult-act/html-label-fecha-ult-act.component';
-import {HtmlLabelUsuarioComponent} from './html-label-usuario/html-label-usuario.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import {HtmlLabelUsuarioComponent} from './html-label-usuario/html-label-usuario
     NgxDatatableNominasComponent,
     NgxDatatableCargasComponent,
     HtmlLabelFechaUltActComponent,
-    HtmlLabelUsuarioComponent,
   ],
   imports: [
     CommonModule,

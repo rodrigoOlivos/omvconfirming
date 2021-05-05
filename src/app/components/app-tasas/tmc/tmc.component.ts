@@ -3,6 +3,7 @@ import {ColumnMode, DatatableComponent} from '@swimlane/ngx-datatable';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
+import {TokenStorageService} from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-tmc',
@@ -10,6 +11,14 @@ import {AgfProviderService} from '../../../services/agf-provider.service';
   styleUrls: ['./tmc.component.scss']
 })
 export class TmcComponent {
+
+  isLoggedIn = false;
+  rutempresa: any;
+  rutpersona: any;
+  nombreUsuario: any;
+
+  curdate = new Date();
+  timestamp: any;
 
   @Output()
   monedaEmitter: EventEmitter<string> = new EventEmitter<string>(false);
@@ -49,7 +58,16 @@ export class TmcComponent {
   constructor(private formBuilder: FormBuilder,
               private comboMonedaService: ComboMonedaService,
               private agfProvider: AgfProviderService,
+              private tokenStorageService: TokenStorageService
   ) {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser().body;
+      this.timestamp = user.timestamp;
+      this.nombreUsuario = user.usuario;
+    }
+
     this.form = this.formBuilder.group({
       orders: ['']
     });

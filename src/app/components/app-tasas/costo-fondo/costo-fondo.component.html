@@ -5,8 +5,8 @@
         <label class="h6"> Moneda </label>
       </div>
       <div class="col-2">
-        <select   #mySelect  (change)='onChangeCombo(mySelect.value)'  class="form-control" id="orders">
-          <option *ngFor="let moneda of monedaServicio; let i = index" [value]="monedaServicio[i].idMoneda ">
+        <select #mySelect (change)='onChangeCombo(mySelect.value)' class="form-control" id="orders">
+          <option *ngFor="let moneda of monedaServicio; let i = index" [value]="monedaServicio[i].idMoneda">
             {{monedaServicio[i].moneda}}
           </option>
         </select>
@@ -15,15 +15,23 @@
   </div>
 </div>
 <br>
-<div class="form-group row" >
+<div class="form-group row">
   <div class="col-4" style="width: 100%">
-    <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
+    <div class="col-md-12  border-less" style="">
+      <div class="row">
+        <label class="h6">Fecha última actualización:&nbsp;&nbsp;</label>
+        <label class="h6">{{timestamp | date: 'dd/MM/yyyy HH:mm:ss'}}</label>
+      </div>
+    </div>
   </div>
   <div class="col-4" style="width: 100%">
-    <app-html-label-usuario></app-html-label-usuario>
+    <div class="col-md-12 border-less" style="">
+      <label class="h6">Usuario:&nbsp;&nbsp;</label>
+      <label class="h6">{{nombreUsuario}}</label>
+    </div>
   </div>
 </div>
-<div class="form-group row ">
+<div class="form-group row">
   <div class="col-12" style="width: 100%">
     <ngx-datatable #myCostoFondo
                    class="material ngx-datatable datatable-body-row"
@@ -38,14 +46,15 @@
                    id="test01"
 
     >
-      <ngx-datatable-column [sortable]="false" name="$\Días" prop="1" >
+      <ngx-datatable-column [sortable]="false" name="$\Días" prop="1">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span>
-              {{ value }}
-            </span>
+          <span>
+            {{ value }}
+          </span>
         </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column [sortable]="false"  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
+      <ngx-datatable-column [sortable]="false" *ngFor="let columnnas of encabezadoTabla; let i = index"
+                            name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
           <ng-container *ngIf="tasaEdit; then editable; else blocked">
           </ng-container>
@@ -65,7 +74,7 @@
             />
           </ng-template>
           <ng-template #blocked>
-            <span > {{ value.tasa }} </span>
+            <span> {{ value.tasa }} </span>
             <input
               autofocus
               (blur)="updateValue($event, (i+2), rowIndex)"
@@ -79,7 +88,7 @@
     </ngx-datatable>
 
     <br>
-    <div class="form-group row"  >
+    <div class="form-group row">
       <div class="form-actions col-md-6">
         <button type="button" class="btn left-panel-buttons btn-outline-light">
           Generar Oferta
@@ -89,13 +98,16 @@
         </button>
       </div>
       <div class="form-actions right col-md-6" align="right">
-        <button [disabled]="tasaEdit ? 'disabled': null" (click)="onEdit()" type="button" class="btn right-panel-buttons btn-outline-light">
+        <button [disabled]="tasaEdit ? 'disabled': null" (click)="onEdit()" type="button"
+                class="btn right-panel-buttons btn-outline-light">
           Editar
         </button>
-        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onSave()" type="button" class="btn right-panel-buttons btn-success">
+        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onSave()" type="button"
+                class="btn right-panel-buttons btn-success">
           Guardar
         </button>
-        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onCancel()" type="button" class="btn right-panel-buttons btn-outline-light">
+        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onCancel()" type="button"
+                class="btn right-panel-buttons btn-outline-light">
           Cancelar
         </button>
       </div>
@@ -105,9 +117,9 @@
 <br>
 <div class="form-group row">
   <br>
-  <label  class="h6 col-md-12" >Resultado Validacion TMC</label>
+  <label class="h6 col-md-12">Resultado Validacion TMC</label>
 </div>
-<div class="form-group row ">
+<div class="form-group row">
   <div class="col-12" style="width: 100%">
     <ngx-datatable #Resultados
                    class="material ngx-datatable datatable-body-row"
@@ -120,22 +132,22 @@
                    [columns]="columns"
                    [loadingIndicator]="loadingIndicator"
     >
-      <ngx-datatable-column name="Convenio" prop="1" >
+      <ngx-datatable-column name="Convenio" prop="1">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span>
-              {{ value }}
-            </span>
+          <span>
+            {{ value }}
+          </span>
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Detalle" prop="2">
         <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-            <span
-              title="Double click to edit"
-              (dblclick)="editing[rowIndex + '-2'] = true"
-              *ngIf="!editing[rowIndex + '-2']"
-            >
-              {{ value }}
-            </span>
+          <span
+            title="Double click to edit"
+            (dblclick)="editing[rowIndex + '-2'] = true"
+            *ngIf="!editing[rowIndex + '-2']"
+          >
+            {{ value }}
+          </span>
           <input
             autofocus
             (blur)="updateValue($event, '2', rowIndex)"

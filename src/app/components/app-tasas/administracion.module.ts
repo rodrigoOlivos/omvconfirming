@@ -1,38 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgxDatatableTasasComponent } from './ngx-datatable-tasas/ngx-datatable-tasas.component';
-import { HtmlComboboxMonedaComponent } from './html-combobox-moneda/html-combobox-moneda.component';
-import { HtmlLabelFechaactualizacionComponent } from './html-label-fechaactualizacion/html-label-fechaactualizacion.component';
-import { HtmlLabelUsuarioComponent } from './html-label-usuario/html-label-usuario.component';
-import { NgxDatatableResultadoComponent } from './ngx-datatable-resultado/ngx-datatable-resultado.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgxDatatableTasasComponent} from './ngx-datatable-tasas/ngx-datatable-tasas.component';
+import {NgxDatatableResultadoComponent} from './ngx-datatable-resultado/ngx-datatable-resultado.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {FormsModule} from '@angular/forms';
 import {CostoFondoComponent} from './costo-fondo/costo-fondo.component';
-import { TmcComponent } from './tmc/tmc.component';
+import {TmcComponent} from './tmc/tmc.component';
 
 @NgModule({
   declarations: [
     NgxDatatableTasasComponent,
-    HtmlComboboxMonedaComponent,
-    HtmlLabelFechaactualizacionComponent,
-    HtmlLabelUsuarioComponent,
     NgxDatatableResultadoComponent,
     CostoFondoComponent,
     TmcComponent
   ],
-    imports: [
-        CommonModule,
-        NgxDatatableModule,
-        FormsModule,
-    ],
+  imports: [
+    CommonModule,
+    NgxDatatableModule,
+    FormsModule,
+  ],
   exports: [
     NgxDatatableTasasComponent,
-    HtmlComboboxMonedaComponent,
-    HtmlLabelFechaactualizacionComponent,
-    HtmlLabelUsuarioComponent,
     NgxDatatableResultadoComponent,
     CostoFondoComponent,
     TmcComponent
   ]
 })
-export class AdministracionModule { }
+
+export class AdministracionModule {
+}

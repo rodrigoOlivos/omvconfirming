@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HtmlLabelUsuarioComponent } from './html-label-usuario.component';
+import { AltaProveedoresComponent } from './alta-proveedores.component';
 
-describe('HtmlLabelUsuarioComponent', () => {
-  let component: HtmlLabelUsuarioComponent;
-  let fixture: ComponentFixture<HtmlLabelUsuarioComponent>;
+describe('NgxTablaAltaProveedoresComponent', () => {
+  let component: AltaProveedoresComponent;
+  let fixture: ComponentFixture<AltaProveedoresComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HtmlLabelUsuarioComponent ]
+      declarations: [ AltaProveedoresComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HtmlLabelUsuarioComponent);
+    fixture = TestBed.createComponent(AltaProveedoresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

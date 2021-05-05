@@ -5,6 +5,7 @@ import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
 import {ColumnMode} from '@swimlane/ngx-datatable';
+import {TokenStorageService} from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-costo-fondo',
@@ -12,6 +13,13 @@ import {ColumnMode} from '@swimlane/ngx-datatable';
   styleUrls: ['./costo-fondo.component.scss']
 })
 export class CostoFondoComponent implements OnInit {
+  curdate = new Date();
+  isLoggedIn = false;
+  timestamp: any;
+  rutempresa: any;
+  rutpersona: any;
+  nombreUsuario: any;
+
   // combomoneda
   monedaSelect = '1';
   form: FormGroup;
@@ -53,7 +61,16 @@ export class CostoFondoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private comboMonedaService: ComboMonedaService,
     private AgfProvider: AgfProviderService,
+    private tokenStorageService: TokenStorageService
   ) {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser().body;
+      this.timestamp = user.timestamp;
+      this.nombreUsuario = user.usuario;
+    }
+
     this.form = this.formBuilder.group({orders: ['']});
     comboMonedaService.getComboMonedaHttp().subscribe(
       data => {

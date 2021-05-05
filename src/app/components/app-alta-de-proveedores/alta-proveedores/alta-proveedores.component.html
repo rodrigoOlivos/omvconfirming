@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-content collapse show">
+
+        <div class="tab-content px-1 pt-1">
+          <div class="tab-pane active in" id="active" aria-labelledby="active-tab">
+
+            <div class="form-group row">
+              <div class="col-4">
+                <div class="row" style="">
+                  <div class="col-4  form-control border-less" style="">
+                    <label class="h6">RUT Proveedor</label>
+                  </div>
+                  <div class="col-7">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="col-1">
+                <button type="button" class="btn right-panel-buttons btn-outline-light">
+                  Buscar
+                </button>
+              </div>
+              <div class="col-1">
+                <button type="button" class="btn right-panel-buttons btn-outline-light">
+                  Guardar
+                </button>
+              </div>
+              <div class="col-1">
+                <button type="button" class="btn right-panel-buttons btn-outline-light">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-4">
+                <div class="row" style="">
+                  <div class="col-4  form-control border-less" style="">
+                    <label for="default-select" class="h6">Razón Social</label>
+                  </div>
+                  <div class="col-7">
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-12">
+                <div class="col-md-4  border-less" style="">
+                  <label class="h6">Fecha última Actualización:&nbsp;&nbsp;</label>
+                  <label class="h6">20/20/1990</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-12">
+                <ngx-datatable #mydatatable
+                               class="material ngx-datatable datatable-body-row"
+                               [headerHeight]="50"
+                               [limit]="5"
+                               [columnMode]="ColumnMode.force"
+                               [footerHeight]="50"
+                               rowHeight="auto"
+                               [rows]="rows"
+                               [columns]="columns"
+                >
+                  <ngx-datatable-column name="Rut" prop="1">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                    <span>
+                      {{ value }}
+                    </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Razón Social" prop="2">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                      <span>
+                        {{ value }}
+                      </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Cantidad Activos" prop="3">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                      <span>
+                        {{ value }}
+                      </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Activo" prop="4">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                      <span>
+                        {{ value }}
+                      </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Usuario" prop="5">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                      <span>
+                        {{ value }}
+                      </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Fecha" prop="6">
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                      <ng-template #editable>
+                        <span>
+                          {{ value }}
+                        </span>
+                      </ng-template>
+                    </ng-template>
+                  </ngx-datatable-column>
+                </ngx-datatable>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="form-actions right col-md-12" align="right">
+                <button type="submit" class="btn  btn-success">
+                  Guardar Cambios
+                </button>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
