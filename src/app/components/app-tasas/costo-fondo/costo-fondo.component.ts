@@ -144,8 +144,8 @@ export class CostoFondoComponent implements OnInit {
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
     this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
-        this.columnaReferencia = data.arrayOfRow311.row311;
-        this.encabezadoTabla = data.arrayOfRow312.row312;
+        this.columnaReferencia  = data.arrayOfRow311.row311;
+        this.encabezadoTabla  = data.arrayOfRow312.row312;
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
@@ -153,11 +153,15 @@ export class CostoFondoComponent implements OnInit {
             this.preCargaRows = data.arrayOfRow32.row32;
             this.timestamp = data.timestampUpdate;
             this.nombreUsuario = data.userUpdate;
+            console.log('datos servicio carga');
+            console.log(this.preCargaRows );
             const orden = this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;
             let ciclo = 0;
+
+            if(this.preCargaRows.length>0){
             this.preCargaRows.forEach((value) => {
               if (columncount === 0) {
                 columncount = value.idRangoMonto;
@@ -207,7 +211,37 @@ export class CostoFondoComponent implements OnInit {
                 this.loadingIndicator = false;
               }, 500);
 
-            });
+            });}else{
+              console.log("datos erroneos en blanco")
+              console.log(this.encabezadoTabla)
+              console.log(this.columnaReferencia)
+              console.log(this.ordenColums)
+              this.itemsRows = {};
+              this.columnaReferencia.forEach((row) => {
+                rowcount = 2;
+                // @ts-ignore
+                this.itemsRows[1] = orden[row.idRangoMonto];
+                 this.encabezadoTabla.forEach((col) => {
+                   this.val = {};
+                   // @ts-ignore
+                   this.val.idRangoMonto = row.idRangoMonto;
+                   // @ts-ignore
+                   this.val.idRangoPlazo = col.idRangoPlazo;
+                   // @ts-ignore
+                   this.val.tasa = 0;
+                   // @ts-ignore
+                   this.itemsRows[rowcount] = this.val;
+                   rowcount++;
+                });
+                this.cargaRows.push(this.itemsRows);
+                this.itemsRows = {};
+              });
+              this.rows = this.cargaRows;
+              this.rows = [...this.rows];
+              setTimeout(() => {
+                this.loadingIndicator = false;
+              }, 500);
+            }
           },
           err => {
             console.log(err);
