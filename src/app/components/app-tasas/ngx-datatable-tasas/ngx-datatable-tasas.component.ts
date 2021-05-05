@@ -16,7 +16,6 @@ import {forkJoin, Subscription, zip} from 'rxjs';
 export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   formF33: any = {
     idTipoMat: 12,
-    idTipoMoneda: 1,
     idComprador: 0,
     idProveedor: 0
   };
@@ -38,8 +37,9 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
   cargaRows: any[] = [];
   ordenColums: any[] = [];
   itemsRows = {};
+
   @Input()
-  idTipoMoneda = '1';
+  idTipoMoneda = 1;
   @Input()
   tasaEdit = false;
   ColumnMode = ColumnMode;
@@ -53,9 +53,10 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
               private comboMoneda: ComboMonedaService
   ) {
     this.comboMonedaSubcripcion= this.comboMoneda.getMonedaEvent().subscribe(()=>{
-      this.cargaTabla()
+      let combo = Number(this.idTipoMoneda);
+      this.cargaTabla(combo)
     })
-    this.cargaTabla()
+    this.cargaTabla(this.idTipoMoneda);
   }
 
   @ViewChild(DatatableComponent)
@@ -65,7 +66,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     this.onSubmitButton(false);
     this.editCell = false;
 
-    const {idTipoMat, idTipoMoneda, idComprador, idProveedor} = this.formF33;
+    const {idTipoMat, idComprador, idProveedor} = this.formF33;
     this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
     console.log(this.arrayCostoFondo);
     this.ngxDataF33Service.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
@@ -82,9 +83,7 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
 
   parseMatrizF33(myCostoFondoArray: any[]): any[] {
     const arr: any[] = [];
-    // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < myCostoFondoArray.length; i++) {
-      // tslint:disable-next-line:only-arrow-functions
       for (let j = 2; j <= Object.keys(myCostoFondoArray[i]).length; j++) {
         // @ts-ignore
         const objetoF33: {
@@ -101,47 +100,40 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
     console.log('resultado');
     return arr;
   }
-
   ngOnInit(): void {
   }
-
   ngAfterViewInit(): void {
   }
-
   updateValue(event: any, cell: any, rowIndex: any): void {
     this.editing[rowIndex + '-' + cell] = false;
     // @ts-ignore
     this.rows[rowIndex][cell].tasa = event.target.value;
     this.rows = [...this.rows];
   }
-
   onEdit(): void {
     this.onSubmitButton(true);
     this.editCell = true;
   }
-
   onCancel(): void {
     this.onSubmitButton(false);
     this.editCell = false;
   }
-
   onSubmitButton(estado: boolean): void {
     this.editCellEmitter.emit(estado);
   }
-
-  cargaTabla(): void {
+  cargaTabla(tipoMoneda : number): void {
     this.cargaRows = [];
-    this.columnaReferencia =[];
+    this.columnaReferencia = [];
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
-         this.ngxDataF31Service.getDataf31(this.idTipoTabla, Number(this.idTipoMoneda)).toPromise().then(datachange => {
-        this.columnaReferencia = datachange.arrayOfRow311.row311;
-        this.encabezadoTabla = datachange.arrayOfRow312.row312;
-        this.columnaReferencia.forEach((value) => {
-          this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
+    this.ngxDataF31Service.getDataf31(this.idTipoTabla, tipoMoneda).toPromise().then( data => {
+      this.columnaReferencia = data.arrayOfRow311.row311;
+      this.encabezadoTabla   = data.arrayOfRow312.row312;
+      this.columnaReferencia.forEach((value) => {
+      this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-        this.ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, Number(this.idTipoMoneda)).toPromise().then(  data => {
-            this.preCargaRows = data.arrayOfRow32.row32;
+        this.ngxDataF32Service.getDataf32(this.idTipoTabla, 0, 0, tipoMoneda).toPromise().then(  data => {
+          this.preCargaRows = data.arrayOfRow32.row32;
             let orden =  this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
@@ -210,7 +202,5 @@ export class NgxDatatableTasasComponent implements OnInit, AfterViewInit {
         $('#sesionInvalida').modal('show');
       }
     );
-
   }
-
 }

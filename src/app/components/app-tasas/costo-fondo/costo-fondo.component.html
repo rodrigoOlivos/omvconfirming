@@ -1,6 +1,17 @@
 <div class=" row">
   <div class="col-12" style="width: 100%">
-    <app-html-combobox-moneda (monedaEmitter) = "monedaActual = $event" ></app-html-combobox-moneda>
+    <div class="row">
+      <div class="col-md-1  form-control border-less" style="">
+        <label class="h6"> Moneda </label>
+      </div>
+      <div class="col-2">
+        <select   #mySelect  (change)='onChangeCombo(mySelect.value)'  class="form-control" id="orders">
+          <option *ngFor="let moneda of monedaServicio; let i = index" [value]="monedaServicio[i].idMoneda ">
+            {{monedaServicio[i].moneda}}
+          </option>
+        </select>
+      </div>
+    </div>
   </div>
 </div>
 <br>
@@ -14,9 +25,81 @@
 </div>
 <div class="form-group row ">
   <div class="col-12" style="width: 100%">
-    <app-tabla-tasas [tasaEdit] ="edicionTabla" [idTipoMoneda]="monedaActual" (editCellEmitter) = "edicionTabla = $event"></app-tabla-tasas>
-    <!--                        <br>-->
-    <!--                        <app-html-botonera-tabla (editCellEmitter) = "edicionTabla = $event"> </app-html-botonera-tabla>-->
+    <ngx-datatable #myCostoFondo
+                   class="material ngx-datatable datatable-body-row"
+                   [headerHeight]="50"
+                   [limit]="5"
+                   [columnMode]="ColumnMode.force"
+                   [footerHeight]="50"
+                   rowHeight="auto"
+                   [rows]="rows"
+                   [loadingIndicator]="loadingIndicator"
+                   [columns]="columns"
+                   id="test01"
+
+    >
+      <ngx-datatable-column [sortable]="false" name="$\Días" prop="1" >
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [sortable]="false"  *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}" prop="{{i+2}}">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <ng-container *ngIf="tasaEdit; then editable; else blocked">
+          </ng-container>
+          <ng-template #editable>
+            <span
+              (click)="editing[rowIndex + '-' + (i+2) ] = true"
+              *ngIf="!editing[rowIndex + '-' + (i+2) ]"
+            >
+              {{ value.tasa }}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, (i+2), rowIndex)"
+              *ngIf="editing[rowIndex + '-'+ (i+2) ]"
+              type="text"
+              [value]="value.tasa"
+            />
+          </ng-template>
+          <ng-template #blocked>
+            <span > {{ value.tasa }} </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, (i+2), rowIndex)"
+              *ngIf="false"
+              type="text"
+              [value]="value.tasa"
+            />
+          </ng-template>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+
+    <br>
+    <div class="form-group row"  >
+      <div class="form-actions col-md-6">
+        <button type="button" class="btn left-panel-buttons btn-outline-light">
+          Generar Oferta
+        </button>
+        <button type="submit" class="btn left-panel-buttons btn-outline-light">
+          Validar TMC
+        </button>
+      </div>
+      <div class="form-actions right col-md-6" align="right">
+        <button [disabled]="tasaEdit ? 'disabled': null" (click)="onEdit()" type="button" class="btn right-panel-buttons btn-outline-light">
+          Editar
+        </button>
+        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onSave()" type="button" class="btn right-panel-buttons btn-success">
+          Guardar
+        </button>
+        <button [disabled]="!tasaEdit ? 'disabled': null" (click)="onCancel()" type="button" class="btn right-panel-buttons btn-outline-light">
+          Cancelar
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 <br>
@@ -26,6 +109,44 @@
 </div>
 <div class="form-group row ">
   <div class="col-12" style="width: 100%">
-    <app-ngx-datatable-resultado></app-ngx-datatable-resultado>
+    <ngx-datatable #Resultados
+                   class="material ngx-datatable datatable-body-row"
+                   [headerHeight]="50"
+                   [limit]="5"
+                   [columnMode]="ColumnMode.force"
+                   [footerHeight]="50"
+                   rowHeight="auto"
+                   [rows]="resultadosrows"
+                   [columns]="columns"
+                   [loadingIndicator]="loadingIndicator"
+    >
+      <ngx-datatable-column name="Convenio" prop="1" >
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Detalle" prop="2">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-2'] = true"
+              *ngIf="!editing[rowIndex + '-2']"
+            >
+              {{ value }}
+            </span>
+          <input
+            autofocus
+            (blur)="updateValue($event, '2', rowIndex)"
+            *ngIf="editing[rowIndex + '-2']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+
+
+    </ngx-datatable>
   </div>
 </div>

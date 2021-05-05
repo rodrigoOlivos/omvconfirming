@@ -11,14 +11,11 @@ import { NgxDatatableTasasComponent } from '../ngx-datatable-tasas/ngx-datatable
 })
 export class HtmlComboboxMonedaComponent {
 
-
-
   @Output()
   monedaEmitter: EventEmitter<string> = new EventEmitter<string>( false);
   monedaSelect = '1';
   form: FormGroup;
   orders = [{idMoneda: '0', moneda: 'seleccione...'}];
-
 
   constructor(private formBuilder: FormBuilder, private comboMonedaService: ComboMonedaService) {
     this.form = this.formBuilder.group({
@@ -43,8 +40,8 @@ export class HtmlComboboxMonedaComponent {
 
   }
 
-  onSubmit(value: string): void{
-    this.comboMonedaService.sendMoneda();
+  onSubmit(value:string): void{
     this.monedaEmitter.emit(value);
+    this.comboMonedaService.sendMoneda(value);
   }
 }
