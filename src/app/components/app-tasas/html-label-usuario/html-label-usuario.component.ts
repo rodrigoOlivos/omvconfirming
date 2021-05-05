@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../../services/token-storage.service';
 
 @Component({
@@ -8,8 +8,9 @@ import {TokenStorageService} from '../../../services/token-storage.service';
 })
 export class HtmlLabelUsuarioComponent implements OnInit {
   isLoggedIn = false;
-   rutempresa: any;
-   rutpersona: any;
+  rutempresa: any;
+  rutpersona: any;
+  nombreUsuario: any;
 
   constructor(private tokenStorageService: TokenStorageService) {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -18,6 +19,9 @@ export class HtmlLabelUsuarioComponent implements OnInit {
       const user = this.tokenStorageService.getUser().body;
       this.rutempresa = user.rutEmpresa;
       this.rutpersona = user.rutUsuario;
+      this.nombreUsuario = user.usuario;
+      // user = this.tokenStorageService.getUser().body;
+
     }
   }
 

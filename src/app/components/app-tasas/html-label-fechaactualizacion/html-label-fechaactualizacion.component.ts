@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from '../../../services/token-storage.service';
 
 @Component({
   selector: 'app-html-label-fechaactualizacion',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HtmlLabelFechaactualizacionComponent implements OnInit {
   curdate = new Date();
-  constructor() { }
+  isLoggedIn = false;
+  timestamp: any;
+
+  constructor(private tokenStorageService: TokenStorageService) {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser().body;
+      this.timestamp = user.timestamp;
+    }
+  }
 
   ngOnInit(): void {
   }
