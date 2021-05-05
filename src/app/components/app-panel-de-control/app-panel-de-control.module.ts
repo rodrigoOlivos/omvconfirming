@@ -11,6 +11,11 @@ import { HtmlBotoneraMatrizSpreadClienteComponent } from './html-botonera-matriz
 import { NgxTablaSpreadProveedorComponent } from './ngx-tabla-spread-proveedor/ngx-tabla-spread-proveedor.component';
 import { HtmlBotoneraMatrizSpreadProveedorComponent } from './html-botonera-matriz-spread-proveedor/html-botonera-matriz-spread-proveedor.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { TabTasasMatrizCostofondoComponent } from './tab-tasas-matriz-costofondo/tab-tasas-matriz-costofondo.component';
+import { TabTasasMatrizClienteComponent } from './tab-tasas-matriz-cliente/tab-tasas-matriz-cliente.component';
+import { TabTasasSpreadProveedorComponent } from './tab-tasas-spread-proveedor/tab-tasas-spread-proveedor.component';
+import { TabTasasListaNegraComponent } from './tab-tasas-lista-negra/tab-tasas-lista-negra.component';
+import { TabConvenioClienteComponent } from './tab-convenio-cliente/tab-convenio-cliente.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
     NgxTablaSpreadClienteComponent,
     HtmlBotoneraMatrizSpreadClienteComponent,
     NgxTablaSpreadProveedorComponent,
-    HtmlBotoneraMatrizSpreadProveedorComponent
+    HtmlBotoneraMatrizSpreadProveedorComponent,
+    TabTasasMatrizCostofondoComponent,
+    TabTasasMatrizClienteComponent,
+    TabTasasSpreadProveedorComponent,
+    TabTasasListaNegraComponent,
+    TabConvenioClienteComponent
   ],
   imports: [
     CommonModule,

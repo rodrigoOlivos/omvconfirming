@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {of} from 'rxjs';
-import {NgxDatatableTasasComponent} from '../ngx-datatable-tasas/ngx-datatable-tasas.component';
 import {ColumnMode, DatatableComponent, SelectionType} from '@swimlane/ngx-datatable';
 import {any} from 'codelyzer/util/function';
 import {TokenStorageService} from '../../../services/token-storage.service';
