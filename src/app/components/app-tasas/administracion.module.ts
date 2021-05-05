@@ -6,16 +6,10 @@ import { HtmlLabelFechaactualizacionComponent } from './html-label-fechaactualiz
 import { HtmlLabelUsuarioComponent } from './html-label-usuario/html-label-usuario.component';
 import { HtmlBotoneraTablatasasComponent } from './html-botonera-tablatasas/html-botonera-tablatasas.component';
 import { NgxDatatableResultadoComponent } from './ngx-datatable-resultado/ngx-datatable-resultado.component';
-import { NgxDatatableTmcComponent } from './ngx-datatable-tmc/ngx-datatable-tmc.component';
-import { HtmlBotoneraTmcComponent } from './html-botonera-tmc/html-botonera-tmc.component';
-import { HtmlComboboxTipomatrizComponent } from './html-combobox-tipomatriz/html-combobox-tipomatriz.component';
-import { HtmlBotoneraMatrizguardarComponent } from './html-botonera-matrizguardar/html-botonera-matrizguardar.component';
-import { NgxDatatableRangoplazosComponent } from './ngx-datatable-rangoplazos/ngx-datatable-rangoplazos.component';
-import { NgxDatatableRangomontosComponent } from './ngx-datatable-rangomontos/ngx-datatable-rangomontos.component';
-import { HtmlBotoneraTablasmatrizComponent } from './html-botonera-tablasmatriz/html-botonera-tablasmatriz.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {FormsModule} from '@angular/forms';
 import {CostoFondoComponent} from './costo-fondo/costo-fondo.component';
+import { TmcComponent } from './tmc/tmc.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +19,8 @@ import {CostoFondoComponent} from './costo-fondo/costo-fondo.component';
     HtmlLabelUsuarioComponent,
     HtmlBotoneraTablatasasComponent,
     NgxDatatableResultadoComponent,
-    NgxDatatableTmcComponent,
-    HtmlBotoneraTmcComponent,
-    HtmlComboboxTipomatrizComponent,
-    HtmlBotoneraMatrizguardarComponent,
-    NgxDatatableRangoplazosComponent,
-    NgxDatatableRangomontosComponent,
-    HtmlBotoneraTablasmatrizComponent,
-    CostoFondoComponent
+    CostoFondoComponent,
+    TmcComponent
   ],
     imports: [
         CommonModule,
@@ -46,14 +34,8 @@ import {CostoFondoComponent} from './costo-fondo/costo-fondo.component';
     HtmlLabelUsuarioComponent,
     HtmlBotoneraTablatasasComponent,
     NgxDatatableResultadoComponent,
-    NgxDatatableTmcComponent,
-    HtmlBotoneraTmcComponent,
-    HtmlComboboxTipomatrizComponent,
-    HtmlBotoneraMatrizguardarComponent,
-    NgxDatatableRangoplazosComponent,
-    NgxDatatableRangomontosComponent,
-    HtmlBotoneraTablasmatrizComponent,
-    CostoFondoComponent
+    CostoFondoComponent,
+    TmcComponent
   ]
 })
 export class AdministracionModule { }

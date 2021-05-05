@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HtmlBotoneraTmcComponent } from './html-botonera-tmc.component';
+import { TmcComponent } from './tmc.component';
 
-describe('HtmlBotoneraTmcComponent', () => {
-  let component: HtmlBotoneraTmcComponent;
-  let fixture: ComponentFixture<HtmlBotoneraTmcComponent>;
+describe('TmcComponent', () => {
+  let component: TmcComponent;
+  let fixture: ComponentFixture<TmcComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HtmlBotoneraTmcComponent ]
+      declarations: [ TmcComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HtmlBotoneraTmcComponent);
+    fixture = TestBed.createComponent(TmcComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

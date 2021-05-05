@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxDatatableTmcComponent } from './ngx-datatable-tmc.component';
+import { MatrizComponent } from './matriz.component';
 
-describe('NgxDatatableTmcComponent', () => {
-  let component: NgxDatatableTmcComponent;
-  let fixture: ComponentFixture<NgxDatatableTmcComponent>;
+describe('MatrizComponent', () => {
+  let component: MatrizComponent;
+  let fixture: ComponentFixture<MatrizComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgxDatatableTmcComponent ]
+      declarations: [ MatrizComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxDatatableTmcComponent);
+    fixture = TestBed.createComponent(MatrizComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

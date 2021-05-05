@@ -1,0 +1,101 @@
+<div class=" row">
+  <div class="col-12" style="width: 100%">
+
+    <div class="row">
+      <div class="col-md-1  form-control border-less" style="">
+        <label class="h6"> Moneda </label>
+      </div>
+      <div class="col-2">
+        <select   #mySelect  (change)='onChange(mySelect.value)'  class="form-control" id="orders">
+          <option *ngFor="let order of orders; let i = index" [value]="orders[i].idMoneda ">
+            {{orders[i].moneda}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+<div class="form-group row" >
+  <div class="col-4" style="width: 100%">
+    <app-html-label-fechaactualizacion></app-html-label-fechaactualizacion>
+  </div>
+  <div class="col-4" style="width: 100%">
+    <app-html-label-usuario></app-html-label-usuario>
+  </div>
+</div>
+<div class="form-group row ">
+  <div class="col-12" style="width: 100%">
+
+    <ngx-datatable #myTmc
+                   class="material ngx-datatable datatable-body-row"
+                   [headerHeight]="50"
+                   [limit]="5"
+                   [columnMode]="ColumnMode.force"
+                   [footerHeight]="50"
+                   rowHeight="auto"
+                   [rows]="rows"
+                   [columns]="columns"
+    >
+      <ngx-datatable-column [sortable]="false" name="$\Días" prop="1">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span>
+              {{ value }}
+            </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column [sortable]="false" *ngFor="let columnnas of encabezadoTabla; let i = index" name="{{columnnas.rangoPlazo}}"
+                            prop="{{i+2}}">
+        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+          <ng-container *ngIf="tasaEdit; then editable; else blocked">
+          </ng-container>
+          <ng-template #editable>
+            <span
+              (click)="editing[rowIndex + '-' + (i+2) ] = true"
+              *ngIf="!editing[rowIndex + '-' + (i+2) ]"
+            >
+              {{ value.tasa }}
+            </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, (i+2), rowIndex)"
+              *ngIf="editing[rowIndex + '-' + (i+2) ]"
+              type="text"
+              [value]="value.tasa"
+            />
+          </ng-template>
+          <ng-template #blocked>
+            <span> {{ value.tasa }} </span>
+            <input
+              autofocus
+              (blur)="updateValue($event, (i+2), rowIndex)"
+              *ngIf="false"
+              type="text"
+              [value]="value.tasa"
+            />
+          </ng-template>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+
+    <br>
+    <div class="form-group row"  >
+      <div class="form-actions col-md-6">
+      </div>
+      <div class="form-actions right col-md-6" align="right" >
+        <button [disabled]="editCell ? 'disabled': null"  (click)="onEdit()" type="button" class="btn right-panel-buttons btn-outline-light">
+          Editar
+        </button>
+        <button [disabled]="!editCell ? 'disabled': null"  (click)="onSave()" type="button" class="btn right-panel-buttons btn-success">
+          Guardar
+        </button>
+        <button [disabled]="!editCell ? 'disabled': null"  (click)="onCancel()" type="button" class="btn right-panel-buttons btn-outline-light">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

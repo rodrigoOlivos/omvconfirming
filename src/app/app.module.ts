@@ -63,6 +63,7 @@ import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion
 import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
 import {UsuariosModule} from './pages/usuarios/usuarios.module';
 import { LayoutSessionOutComponent } from './components/layout-session-out/layout-session-out.component';
+import { MatrizComponent } from './components/app-tasas/matriz/matriz.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { LayoutSessionOutComponent } from './components/layout-session-out/layou
     TableEditComponent,
     InlineEditComponent,
     AyudaLayoutComponent,
-    LayoutSessionOutComponent
+    LayoutSessionOutComponent,
+    MatrizComponent
   ],
   imports: [
     BrowserAnimationsModule,
