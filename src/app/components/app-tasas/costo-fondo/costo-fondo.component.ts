@@ -1,9 +1,8 @@
-import {Component, Input, OnInit, Output, ViewChild, Injector} from "@angular/core";
+import {Component, Input, OnInit, Output, ViewChild} from "@angular/core";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ComboMonedaService} from "../../../services/combo-moneda.service";
 import {AgfProviderService} from "../../../services/agf-provider.service";
 import {DatatableComponent, ColumnMode} from "@swimlane/ngx-datatable";
-import {TokenStorageService} from "../../../services/token-storage.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Dialog1Component} from "../../dialog1/dialog1.component";
 
@@ -24,7 +23,10 @@ export class CostoFondoComponent implements OnInit {
         this.monedaServicio = data.arrayOfMoneda.rowMoneda;
       },
       err => {
-        // $('#sesionInvalida').modal('show');
+        console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       });
     this.cargaTabla();
   }
@@ -88,12 +90,15 @@ export class CostoFondoComponent implements OnInit {
     console.log(this.arrayCostoFondo);
     this.agfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
       data => {
-        console.log(data);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Guardado de Datos", message: "Se han actualizado los cambios "}
+        })
       },
       err => {
         console.log(err);
-        // @ts-ignore
-        // $('#sesionInvalida').modal('show');
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }
@@ -138,10 +143,24 @@ export class CostoFondoComponent implements OnInit {
 
   onValidaTmc(): void{
     this.agfProvider.getDataf71().toPromise().then(data => {
-     // this.resultadosrows  = data.arrayOfRow71;
+     let data71 = data.arrayOfRow71;
+     let error = data.codigoError;
+      if(error === 0 ){
+       this.resultadosrows = data.arrayOfRow71;
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Validación TMC", message: "la validación ha sido exitosa. "}
+        })
+      }else{
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: data.textoError}
+        })
+      }
       },
       err => {
-        // $('#sesionInvalida').modal('show');
+        console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }
@@ -268,14 +287,16 @@ export class CostoFondoComponent implements OnInit {
           },
           err => {
             console.log(err);
-            // @ts-ignore
-            // $('#sesionInvalida').modal('show');
+            this.dialog.open(Dialog1Component, {
+              data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+            });
           });
       },
       err => {
         console.log(err);
-        // @ts-ignore
-        // $('#sesionInvalida').modal('show');
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }

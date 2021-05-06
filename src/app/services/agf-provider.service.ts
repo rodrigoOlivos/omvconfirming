@@ -120,7 +120,7 @@ export class AgfProviderService {
 
   getDataf71( ): Observable<any> {
     const cookieToken = this.cookieService.get('token_access');
-    return this.http.get(API_AGF + '/api/f32/', {
+    return this.http.get(API_AGF + '/api/f71/', {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'

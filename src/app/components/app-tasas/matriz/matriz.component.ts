@@ -5,7 +5,8 @@ import {of} from 'rxjs';
 import {ColumnMode, DatatableComponent, SelectionType} from '@swimlane/ngx-datatable';
 import {OfflineServicesService} from '../../../services/offline-services.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
-
+import {MatDialog} from "@angular/material/dialog";
+import {Dialog1Component} from "../../dialog1/dialog1.component";
 @Component({
   selector: 'app-matriz',
   templateUrl: './matriz.component.html',
@@ -16,7 +17,8 @@ export class MatrizComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private comboMonedaService: ComboMonedaService,
               private agfProviderService: AgfProviderService,
-              private offlineServicesService: OfflineServicesService
+              private offlineServicesService: OfflineServicesService,
+              public dialog: MatDialog
   ) {
     this.formTipoMatriz = this.formBuilder.group({
       orders: ['']
@@ -35,8 +37,10 @@ export class MatrizComponent implements OnInit {
         this.selectMoneda = data.arrayOfMoneda.rowMoneda;
       },
       err => {
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
+        console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }
@@ -180,12 +184,10 @@ export class MatrizComponent implements OnInit {
   }
 
   updateValuePlazos(event: any, cell: any, rowIndex: any): void {
-    // this.rowsPlazos.push();
-    // console.log('inline editing rowIndex', rowIndex);
     this.editingPlazos[rowIndex + '-' + cell] = false;
     this.rowsPlazos[rowIndex][cell].valor = event.target.value;
     this.rowsPlazos = [...this.rowsPlazos];
-    // console.log('UPDATED!', this.rowsPlazos[rowIndex][cell]);
+
   }
 
   updateValueMontos(event: any, cell: any, rowIndex: any): void {
@@ -211,8 +213,6 @@ export class MatrizComponent implements OnInit {
     this.contadorFilasPlazos++;
     this.rowsPlazos.push(filaNuevaPlazos);
     this.rowsPlazos = [...this.rowsPlazos];
-    console.log('btn agregar');
-    console.log(this.rowsPlazos);
   }
 
   newRowMontos(): void {
@@ -232,8 +232,6 @@ export class MatrizComponent implements OnInit {
     this.contadorFilasMontos++;
     this.rowsMontos.push(filaNuevaMontos);
     this.rowsMontos = [...this.rowsMontos];
-    console.log('btn agregar');
-    console.log(this.rowsMontos);
   }
 
   retornoFilaPlazos(filaEliminadaPlazos: number): number {
@@ -246,8 +244,6 @@ export class MatrizComponent implements OnInit {
         this.arraySelectedPlazos[i] = this.arraySelectedPlazos[i - 1];
       }
     }
-    console.log('this.arraySelectedPlazos');
-    console.log(this.arraySelectedPlazos);
     return backupArraySelectedPlazos;
   }
 
@@ -337,8 +333,9 @@ export class MatrizComponent implements OnInit {
       },
       err => {
         console.log(err);
-        // @ts-ignore
-        // $('#sesionInvalida').modal('show');
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }
@@ -357,7 +354,6 @@ export class MatrizComponent implements OnInit {
       objetoF30.diasHasta = item[2].valor;
       arrPlazos.push(objetoF30);
     });
-    console.log('resultado');
     return arrPlazos;
   }
 
@@ -375,7 +371,6 @@ export class MatrizComponent implements OnInit {
       objetoF30.montoHasta = item[2].valor;
       arrMontos.push(objetoF30);
     });
-    console.log('resultado');
     return arrMontos;
   }
 

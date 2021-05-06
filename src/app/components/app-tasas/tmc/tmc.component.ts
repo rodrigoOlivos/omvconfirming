@@ -4,7 +4,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ComboMonedaService} from '../../../services/combo-moneda.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
 import {TokenStorageService} from '../../../services/token-storage.service';
-
+import {MatDialog} from "@angular/material/dialog";
+import {Dialog1Component} from "../../dialog1/dialog1.component";
 @Component({
   selector: 'app-tmc',
   templateUrl: './tmc.component.html',
@@ -14,7 +15,9 @@ export class TmcComponent {
 
   constructor(private formBuilder: FormBuilder,
               private comboMonedaService: ComboMonedaService,
-              private agfProvider: AgfProviderService
+              private agfProvider: AgfProviderService,
+              public dialog: MatDialog
+
   ) {
     this.form = this.formBuilder.group({
       orders: ['']
@@ -24,8 +27,10 @@ export class TmcComponent {
         this.orders = data.arrayOfMoneda.rowMoneda;
       },
       err => {
-        // @ts-ignore
-        $('#sesionInvalida').modal('show');
+        console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
     this.onChangeTable();
@@ -115,8 +120,9 @@ export class TmcComponent {
       },
       err => {
         console.log(err);
-        // @ts-ignore
-        // $('#sesionInvalida').modal('show');
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
   }
@@ -138,7 +144,6 @@ export class TmcComponent {
         arr.push(objetoF33);
       }
     });
-    console.log('resultado');
     return arr;
   }
 
@@ -219,11 +224,17 @@ export class TmcComponent {
           },
           err => {
             console.log(err);
+            this.dialog.open(Dialog1Component, {
+              data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+            });
           }
         );
       },
       err => {
         console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
       }
     );
 
