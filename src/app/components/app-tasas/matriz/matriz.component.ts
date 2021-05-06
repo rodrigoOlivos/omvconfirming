@@ -5,8 +5,8 @@ import {of} from 'rxjs';
 import {ColumnMode, DatatableComponent, SelectionType} from '@swimlane/ngx-datatable';
 import {OfflineServicesService} from '../../../services/offline-services.service';
 import {AgfProviderService} from '../../../services/agf-provider.service';
-import {MatDialog} from "@angular/material/dialog";
-import {Dialog1Component} from "../../dialog1/dialog1.component";
+import {MatDialog} from '@angular/material/dialog';
+import {Dialog1Component} from '../../dialog1/dialog1.component';
 @Component({
   selector: 'app-matriz',
   templateUrl: './matriz.component.html',
@@ -39,7 +39,7 @@ export class MatrizComponent implements OnInit {
       err => {
         console.log(err);
         this.dialog.open(Dialog1Component, {
-          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+          data: {title: 'Error', message: '¡Ocurrió un Error Inesperado!'}
         });
       }
     );
@@ -85,6 +85,8 @@ export class MatrizComponent implements OnInit {
   selectedMontos = [];
   arraySelectedPlazos: any[] = [];
   arraySelectedMontos: any[] = [];
+  maxIdRangoPlazos = 0;
+  maxIdRangoMontos = 0;
   SelectionType = SelectionType;
 
   @Output()
@@ -110,6 +112,7 @@ export class MatrizComponent implements OnInit {
 
         this.preCargaRowsPlazos.forEach((valuePlazos) => {
           this.arraySelectedPlazos.push(this.contadorFilasPlazos);
+          this.maxIdRangoPlazos = (valuePlazos.idRangoPlazo > this.maxIdRangoPlazos) ? valuePlazos.idRangoPlazo : this.maxIdRangoPlazos;
           // @ts-ignore
           this.itemsRowsPlazos['1'] = {
             nroFila: this.contadorFilasPlazos,
@@ -135,6 +138,7 @@ export class MatrizComponent implements OnInit {
 
         this.preCargaRowsMontos.forEach((valueMontos) => {
           this.arraySelectedMontos.push(this.contadorFilasMontos);
+          this.maxIdRangoMontos = (valueMontos.idRangoMonto > this.maxIdRangoMontos) ? valueMontos.idRangoMonto : this.maxIdRangoMontos;
           // @ts-ignore
           this.itemsRowsMontos['1'] = {
             nroFila: this.contadorFilasMontos,
@@ -199,51 +203,63 @@ export class MatrizComponent implements OnInit {
   newRowPlazos(): void {
     const filaNuevaPlazos = {
       1: {
-        nroFila: this.idRangoPlazoActual,
-        idRangoPlazo: this.idRangoPlazoActual,
+        nroFila: this.rowsPlazos.length,
+        idRangoPlazo: this.maxIdRangoPlazos + 1,
         valor: 0
       },
       2: {
-        nroFila: this.idRangoPlazoActual,
-        idRangoPlazo: this.idRangoPlazoActual,
+        nroFila: this.rowsPlazos.length,
+        idRangoPlazo: this.maxIdRangoPlazos + 1,
         valor: 0
       }
     }; // inicializado
     this.idRangoPlazoActual++;
     this.contadorFilasPlazos++;
+    this.maxIdRangoPlazos++;
+    this.arraySelectedPlazos.push(this.contadorFilasPlazos);
+    console.log('this.cargaRowsPlazos');
+    console.log(this.cargaRowsPlazos.length);
     this.rowsPlazos.push(filaNuevaPlazos);
     this.rowsPlazos = [...this.rowsPlazos];
+    console.log('btn agregar');
+    console.log(this.rowsPlazos);
+    console.log(this.rowsPlazos.length);
   }
 
   newRowMontos(): void {
     const filaNuevaMontos = {
       1: {
-        nroFila: this.idRangoMontoActual,
-        idRangoMonto: this.idRangoMontoActual,
+        nroFila: this.rowsMontos.length,
+        idRangoMonto: this.maxIdRangoMontos + 1,
         valor: 0
       },
       2: {
-        nroFila: this.idRangoMontoActual,
-        idRangoMonto: this.idRangoMontoActual,
+        nroFila: this.rowsMontos.length,
+        idRangoMonto: this.maxIdRangoMontos + 1,
         valor: 0
       }
     }; // inicializado
     this.idRangoMontoActual++;
     this.contadorFilasMontos++;
+    this.maxIdRangoMontos++;
+    this.arraySelectedMontos.push(this.contadorFilasMontos);
     this.rowsMontos.push(filaNuevaMontos);
     this.rowsMontos = [...this.rowsMontos];
   }
 
   retornoFilaPlazos(filaEliminadaPlazos: number): number {
+    console.log(this.arraySelectedPlazos);
     const backupArraySelectedPlazos = this.arraySelectedPlazos[filaEliminadaPlazos];
     console.log('filaEliminadaPlazos');
     console.log(filaEliminadaPlazos);
     for (let i = this.arraySelectedPlazos.length - 1; i > 0; i--) {
       console.log(filaEliminadaPlazos, this.arraySelectedPlazos[i]);
-      if (filaEliminadaPlazos <= this.arraySelectedPlazos.length) {
+      if (filaEliminadaPlazos <= this.arraySelectedPlazos[i]) {
         this.arraySelectedPlazos[i] = this.arraySelectedPlazos[i - 1];
       }
     }
+    console.log('this.arraySelectedPlazos');
+    console.log(this.arraySelectedPlazos);
     return backupArraySelectedPlazos;
   }
 
@@ -326,15 +342,14 @@ export class MatrizComponent implements OnInit {
     ).subscribe(
       data => {
         // @ts-ignore
-        $('#modalMensaje').modal('show');
-        $('#modalLabel').text('Actualización de Rangos');
-        $('#modalTexto').text('Rangos Actualizados');
-        console.log(data);
+        this.dialog.open(Dialog1Component, {
+          data: {title: 'Actualización de Rangos', message: 'Los rangos han sido actualizados con éxito'}
+        });
       },
       err => {
         console.log(err);
         this.dialog.open(Dialog1Component, {
-          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+          data: {title: 'Error', message: '¡Ocurrió un Error Inesperado!'}
         });
       }
     );
