@@ -43,7 +43,6 @@ import {OfertasPorProveedorComponent} from './pages/consulta/ofertas-por-proveed
 import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.component';
 
 import {DialogBoxComponent} from './components/dialog-box/dialog-box.component';
-// import {TableEditComponent} from './components/tabla-editing-example/tabla-editing-example.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
@@ -61,6 +60,7 @@ import {AppRecaudacionModule} from './components/app-recaudacion/app-recaudacion
 import {AppOfertasPorProveedorModule} from './components/app-ofertas-por-proveedor/app-ofertas-por-proveedor.module';
 import { LayoutSessionOutComponent } from './components/layout-session-out/layout-session-out.component';
 import { MatrizComponent } from './components/app-tasas/matriz/matriz.component';
+import { Dialog1Component } from './components/dialog1/dialog1.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +94,8 @@ import { MatrizComponent } from './components/app-tasas/matriz/matriz.component'
     DialogBoxComponent,
     AyudaLayoutComponent,
     LayoutSessionOutComponent,
-    MatrizComponent
+    MatrizComponent,
+    Dialog1Component
   ],
   imports: [
     BrowserAnimationsModule,

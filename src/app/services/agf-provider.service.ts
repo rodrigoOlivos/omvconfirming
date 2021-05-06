@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 
@@ -103,6 +103,15 @@ export class AgfProviderService {
       }
     };
     return this.http.post(API_AGF + '/api/f33/', bodyF33, {
+      headers: {
+        'Set-Header-Api': cookieToken
+      }, observe: 'body'
+    });
+  }
+
+  getDataF58():Observable<any> {
+    const cookieToken = this.cookieService.get('token_access');
+    return this.http.post(API_AGF + '/api/f58/', null, {
       headers: {
         'Set-Header-Api': cookieToken
       }, observe: 'body'

@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, AfterViewInit, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {of, Subscription} from 'rxjs';
-import {ComboMonedaService} from '../../../services/combo-moneda.service';
-import {AgfProviderService} from '../../../services/agf-provider.service';
-import {DatatableComponent} from '@swimlane/ngx-datatable';
-import {ColumnMode} from '@swimlane/ngx-datatable';
-import {TokenStorageService} from '../../../services/token-storage.service';
+import {Component, Input, OnInit, Output, ViewChild, Injector} from "@angular/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {ComboMonedaService} from "../../../services/combo-moneda.service";
+import {AgfProviderService} from "../../../services/agf-provider.service";
+import {DatatableComponent, ColumnMode} from "@swimlane/ngx-datatable";
+import {TokenStorageService} from "../../../services/token-storage.service";
+import {MatDialog} from "@angular/material/dialog";
+import {Dialog1Component} from "../../dialog1/dialog1.component";
 
 @Component({
   selector: 'app-costo-fondo',
@@ -14,12 +14,10 @@ import {TokenStorageService} from '../../../services/token-storage.service';
 })
 export class CostoFondoComponent implements OnInit {
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private comboMonedaService: ComboMonedaService,
-    private agfProvider: AgfProviderService,
-    private tokenStorageService: TokenStorageService
-  ) {
+  constructor(private formBuilder: FormBuilder,
+              private comboMonedaService: ComboMonedaService,
+              private agfProvider: AgfProviderService,
+              public dialog: MatDialog) {
     this.form = this.formBuilder.group({orders: ['']});
     comboMonedaService.getComboMonedaHttp().subscribe(
       data => {
@@ -147,14 +145,29 @@ export class CostoFondoComponent implements OnInit {
       }
     );
   }
+  generarOfertas(): void {
+    this.agfProvider.getDataF58().toPromise().then(data => {
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Generación de Ofertas", message: "Proceso de Generación Iniciado"}
+        });
+      },
+      err => {
+        console.log(err);
+        this.dialog.open(Dialog1Component, {
+          data: {title: "Error", message: "¡Ocurrió un Error Inesperado!"}
+        });
+      }
+    );
+  }
+
   cargaTabla(): void {
     this.cargaRows = [];
     this.columnaReferencia = [];
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
     this.agfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
-        this.columnaReferencia  = data.arrayOfRow311.row311;
-        this.encabezadoTabla  = data.arrayOfRow312.row312;
+        this.columnaReferencia = data.arrayOfRow311.row311;
+        this.encabezadoTabla = data.arrayOfRow312.row312;
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
@@ -163,64 +176,65 @@ export class CostoFondoComponent implements OnInit {
             this.timestamp = data.timestampUpdate;
             this.nombreUsuario = data.userUpdate;
             console.log('datos servicio carga');
-            console.log(this.preCargaRows );
+            console.log(this.preCargaRows);
             const orden = this.ordenColums;
             let columnaref = 0;
             let columncount = 0;
             let rowcount = 2;
             let ciclo = 0;
 
-            if(this.preCargaRows.length>0){
-            this.preCargaRows.forEach((value) => {
-              if (columncount === 0) {
-                columncount = value.idRangoMonto;
-                rowcount = 2;
-                // @ts-ignore
-                this.itemsRows[1] = orden[value.idRangoMonto];
-                columnaref++;
-              }
-              if (columncount === value.idRangoMonto) {
-                // @ts-ignore
-                this.val.idRangoMonto = value.idRangoMonto;
-                // @ts-ignore
-                this.val.idRangoPlazo = value.idRangoPlazo;
-                // @ts-ignore
-                this.val.tasa = value.tasa;
-                // @ts-ignore
-                this.itemsRows[rowcount] = this.val;
-                this.val = {};
-                rowcount++;
-                ciclo++;
-                if (ciclo === this.preCargaRows.length) {
-                  this.cargaRows.push(this.itemsRows);
+            if (this.preCargaRows.length > 0) {
+              this.preCargaRows.forEach((value) => {
+                if (columncount === 0) {
+                  columncount = value.idRangoMonto;
+                  rowcount = 2;
+                  // @ts-ignore
+                  this.itemsRows[1] = orden[value.idRangoMonto];
+                  columnaref++;
                 }
-              } else {
-                columncount = value.idRangoMonto;
-                rowcount = 2;
-                this.cargaRows.push(this.itemsRows);
-                this.itemsRows = {};
-                // @ts-ignore
-                this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
-                columnaref++;
-                // @ts-ignore
-                this.val.idRangoMonto = value.idRangoMonto;
-                // @ts-ignore
-                this.val.idRangoPlazo = value.idRangoPlazo;
-                // @ts-ignore
-                this.val.tasa = value.tasa;
-                // @ts-ignore
-                this.itemsRows[rowcount] = this.val;
-                this.val = {};
-                rowcount++;
-                ciclo++;
-              }
-              this.rows = this.cargaRows;
-              this.rows = [...this.rows];
-              setTimeout(() => {
-                this.loadingIndicator = false;
-              }, 500);
+                if (columncount === value.idRangoMonto) {
+                  // @ts-ignore
+                  this.val.idRangoMonto = value.idRangoMonto;
+                  // @ts-ignore
+                  this.val.idRangoPlazo = value.idRangoPlazo;
+                  // @ts-ignore
+                  this.val.tasa = value.tasa;
+                  // @ts-ignore
+                  this.itemsRows[rowcount] = this.val;
+                  this.val = {};
+                  rowcount++;
+                  ciclo++;
+                  if (ciclo === this.preCargaRows.length) {
+                    this.cargaRows.push(this.itemsRows);
+                  }
+                } else {
+                  columncount = value.idRangoMonto;
+                  rowcount = 2;
+                  this.cargaRows.push(this.itemsRows);
+                  this.itemsRows = {};
+                  // @ts-ignore
+                  this.itemsRows[1] = this.ordenColums[value.idRangoMonto];
+                  columnaref++;
+                  // @ts-ignore
+                  this.val.idRangoMonto = value.idRangoMonto;
+                  // @ts-ignore
+                  this.val.idRangoPlazo = value.idRangoPlazo;
+                  // @ts-ignore
+                  this.val.tasa = value.tasa;
+                  // @ts-ignore
+                  this.itemsRows[rowcount] = this.val;
+                  this.val = {};
+                  rowcount++;
+                  ciclo++;
+                }
+                this.rows = this.cargaRows;
+                this.rows = [...this.rows];
+                setTimeout(() => {
+                  this.loadingIndicator = false;
+                }, 500);
 
-            });}else{
+              });
+            } else {
               console.log("datos erroneos en blanco")
               console.log(this.encabezadoTabla)
               console.log(this.columnaReferencia)
@@ -230,17 +244,17 @@ export class CostoFondoComponent implements OnInit {
                 rowcount = 2;
                 // @ts-ignore
                 this.itemsRows[1] = orden[row.idRangoMonto];
-                 this.encabezadoTabla.forEach((col) => {
-                   this.val = {};
-                   // @ts-ignore
-                   this.val.idRangoMonto = row.idRangoMonto;
-                   // @ts-ignore
-                   this.val.idRangoPlazo = col.idRangoPlazo;
-                   // @ts-ignore
-                   this.val.tasa = 0;
-                   // @ts-ignore
-                   this.itemsRows[rowcount] = this.val;
-                   rowcount++;
+                this.encabezadoTabla.forEach((col) => {
+                  this.val = {};
+                  // @ts-ignore
+                  this.val.idRangoMonto = row.idRangoMonto;
+                  // @ts-ignore
+                  this.val.idRangoPlazo = col.idRangoPlazo;
+                  // @ts-ignore
+                  this.val.tasa = 0;
+                  // @ts-ignore
+                  this.itemsRows[rowcount] = this.val;
+                  rowcount++;
                 });
                 this.cargaRows.push(this.itemsRows);
                 this.itemsRows = {};
@@ -265,6 +279,5 @@ export class CostoFondoComponent implements OnInit {
       }
     );
   }
-
 
 }
