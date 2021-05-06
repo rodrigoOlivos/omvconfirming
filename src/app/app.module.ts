@@ -28,7 +28,7 @@ import {PanelComponent} from './pages/administracion/panel/panel.component';
 import {AltaComponent} from './pages/administracion/alta/alta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
-import { TablaComponent } from './components/tabla/tabla.component';
+// import { TablaComponent } from './components/tabla/tabla.component';
 
 
 import { MatTableModule } from '@angular/material/table';
@@ -43,14 +43,14 @@ import {OfertasPendientesComponent} from './pages/consulta/ofertas-pendientes/of
 import {OfertasRechazadasComponent} from './pages/consulta/ofertas-rechazadas/ofertas-rechazadas.component';
 import {OfertasPorProveedorComponent} from './pages/consulta/ofertas-por-proveedor/ofertas-por-proveedor.component';
 import {TipoCambioComponent} from './pages/indicadores/tipo-cambio/tipo-cambio.component';
-import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.component';
+// import {TablaJqueryComponent} from './components/tabla-jquery/tabla-jquery.component';
 import {DialogBoxComponent} from './components/dialog-box/dialog-box.component';
-import {TableEditComponent} from './components/tabla-editing-example/tabla-editing-example.component';
+// import {TableEditComponent} from './components/tabla-editing-example/tabla-editing-example.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
+// import {InlineEditComponent} from './components/ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AyudaLayoutComponent } from './components/layout-ayuda/ayuda-layout.component';
@@ -85,7 +85,7 @@ import { MatrizComponent } from './components/app-tasas/matriz/matriz.component'
     HeaderLayoutComponent,
     PanelComponent,
     AltaComponent,
-    TablaComponent,
+    // TablaComponent,
     DashboardComponent,
     AcercaDeComponent,
     NominasComponent,
@@ -95,10 +95,10 @@ import { MatrizComponent } from './components/app-tasas/matriz/matriz.component'
     OfertasRechazadasComponent,
     OfertasPorProveedorComponent,
     TipoCambioComponent,
-    TablaJqueryComponent,
+    // TablaJqueryComponent,
     DialogBoxComponent,
     TableEditComponent,
-    InlineEditComponent,
+    // InlineEditComponent,
     AyudaLayoutComponent,
     LayoutSessionOutComponent,
     MatrizComponent
@@ -118,7 +118,7 @@ import { MatrizComponent } from './components/app-tasas/matriz/matriz.component'
     MatFormFieldModule,
     MatDialogModule,
     MatButtonModule,
-    NgxDatatableModule,
+    // NgxDatatableModule,
     AdministracionModule,
     AppAltaDeProveedoresModule,
     AppPanelDeControlModule,
@@ -136,8 +136,8 @@ import { MatrizComponent } from './components/app-tasas/matriz/matriz.component'
     MatPaginatorModule,
     MatSortModule,
     DialogBoxComponent,
-    TableEditComponent,
-    InlineEditComponent,
+    // TableEditComponent,
+    // InlineEditComponent,
   ],
   providers: [
     CookieService,
