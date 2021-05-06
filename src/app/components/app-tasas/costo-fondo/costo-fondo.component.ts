@@ -17,7 +17,7 @@ export class CostoFondoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private comboMonedaService: ComboMonedaService,
-    private AgfProvider: AgfProviderService,
+    private agfProvider: AgfProviderService,
     private tokenStorageService: TokenStorageService
   ) {
     this.form = this.formBuilder.group({orders: ['']});
@@ -88,7 +88,7 @@ export class CostoFondoComponent implements OnInit {
     const {idTipoMat, idComprador, idProveedor} = this.formF33;
     this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
     console.log(this.arrayCostoFondo);
-    this.AgfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
+    this.agfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
       data => {
         console.log(data);
       },
@@ -138,18 +138,27 @@ export class CostoFondoComponent implements OnInit {
     this.tasaEdit = false;
   }
 
+  onValidaTmc(): void{
+    this.agfProvider.getDataf71().toPromise().then(data => {
+     // this.resultadosrows  = data.arrayOfRow71;
+      },
+      err => {
+        // $('#sesionInvalida').modal('show');
+      }
+    );
+  }
   cargaTabla(): void {
     this.cargaRows = [];
     this.columnaReferencia = [];
     this.encabezadoTabla = [];
     this.loadingIndicator = true;
-    this.AgfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
+    this.agfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.columnaReferencia  = data.arrayOfRow311.row311;
         this.encabezadoTabla  = data.arrayOfRow312.row312;
         this.columnaReferencia.forEach((value) => {
           this.ordenColums[value.idRangoMonto] = '>' + value.montoDesde + ', <= ' + value.montoHasta;
         });
-        this.AgfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
+        this.agfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
             this.timestamp = data.timestampUpdate;
             this.nombreUsuario = data.userUpdate;
@@ -256,5 +265,6 @@ export class CostoFondoComponent implements OnInit {
       }
     );
   }
+
 
 }
