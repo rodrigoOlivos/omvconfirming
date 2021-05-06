@@ -35,8 +35,6 @@ export class TmcComponent {
   rutempresa: any;
   rutpersona: any;
   nombreUsuario: any;
-
-  curdate = new Date();
   timestamp: any;
 
   @Output()
@@ -58,7 +56,9 @@ export class TmcComponent {
   editing: any = {};
   rows: any[] = [];
   rowsInedit: any[] = [];
-  idTipoTabla = 11;
+  idTipoTabla = 11; // tipo matriz 11 de vista TMC
+  idComprador = 0;
+  idProveedor = 0;
   encabezadoTabla: any[] = [];
   columnaReferencia: any[] = [];
   preCargaRows: any[] = [];
@@ -103,7 +103,13 @@ export class TmcComponent {
     const {idTipoMat, idComprador, idProveedor} = this.formF33;
     this.arrayCostoFondo = this.parseMatrizF33(this.myCostoFondo.bodyComponent.rows);
     console.log(this.arrayCostoFondo);
-    this.agfProvider.getDataf33(idTipoMat, Number(this.idTipoMoneda), idComprador, idProveedor, this.arrayCostoFondo).subscribe(
+    this.agfProvider.getDataf33(
+      idTipoMat,
+      Number(this.idTipoMoneda),
+      idComprador,
+      idProveedor,
+      this.arrayCostoFondo
+    ).subscribe(
       data => {
         console.log(data);
       },
@@ -144,7 +150,12 @@ export class TmcComponent {
     this.agfProvider.getDataf31(this.idTipoTabla, this.idTipoMoneda).toPromise().then(data => {
         this.columnaReferencia = data.arrayOfRow311.row311;
         this.encabezadoTabla = data.arrayOfRow312.row312;
-        this.agfProvider.getDataf32(this.idTipoTabla, 0, 0, this.idTipoMoneda).toPromise().then(data => {
+        this.agfProvider.getDataf32(
+          this.idTipoTabla,
+          this.idComprador,
+          this.idProveedor,
+          this.idTipoMoneda
+        ).toPromise().then(data => {
             this.preCargaRows = data.arrayOfRow32.row32;
             this.timestamp = data.timestampUpdate;
             this.nombreUsuario = data.userUpdate;

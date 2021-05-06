@@ -79,6 +79,8 @@ export class MatrizComponent implements OnInit {
 
   selectedPlazos = [];
   selectedMontos = [];
+  arraySelectedPlazos: any[] = [];
+  arraySelectedMontos: any[] = [];
   SelectionType = SelectionType;
 
   @Output()
@@ -91,6 +93,7 @@ export class MatrizComponent implements OnInit {
   myDataMontos!: DatatableComponent;
 
   getDataf29(): void {
+    this.arraySelectedPlazos = [];
     this.cargaRowsMontos = [];
     this.cargaRowsPlazos = [];
     this.loadingIndicator = true;
@@ -100,7 +103,9 @@ export class MatrizComponent implements OnInit {
 
         this.contadorFilasPlazos = 0;
         this.preCargaRowsPlazos = data.arrayOfRow292.row292; // rangos plazos
+
         this.preCargaRowsPlazos.forEach((valuePlazos) => {
+          this.arraySelectedPlazos.push(this.contadorFilasPlazos);
           // @ts-ignore
           this.itemsRowsPlazos['1'] = {
             nroFila: this.contadorFilasPlazos,
@@ -123,7 +128,9 @@ export class MatrizComponent implements OnInit {
 
         this.contadorFilasMontos = 0;
         this.preCargaRowsMontos = data.arrayOfRow291.row291; // rangos montos
+
         this.preCargaRowsMontos.forEach((valueMontos) => {
+          this.arraySelectedMontos.push(this.contadorFilasMontos);
           // @ts-ignore
           this.itemsRowsMontos['1'] = {
             nroFila: this.contadorFilasMontos,
@@ -185,7 +192,6 @@ export class MatrizComponent implements OnInit {
     this.editingMontos[rowIndex + '-' + cell] = false;
     this.rowsMontos[rowIndex][cell].valor = event.target.value;
     this.rowsMontos = [...this.rowsMontos];
-
   }
 
   newRowPlazos(): void {
@@ -230,11 +236,37 @@ export class MatrizComponent implements OnInit {
     console.log(this.rowsMontos);
   }
 
+  retornoFilaPlazos(filaEliminadaPlazos: number): number {
+    const backupArraySelectedPlazos = this.arraySelectedPlazos[filaEliminadaPlazos];
+    console.log('filaEliminadaPlazos');
+    console.log(filaEliminadaPlazos);
+    for (let i = this.arraySelectedPlazos.length - 1; i > 0; i--) {
+      console.log(filaEliminadaPlazos, this.arraySelectedPlazos[i]);
+      if (filaEliminadaPlazos <= this.arraySelectedPlazos.length) {
+        this.arraySelectedPlazos[i] = this.arraySelectedPlazos[i - 1];
+      }
+    }
+    console.log('this.arraySelectedPlazos');
+    console.log(this.arraySelectedPlazos);
+    return backupArraySelectedPlazos;
+  }
+
+  retornoFilaMontos(filaEliminadaMontos: number): number {
+    const backupArraySelectedMontos = this.arraySelectedMontos[filaEliminadaMontos];
+    for (let i = this.arraySelectedMontos.length - 1; i > 0; i--) {
+      console.log(filaEliminadaMontos, this.arraySelectedMontos[i]);
+      if (filaEliminadaMontos <= this.arraySelectedMontos.length) {
+        this.arraySelectedMontos[i] = this.arraySelectedMontos[i - 1];
+      }
+    }
+    return backupArraySelectedMontos;
+  }
+
   onRemoveRowPlazos(): void {
     console.log('onRemoveRowPlazos');
     this.selectedPlazos.forEach(childObj => {
       // @ts-ignore
-      this.rowsPlazos.splice(childObj[1].nroFila, 1);
+      this.rowsPlazos.splice(this.retornoFilaPlazos(Number(childObj[1].nroFila)), 1);
       console.log(childObj[1]);
       this.contadorFilasPlazos--;
     });
@@ -243,10 +275,9 @@ export class MatrizComponent implements OnInit {
   }
 
   onRemoveRowMontos(): void {
-    console.log('onRemoveRowMontos');
     this.selectedMontos.forEach(childObj => {
       // @ts-ignore
-      this.rowsMontos.splice(childObj[1].nroFila, 1);
+      this.rowsMontos.splice(this.retornoFilaMontos(Number(childObj[1].nroFila)), 1);
       console.log(childObj[1]);
       this.contadorFilasMontos--;
     });
@@ -315,16 +346,16 @@ export class MatrizComponent implements OnInit {
   parseMatrizPlazosF30(myDataPlazos: any[]): any[] {
     const arrPlazos: any[] = [];
     myDataPlazos.forEach(item => {
-        // @ts-ignore
-        const objetoF30: {
-          idRangoPlazo: number;
-          diasDesde: number;
-          diasHasta: number;
-        } = {};
-        objetoF30.idRangoPlazo = Number(item[1].idRangoPlazo);
-        objetoF30.diasDesde = item[1].valor;
-        objetoF30.diasHasta = item[2].valor;
-        arrPlazos.push(objetoF30);
+      // @ts-ignore
+      const objetoF30: {
+        idRangoPlazo: number;
+        diasDesde: number;
+        diasHasta: number;
+      } = {};
+      objetoF30.idRangoPlazo = Number(item[1].idRangoPlazo);
+      objetoF30.diasDesde = item[1].valor;
+      objetoF30.diasHasta = item[2].valor;
+      arrPlazos.push(objetoF30);
     });
     console.log('resultado');
     return arrPlazos;
